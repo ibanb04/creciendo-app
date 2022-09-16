@@ -1,3 +1,3 @@
 export * from "./Footer";
-export * from "./AppBar";
+export * from "./NavBar";
 export * from "./Menu";
