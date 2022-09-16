@@ -1,6 +1,3 @@
-
 export const NavBar = () => {
-  return (
-   <div>NavBar</div>
-  );
+  return <div>Hola Mundo</div>;
 };
