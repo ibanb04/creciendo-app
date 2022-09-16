@@ -15,3 +15,22 @@ export const theme = createTheme({
     },
   },
 });
+
+declare module "@mui/material/styles" {
+  interface Palette {
+    tertiary: Palette["secondary"];
+  }
+  interface PaletteOptions {
+    tertiary?: PaletteOptions["secondary"];
+  }
+  interface SimplePaletteColorOptions {
+    lightGreen?: string;
+    yellow?: string;
+  }
+}
+
+declare module "@mui/material/Button" {
+  interface ButtonPropsColorOverrides {
+    tertiary: true;
+  }
+}
