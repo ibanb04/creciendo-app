@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useId } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -10,10 +10,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import svg from "../../assets/img/EscudoCreciendo.png";
-import { Grid } from "@mui/material";
+import { Grid, Link } from "@mui/material";
+import { Box } from "@mui/system";
+import Face6Icon from "@mui/icons-material/Face6";
+import FeedIcon from "@mui/icons-material/Feed";
+
+import { Link as RouterLink } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -24,6 +28,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+interface ListSidebar {
+  title: string;
+  path: string;
+  icon: any;
+}
 interface SidebarProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -32,13 +41,24 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
   const theme = useTheme();
-
+  const id = useId();
   const handleDrawerClose = () => setOpen(false);
-  const listSidebar = [
-    "Gestionar Estudiantes",
-    "Gestionar Matricula",
-    "Entrevistas",
-    "Plantillas",
+  const listSidebar: ListSidebar[] = [
+    {
+      title: "Gestionar Estudiante",
+      path: "/estudiantes",
+      icon: Face6Icon,
+    },
+    {
+      title: "Gestionar Matricula",
+      path: "/matriculas",
+      icon: FeedIcon,
+    },
+    {
+      title: "Entrevistas",
+      path: "/entrevistas",
+      icon: FamilyRestroomIcon,
+    },
   ];
 
   return (
@@ -75,29 +95,39 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
             paddingBottom: 3,
           }}
         >
-          <Grid
-            component="img"
-            sx={{
-              height: 100,
-              width: 100,
-              maxHeight: { xs: 167, md: 167 },
-              maxWidth: { xs: 167, md: 167 },
-            }}
-            alt="The house from the offer."
-            src={svg}
-          />
+          <RouterLink to="/">
+            <Box
+              component="img"
+              sx={{
+                height: 100,
+                width: 100,
+                maxHeight: { xs: 167, md: 167 },
+                maxWidth: { xs: 167, md: 167 },
+              }}
+              alt="Colegio Creciendo"
+              src={svg}
+            />
+          </RouterLink>
         </Grid>
         <Divider />
         <List>
-          {listSidebar.map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
+          {listSidebar.map((item, index) => (
+            <Link
+              key={id + index}
+              underline="none"
+              color="inherit"
+              component={RouterLink}
+              to={item.path}
+            >
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Box component={item.icon} />
+                  </ListItemIcon>
+                  <ListItemText primary={item.title} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

@@ -22,7 +22,7 @@ export const DashboardRoutes = () => {
   }
 
   return (
-    <>
+    <BrowserRouter>
       <Box sx={{ display: "flex" }}>
         <Grid container direction="row" columnSpacing={5}>
           <Grid item xs={12}>
@@ -33,18 +33,16 @@ export const DashboardRoutes = () => {
           </Grid>
           <Grid item xs>
             <Toolbar />
-            <BrowserRouter>
-              <Routes>
+            <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
-                <Route path="/estudiantes/nuevo" element={<NewStudent />} />
-                <Route path="/matriculas" element={<Enrollment />} />
-                <Route path="/entrevistas" element={<Interview />} />
-                <Route path="/entrevistas/nuevo" element={<NewInterview />} />
-              </Routes>
-            </BrowserRouter>
+              <Route path="/estudiantes/nuevo" element={<NewStudent />} />
+              <Route path="/matriculas" element={<Enrollment />} />
+              <Route path="/entrevistas" element={<Interview />} />
+              <Route path="/entrevistas/nuevo" element={<NewInterview />} />
+            </Routes>
           </Grid>
         </Grid>
       </Box>
-    </>
+    </BrowserRouter>
   );
 };
