@@ -4,6 +4,10 @@ import { Sidebar } from "../Sidebar";
 import { RegisterStudent } from "../RegisterStudent";
 import { NavBar } from "../NavBar";
 import { useState } from "react";
+import { NewStudent } from "../NewStudent";
+import { Enrollment } from "../Enrollment";
+import { Interview } from "../Interview";
+import { NewInterview } from "../NewInterview";
 
 const drawerWidth = 250;
 
@@ -31,7 +35,11 @@ export const DashboardRoutes = () => {
             <Toolbar />
             <BrowserRouter>
               <Routes>
-                <Route path="/sidebar" element={<RegisterStudent />} />
+              <Route path="/estudiantes" element={<RegisterStudent />} />
+                <Route path="/estudiantes/nuevo" element={<NewStudent />} />
+                <Route path="/matriculas" element={<Enrollment />} />
+                <Route path="/entrevistas" element={<Interview />} />
+                <Route path="/entrevistas/nuevo" element={<NewInterview />} />
               </Routes>
             </BrowserRouter>
           </Grid>
