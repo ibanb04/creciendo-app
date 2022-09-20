@@ -16,10 +16,9 @@ import { Grid, Link } from "@mui/material";
 import { Box } from "@mui/system";
 import Face6Icon from "@mui/icons-material/Face6";
 import FeedIcon from "@mui/icons-material/Feed";
-
 import { Link as RouterLink } from "react-router-dom";
 
-const DrawerHeader = styled("div")(({ theme }) => ({
+export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),

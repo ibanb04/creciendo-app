@@ -1,7 +1,7 @@
-import { Box, Grid, Toolbar } from "@mui/material";
+import { Box, Grid, styled, Toolbar } from "@mui/material";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Sidebar } from "../Sidebar";
-import { RegisterStudent } from "../RegisterStudent";
+import { DrawerHeader, Sidebar } from "../Sidebar";
+import { RegisterStudent } from "../RegisterStudent/RegisterStudent";
 import { NavBar } from "../NavBar";
 import { useState } from "react";
 import { NewStudent } from "../NewStudent";
@@ -11,28 +11,37 @@ import { NewInterview } from "../NewInterview";
 
 const drawerWidth = 250;
 
+const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
+  open?: boolean;
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+
+  transition: theme.transitions.create("margin", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: `-${drawerWidth}px`,
+  ...(open && {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  }),
+}));
+
 export const DashboardRoutes = () => {
   const [open, setOpen] = useState(true);
-  let xs;
-
-  if (open) {
-    xs = 9;
-  } else {
-    xs = 11;
-  }
 
   return (
     <BrowserRouter>
+      <NavBar open={open} drawerWidth={drawerWidth} setOpen={setOpen} />
       <Box sx={{ display: "flex" }}>
-        <Grid container direction="row" columnSpacing={5}>
-          <Grid item xs={12}>
-            <NavBar open={open} drawerWidth={drawerWidth} setOpen={setOpen} />
-          </Grid>
-          <Grid item xs={xs - 10}>
-            <Sidebar open={open} drawerWidth={drawerWidth} setOpen={setOpen} />
-          </Grid>
-          <Grid item xs>
-            <Toolbar />
+        <Sidebar open={open} drawerWidth={drawerWidth} setOpen={setOpen} />
+        <Toolbar />
+        <Main open={open}>
+          <DrawerHeader />
+          <Grid container direction="row">
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
               <Route path="/estudiantes/nuevo" element={<NewStudent />} />
@@ -41,7 +50,7 @@ export const DashboardRoutes = () => {
               <Route path="/entrevistas/nuevo" element={<NewInterview />} />
             </Routes>
           </Grid>
-        </Grid>
+        </Main>
       </Box>
     </BrowserRouter>
   );
