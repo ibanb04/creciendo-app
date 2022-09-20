@@ -5,9 +5,6 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { FC, Fragment, useState } from "react";
@@ -17,20 +14,16 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 interface NavBarProps {
   open?: boolean;
   drawerWidth?: number;
-  handleDrawerOpen?: any;
+  setOpen?: any;
 }
 
-export const NavBar: FC<NavBarProps> = ({
-  open,
-  drawerWidth,
-  handleDrawerOpen,
-}) => {
+export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
   const [auth, setAuth] = useState(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
   };
-
+  const handleDrawerOpen = () => setOpen(true);
   interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
   }
@@ -61,7 +54,7 @@ export const NavBar: FC<NavBarProps> = ({
             size="large"
             edge="start"
             color="inherit"
-            onClick={() => handleDrawerOpen(true)}
+            onClick={handleDrawerOpen}
             aria-label="menu"
           >
             <MenuIcon />
@@ -95,7 +88,7 @@ export const NavBar: FC<NavBarProps> = ({
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <FormGroup>
+      {/* <FormGroup>
         <FormControlLabel
           control={
             <Switch
@@ -106,7 +99,7 @@ export const NavBar: FC<NavBarProps> = ({
           }
           label={auth ? "Logout" : "Login"}
         />
-      </FormGroup>
+      </FormGroup> */}
     </Box>
   );
 };
