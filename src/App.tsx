@@ -1,12 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
-import { Footer, Sidebar } from "./components";
+import { AppRouter } from "./components/routers/AppRouter";
 import { theme } from "./shared/themeConfig";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Sidebar />
-      <Footer />
+      <AppRouter />
     </ThemeProvider>
   );
 }
