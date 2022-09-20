@@ -1,11 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
-import {  Footer, Menu } from "./components";
+import { Footer, Sidebar } from "./components";
 import { theme } from "./shared/themeConfig";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Menu />
+      <Sidebar />
       <Footer />
     </ThemeProvider>
   );
