@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../../auth/authContext";
+import { AuthContext } from "../auth/authContext";
 import { Navigate } from "react-router-dom";
 
 export const PublicRoute = ({children}) => {
@@ -8,5 +8,5 @@ export const PublicRoute = ({children}) => {
 
     return !user.logged
         ? children
-        : <Navigate to="/sidebar" />
+        : <Navigate to="/" />
 }

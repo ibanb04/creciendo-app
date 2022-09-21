@@ -2,7 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import { useEffect, useReducer } from "react";
 import { AuthContext } from "./auth/authContext";
 import { authReducer } from "./auth/authReducer";
-import { AppRouter } from "./components/routers/AppRouter";
+import { AppRouter } from "./routers/AppRouter";
 import { theme } from "./shared/themeConfig";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
 
   const [user, dispatch] = useReducer(authReducer, {}, init);
 
+  console.log(user);
   useEffect(() => {
     if (!user) return;
     localStorage.setItem("user", JSON.stringify(user));

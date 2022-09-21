@@ -7,9 +7,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useContext, useState } from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import { AuthContext } from "../../auth/authContext";
+import { types } from "../../auth/types/types";
 
 interface NavBarProps {
   open?: boolean;
@@ -27,6 +29,13 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
   interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
   }
+  const { dispatch } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    dispatch({
+      type: types.logout,
+    });
+  };
 
   const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== "open",
@@ -88,7 +97,7 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
                   <Menu {...bindMenu(popupState)}>
                     <MenuItem onClick={popupState.close}>Profile</MenuItem>
                     <MenuItem onClick={popupState.close}>My account</MenuItem>
-                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </Menu>
                 </Fragment>
               )}
