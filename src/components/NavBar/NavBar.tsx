@@ -47,7 +47,16 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{
+          background: "#ffcaff",
+          boxShadow: "none",
+          backgroundImage:
+            "linear-gradient(90deg, rgba(248, 196, 249, 0.66) 22.8%, rgba(253, 122, 4, 0.15) 64.6%)",
+        }}
+      >
         <Toolbar>
           <IconButton
             sx={{ mr: 2, ...(open && { display: "none" }) }}
@@ -72,7 +81,7 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     {...bindTrigger(popupState)}
-                    color="inherit"
+                    color="secondary"
                   >
                     <AccountCircle />
                   </IconButton>

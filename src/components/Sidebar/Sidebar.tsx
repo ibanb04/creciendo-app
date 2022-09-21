@@ -69,7 +69,9 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            backgroundColor: "secondary.main",
+            boxShadow: 3,
+            backgroundImage:
+              "linear-gradient(240deg, rgba(248, 196, 249, 0.66) 22.8%, rgba(253, 122, 4, 0.15) 64.6%)",
           },
         }}
         variant="persistent"
@@ -114,7 +116,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
             <Link
               key={id + index}
               underline="none"
-              color="inherit"
+              color="secondary.main"
               component={RouterLink}
               to={item.path}
             >
