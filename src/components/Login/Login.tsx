@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/authContext";
+import { types } from "../../auth/types/types";
 
 export const Login = () => {
   const { dispatch } = useContext(AuthContext);
@@ -9,7 +10,7 @@ export const Login = () => {
   const lastPath = localStorage.getItem("lastPath") || "/";
   const handleLogin = () => {
     dispatch({
-      type: "login",
+      type: types.login,
       payload: {
         name: "Jesus Ramos",
       },

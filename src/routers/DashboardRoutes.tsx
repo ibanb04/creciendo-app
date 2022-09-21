@@ -1,13 +1,13 @@
 import { Box, Grid, styled, Toolbar } from "@mui/material";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { DrawerHeader, Sidebar } from "../Sidebar";
-import { RegisterStudent } from "../RegisterStudent/RegisterStudent";
-import { NavBar } from "../NavBar";
+import { Routes, Route } from "react-router-dom";
+import { DrawerHeader, Sidebar } from "../components/Sidebar";
+import { RegisterStudent } from "../components/RegisterStudent/RegisterStudent";
+import { NavBar } from "../components/NavBar";
 import { useState } from "react";
-import { NewStudent } from "../NewStudent";
-import { Enrollment } from "../Enrollment";
-import { Interview } from "../Interview";
-import { NewInterview } from "../NewInterview";
+import { NewStudent } from "../components/NewStudent";
+import { Enrollment } from "../components/Enrollment";
+import { Interview } from "../components/Interview";
+import { NewInterview } from "../components/NewInterview";
 
 const drawerWidth = 250;
 
@@ -34,7 +34,7 @@ export const DashboardRoutes = () => {
   const [open, setOpen] = useState(true);
 
   return (
-    <BrowserRouter>
+    <>
       <NavBar open={open} drawerWidth={drawerWidth} setOpen={setOpen} />
       <Box sx={{ display: "flex" }}>
         <Sidebar open={open} drawerWidth={drawerWidth} setOpen={setOpen} />
@@ -52,6 +52,6 @@ export const DashboardRoutes = () => {
           </Grid>
         </Main>
       </Box>
-    </BrowserRouter>
+    </>
   );
 };
