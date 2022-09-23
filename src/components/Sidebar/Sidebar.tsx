@@ -1,4 +1,4 @@
-import { FC, useId } from "react";
+import { FC, useEffect, useId, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -39,9 +39,26 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
+  const [withScreen, setWithScreen] = useState(1420);
+
+  const reportWindowSize = () => {
+    setWithScreen(window.innerWidth);
+  };
+  window.onresize = reportWindowSize;
+
   const theme = useTheme();
   const id = useId();
   const handleDrawerClose = () => setOpen(false);
+  const handleDrawerCloseMobil = () => {
+    withScreen < 1420 && setOpen(false);
+  };
+  useEffect(() => {
+    if (withScreen < 1420) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  }, [withScreen, setOpen]);
   const listSidebar: ListSidebar[] = [
     {
       title: "Gestionar Estudiante",
@@ -119,6 +136,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
               color="secondary.main"
               component={RouterLink}
               to={item.path}
+              onClick={handleDrawerCloseMobil}
             >
               <ListItem disablePadding>
                 <ListItemButton>
