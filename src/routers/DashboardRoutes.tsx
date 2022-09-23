@@ -41,7 +41,7 @@ export const DashboardRoutes = () => {
         <Toolbar />
         <Main open={open}>
           <DrawerHeader />
-          <Grid container direction="row">
+          <Grid container direction="row" px={{md:"10%"}}>
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
               <Route path="/estudiantes/nuevo" element={<NewStudent />} />
