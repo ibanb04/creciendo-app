@@ -14,6 +14,19 @@ export const theme = createTheme({
       yellow: "#ffffcc",
     },
   },
+  shape: {
+    borderRadius: 10,
+  },
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: "contained" },
+          style: { borderRadius: 50 },
+        },
+      ],
+    },
+  },
 });
 
 declare module "@mui/material/styles" {

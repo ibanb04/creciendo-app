@@ -15,6 +15,7 @@ import { AcademicForm } from "./Forms/AcademicForm";
 import { SocialEconomicForm } from "./Forms/SocialEconomicForm";
 import { FamiliarForm } from "./Forms/FamiliarForm";
 import { StudentStateForm } from "./Forms/StudentStateForm";
+import { useNavigate } from "react-router-dom";
 
 function getSteps() {
   return [
@@ -55,14 +56,26 @@ export const NewStudent = () => {
       idType: "",
       idNumber: "",
       birthDate: "",
+      age: "",
+      gender: "",
+      placeOfBirth: "",
+      cityOfBirth: "",
+      expeditionPlace: "",
+      reqDate: "",
+      address: "",
+      barrio: "",
+      phoneNum: "",
     },
   });
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
   const id = useId();
+  const navigate = useNavigate();
+
   const handleNext = (data: any) => {
     if (activeStep === steps.length - 1) {
       console.log(data);
+      navigate("/estudiantes");
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -122,13 +135,16 @@ export const NewStudent = () => {
                             //onClick={handleNext}
                             sx={{ mt: 1, mr: 1 }}
                             type="submit"
+                            size="large"
                           >
                             {index === steps.length - 1
                               ? "Finish"
                               : "Continuar"}
                           </Button>
                           <Button
-                            color="secondary"
+                            variant="contained"
+                            color="primary"
+                            size="large"
                             disabled={index === 0}
                             onClick={handleBack}
                             sx={{ mt: 1, mr: 1 }}
