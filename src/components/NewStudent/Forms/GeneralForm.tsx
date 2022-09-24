@@ -2,7 +2,7 @@ import { Grid, TextField } from "@mui/material";
 import { FC, SetStateAction, useId } from "react";
 import { useFormContext } from "react-hook-form";
 import { ControllerFormTextField } from "../../../helpers/ControllerFormTextField";
-import { generalFormValues } from "./generalFormValues";
+import { generalFormValues } from "../utils/generalFormValues";
 import { ControllerFormSelect } from "../../../helpers/ControllerFormSelect";
 interface FormInputs {
   firstName: string;
