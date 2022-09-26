@@ -4,6 +4,8 @@ import { useFormContext } from "react-hook-form";
 import { ControllerFormTextField } from "../../../helpers/ControllerFormTextField";
 import { generalFormValues } from "../utils/generalFormValues";
 import { ControllerFormSelect } from "../../../helpers/ControllerFormSelect";
+import { ControllerAutoComplete } from "../../../helpers/ControllerAutoComplete";
+import { log } from "console";
 interface FormInputs {
   firstName: string;
   middleName: string;
@@ -52,6 +54,18 @@ function getFormContent(item: any, control: any) {
           id={item.id}
         />
       );
+    case "autocomplete":
+      return (
+        <ControllerAutoComplete
+          control={control}
+          name={item.name}
+          size="small"
+          id={item.id}
+          label={item.label}
+          placeholder={item.placeholder}
+          menuItem={item.menuItem}
+        />
+      );
     default:
       return "unknown step";
   }
@@ -59,6 +73,7 @@ function getFormContent(item: any, control: any) {
 
 export const GeneralForm: FC = () => {
   const { control } = useFormContext<FormInputs>();
+
   const key = useId();
   return (
     <>

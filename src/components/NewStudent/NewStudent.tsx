@@ -58,7 +58,7 @@ export const NewStudent = () => {
       birthDate: "",
       age: "",
       gender: "",
-      placeOfBirth: "",
+      departmentOfBirth: "",
       cityOfBirth: "",
       expeditionPlace: "",
       reqDate: "",

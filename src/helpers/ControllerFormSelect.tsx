@@ -22,6 +22,10 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   id,
 }) => {
   const key = useId();
+
+  const handleSubmit = (data: string) => {
+    console.log(data);
+  };
   return (
     <Controller
       name={name}
@@ -35,7 +39,11 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} label={label} {...field}>
             {menuItem.map((item: any, index: number) => (
-              <MenuItem key={key + index} value={item.value}>
+              <MenuItem
+                key={key + index}
+                value={item.value}
+                onClick={() => handleSubmit(item.value)}
+              >
                 {item.label}
               </MenuItem>
             ))}

@@ -5,13 +5,48 @@ type GeneralFormValuesType = {
   type?: string;
   label?: string;
   placeholder?: string;
-  menuItem?: menuItem[];
+  menuItem?: menuItem[] | string[];
 };
 
 type menuItem = {
   label: string;
-  value: string;
+  value?: string;
 };
+
+
+const Departamentos: string[]= ['Amazonas',
+  'Antioquia',
+  'Arauca',
+  'Atlántico',
+  'Bolívar',
+  'Boyacá',
+  'Caldas',
+  'Caquetá',
+  'Casanare',
+  'Cauca',
+  'Cesar',
+  'Chocó',
+  'Córdoba',
+  'Cundinamarca',
+  'Guainía',
+  'Guaviare',
+  'Huila',
+  'La Guajira',
+  'Magdalena',
+  'Meta',
+  'Nariño',
+  'Norte de Santander',
+  'Putumayo',
+  'Quindío',
+  'Risaralda',
+  'San Andrés y Providencia',
+  'Santander',
+  'Sucre',
+  'Tolima',
+  'Valle del Cauca',
+  'Vaupés',
+  'Vichada'
+];
 export const generalFormValues: GeneralFormValuesType[] = [
   {
     component: "textField",
@@ -87,12 +122,12 @@ export const generalFormValues: GeneralFormValuesType[] = [
     ],
   },
   {
-    component: "textField",
-    name: "placeOfBirth",
-    id: "place-of-birth",
-    type: "text",
+    component: "autocomplete",
+    name: "departmentOfBirth",
     label: "Departamento de Nacimiento",
+    id: "department",
     placeholder: "Departamento de Nacimiento aqui",
+    menuItem: Departamentos,
   },
   {
     component: "textField",
