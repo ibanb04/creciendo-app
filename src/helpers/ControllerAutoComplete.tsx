@@ -21,7 +21,6 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
   placeholder,
 }) => {
   const [dataAutocomplete, setDataAutocomplete] = useState<string | null>("");
-  console.log(dataAutocomplete);
 
   return (
     <Controller
