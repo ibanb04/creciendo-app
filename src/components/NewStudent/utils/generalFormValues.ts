@@ -130,12 +130,11 @@ export const generalFormValues: GeneralFormValuesType[] = [
     menuItem: Departamentos,
   },
   {
-    component: "textField",
+    component: "select",
     name: "cityOfBirth",
     id: "city-of-birth",
     type: "text",
     label: "Ciudad de Nacimiento",
-    placeholder: "Ciudad de Nacimiento aqui",
   },
   {
     component: "textField",
