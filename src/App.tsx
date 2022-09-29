@@ -2,10 +2,12 @@ import { ThemeProvider } from "@emotion/react";
 import { useEffect, useReducer } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { Provider } from "react-redux";
 import { AuthContext } from "./auth/authContext";
 import { authReducer } from "./auth/authReducer";
 import { AppRouter } from "./routers/AppRouter";
 import { theme } from "./shared/themeConfig";
+import { store } from "./store/store";
 
 function App() {
   const init = () => {
@@ -14,7 +16,6 @@ function App() {
 
   const [user, dispatch] = useReducer(authReducer, {}, init);
 
-  console.log(user);
   useEffect(() => {
     if (!user) return;
     localStorage.setItem("user", JSON.stringify(user));
@@ -24,12 +25,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthContext.Provider value={{ user, dispatch }}>
-        <ThemeProvider theme={theme}>
-          <AppRouter />
-          <ReactQueryDevtools />
-        </ThemeProvider>
-      </AuthContext.Provider>
+      <Provider store={store}>
+        <AuthContext.Provider value={{ user, dispatch }}>
+          <ThemeProvider theme={theme}>
+            <AppRouter />
+            <ReactQueryDevtools />
+          </ThemeProvider>
+        </AuthContext.Provider>
+      </Provider>
     </QueryClientProvider>
   );
 }

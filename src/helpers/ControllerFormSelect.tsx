@@ -1,6 +1,9 @@
-import { FC, useId } from "react";
+import { FC, useEffect, useId, useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { useQuery } from "react-query";
+import { getDepartments } from "../services/getDepartments";
 
 interface ControllerFormSelectProps {
   control: any;
@@ -9,7 +12,7 @@ interface ControllerFormSelectProps {
   defaultValue?: string;
   id: string;
   size: "medium" | "small" | undefined;
-  menuItem: string[];
+  menuItem?: string[];
 }
 
 export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
@@ -22,10 +25,20 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   id,
 }) => {
   const key = useId();
+  const { nameDepartment } = useSelector(
+    (state: RootState) => state.department
+  );
 
-  const handleSubmit = (data: string) => {
-    console.log(data);
-  };
+  const { data } = useQuery(
+    [nameDepartment],
+    () => getDepartments(nameDepartment),
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const cities = data?.map((city: any) => city.municipio);
+
   return (
     <Controller
       name={name}
@@ -38,12 +51,14 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
         >
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} label={label} {...field}>
-            {menuItem.map((item: any, index: number) => (
-              <MenuItem
-                key={key + index}
-                value={item.value}
-                onClick={() => handleSubmit(item.value)}
-              >
+            {name === "cityOfBirth" &&
+              cities?.map((item: any, index: number) => (
+                <MenuItem key={key + index} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
+            {menuItem?.map((item: any, index: number) => (
+              <MenuItem key={key + index} value={item.value}>
                 {item.label}
               </MenuItem>
             ))}

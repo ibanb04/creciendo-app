@@ -1,6 +1,8 @@
 import { Autocomplete, TextField } from "@mui/material";
-import React, { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { setDepartment } from "../slice/department.slice";
 
 interface ControllerAutoCompleteProps {
   control: any;
@@ -20,26 +22,25 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
   id,
   placeholder,
 }) => {
-  const [dataAutocomplete, setDataAutocomplete] = useState<string | null>("");
-
+  const dispatch = useDispatch();
   return (
     <Controller
       name={name}
       control={control}
-      render={({ field: { onChange } }) => (
+      render={({ field: { onChange, value } }) => (
         <Autocomplete
           id={id}
           options={menuItem.map((option) => option)}
           sx={{ mt: 2, width: { xs: "80%", sm: "90%" } }}
           size={size}
+          onChange={(_, data) => {
+            onChange(data);
+            dispatch(setDepartment(data));
+            return data;
+          }}
           renderInput={(params) => (
             <TextField {...params} label={label} placeholder={placeholder} />
           )}
-          onChange={(_, data) => {
-            onChange(data);
-            setDataAutocomplete(data);
-            return data;
-          }}
         />
       )}
     />
