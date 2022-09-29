@@ -59,9 +59,9 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
       <AppBar
         position="fixed"
         open={open}
+        color="transparent"
         sx={{
-          background: "#ffcaff",
-          boxShadow: "none",
+          backdropFilter: "blur(20px)",
           backgroundImage:
             "linear-gradient(90deg, rgba(248, 196, 249, 0.66) 22.8%, rgba(253, 122, 4, 0.15) 64.6%)",
         }}

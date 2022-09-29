@@ -1,6 +1,3 @@
-
 export const Interview = () => {
-  return (
-    <div>Interview</div>
-  )
-}
+  return <div>Interview</div>;
+};

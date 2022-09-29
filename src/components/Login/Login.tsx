@@ -18,5 +18,5 @@ export const Login = () => {
 
     navigate(lastPath, { replace: true });
   };
-  return <Button onClick={handleLogin}>Login</Button>;
+  return <Button variant="contained" onClick={handleLogin}>Login</Button>;
 };
