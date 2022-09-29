@@ -1,11 +1,12 @@
 import { ThemeProvider } from "@emotion/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useReducer } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthContext } from "./auth/authContext";
 import { authReducer } from "./auth/authReducer";
 import { AppRouter } from "./routers/AppRouter";
 import { theme } from "./shared/themeConfig";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 function App() {
   const init = () => {
