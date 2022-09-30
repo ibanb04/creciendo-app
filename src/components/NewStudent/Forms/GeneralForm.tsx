@@ -1,13 +1,10 @@
-import { Grid, TextField } from "@mui/material";
+import { Grid } from "@mui/material";
 import { FC, SetStateAction, useId } from "react";
 import { useFormContext } from "react-hook-form";
-import { ControllerFormTextField } from "../../../helpers/ControllerFormTextField";
 import { generalFormValues } from "../utils/generalFormValues";
-import { ControllerFormSelect } from "../../../helpers/ControllerFormSelect";
-import { ControllerAutoComplete } from "../../../helpers/ControllerAutoComplete";
-import { log } from "console";
-import { ControllerDatePicker } from "../../../helpers/ControllerDatePicker";
-interface FormInputs {
+import getFormContent from '../../../shared/getFormContent';
+
+interface GeneralFormInputs {
   firstName: string;
   middleName: string;
   lastName: string;
@@ -24,65 +21,11 @@ interface FormInputs {
   expeditionPlace: string;
   address: string;
   neighborhood: string;
-  phoneNum: string;
-}
-
-function getFormContent(item: any, control: any) {
-  switch (item.component) {
-    case "textField":
-      return (
-        <ControllerFormTextField
-          control={control}
-          name={item.name}
-          label={item.label}
-          placeholder={item.placeholder}
-          type={item.type}
-          id={item.id}
-          margin={"normal"}
-          size={"small"}
-          variant={"outlined"}
-        />
-      );
-    case "select":
-      return (
-        <ControllerFormSelect
-          control={control}
-          name={item.name}
-          defaultValue=""
-          size="small"
-          label={item.label}
-          menuItem={item.menuItem}
-          id={item.id}
-        />
-      );
-    case "autocomplete":
-      return (
-        <ControllerAutoComplete
-          control={control}
-          name={item.name}
-          size="small"
-          id={item.id}
-          label={item.label}
-          placeholder={item.placeholder}
-          menuItem={item.menuItem}
-        />
-      );
-    case "datePicker":
-      return (
-        <ControllerDatePicker
-          control={control}
-          name={item.name}
-          label={item.label}
-          size="small"
-        />
-      );
-    default:
-      return "unknown step";
-  }
+  tel: string;
 }
 
 export const GeneralForm: FC = () => {
-  const { control } = useFormContext<FormInputs>();
+  const { control } = useFormContext<GeneralFormInputs>();
 
   const key = useId();
   return (

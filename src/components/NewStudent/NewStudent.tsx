@@ -64,7 +64,8 @@ export const NewStudent = () => {
       dateOfBirth: "",
       address: "",
       barrio: "",
-      phoneNum: "",
+      tel: "",
+      especiality: "",
     },
   });
   const [activeStep, setActiveStep] = useState(0);
@@ -123,10 +124,6 @@ export const NewStudent = () => {
                       >
                         {getStepContent(activeStep)}
                       </Grid>
-
-                      {
-                        //botones de navegacion
-                      }
                       <Box sx={{ mb: 2 }}>
                         <div>
                           <Button

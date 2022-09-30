@@ -150,4 +150,28 @@ export const generalFormValues: GeneralFormValuesType[] = [
     label: "Lugar de Expedicion",
     placeholder: "Lugar de Expedicion aqui",
   },
+  {
+    component: "textField",
+    name: "address",
+    id: "address",
+    type: "text",
+    label: "Direccion",
+    placeholder: "Direccion aqui",
+  },
+  {
+    component: "textField",
+    name: "barrio",
+    id: "barrio",
+    type: "text",
+    label: "Barrio",
+    placeholder: "Barrio aqui",
+  },
+  {
+    component: "textField",
+    name: "tel",
+    id: "tel",
+    type: "tel",
+    label: "Celular",
+    placeholder: "Celular aqui",
+  },
 ];

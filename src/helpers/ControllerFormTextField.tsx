@@ -12,6 +12,7 @@ interface ControllerFormTextFieldProps {
   margin: "dense" | "none" | "normal";
   size: "medium" | "small" | undefined;
   variant: "filled" | "outlined" | "standard";
+  maxRows?: number;
 }
 
 export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
@@ -24,6 +25,7 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
   variant,
   type,
   margin,
+  maxRows = 1,
 }) => {
   return (
     <Controller
@@ -32,6 +34,8 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
       render={({ field }) => (
         <TextField
           id={id}
+          multiline
+          maxRows={maxRows}
           label={label}
           variant={variant}
           type={type}
