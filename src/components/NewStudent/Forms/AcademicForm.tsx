@@ -1,42 +1,27 @@
 import { Grid, TextField } from "@mui/material";
+import { FC, useId } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import getFormContent from "../../../shared/getFormContent";
+import { academicFormValues } from "../utils/academicFormValues";
 
-export const AcademicForm = () => {
-  const { control } = useFormContext();
+interface AcademicFormInputs {
+  colegio: string;
+  ciudad: string;
+}
+
+export const AcademicForm: FC = () => {
+  const { control } = useFormContext<AcademicFormInputs>();
+
+  const key = useId();
   return (
     <>
-      <Grid item xs={12} sm={3}>
-        <Controller
-          control={control}
-          name="colegio"
-          render={({ field }) => (
-            <TextField
-              id="colegio"
-              label="colegio"
-              variant="outlined"
-              placeholder="Colegio aqui"
-              margin="normal"
-              {...field}
-            />
-          )}
-        />
-      </Grid>
-      <Grid item xs={12} sm={3}>
-        <Controller
-          control={control}
-          name="ciudad"
-          render={({ field }) => (
-            <TextField
-              id="ciudad"
-              label="Ciudad"
-              variant="outlined"
-              placeholder="Ciudad aqui"
-              margin="normal"
-              {...field}
-            />
-          )}
-        />
-      </Grid>
+      {
+        academicFormValues.map((item, index) => (
+          <Grid key={key + index} item xs={12} sm={3}>
+            {getFormContent (item, control)}
+          </Grid>
+        ))}
+
     </>
   );
 };
