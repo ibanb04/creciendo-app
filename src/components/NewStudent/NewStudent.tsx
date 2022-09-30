@@ -61,7 +61,7 @@ export const NewStudent = () => {
       departmentOfBirth: "",
       cityOfBirth: "",
       expeditionPlace: "",
-      reqDate: "",
+      dateOfBirth: "",
       address: "",
       barrio: "",
       phoneNum: "",

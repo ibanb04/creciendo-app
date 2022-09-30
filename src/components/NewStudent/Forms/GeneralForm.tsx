@@ -6,6 +6,7 @@ import { generalFormValues } from "../utils/generalFormValues";
 import { ControllerFormSelect } from "../../../helpers/ControllerFormSelect";
 import { ControllerAutoComplete } from "../../../helpers/ControllerAutoComplete";
 import { log } from "console";
+import { ControllerDatePicker } from "../../../helpers/ControllerDatePicker";
 interface FormInputs {
   firstName: string;
   middleName: string;
@@ -64,6 +65,15 @@ function getFormContent(item: any, control: any) {
           label={item.label}
           placeholder={item.placeholder}
           menuItem={item.menuItem}
+        />
+      );
+    case "datePicker":
+      return (
+        <ControllerDatePicker
+          control={control}
+          name={item.name}
+          label={item.label}
+          size="small"
         />
       );
     default:
