@@ -65,7 +65,7 @@ export const NewStudent = () => {
       address: "",
       barrio: "",
       tel: "",
-      especiality: "",
+      especially: "",
     },
   });
   const [activeStep, setActiveStep] = useState(0);

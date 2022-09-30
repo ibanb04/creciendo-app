@@ -7,11 +7,11 @@ type AcademicFormValuesType = {
     placeholder?: string;
     maxRows?: number;
     menuItem?: menuItem[] | string[];
-  };
+};
 type menuItem = {
     label?: string;
     value?: string;
-  };
+};
 
 export const academicFormValues: AcademicFormValuesType[] = [
     {
@@ -181,23 +181,48 @@ export const academicFormValues: AcademicFormValuesType[] = [
         maxRows: 4,
         placeholder: "¿Cual?",
     },
+
     {
         component: "multipleSelect",
-        name: "especially",
+        name: "especiallys",
         id: "especially-id",
         label: "Especialidades Tratadas",
         menuItem: [
             {
-                label: "Fisica",
-                value: "fisica",
+                label: "Psicologia",
+                value: "psicologia",
             },
             {
-                label: "Cognitiva",
-                value: "cognitiva",
+                label: "Fonoaudiologia",
+                value: "fonoaudiologia",
             },
             {
-                label: "Multiple",
-                value: "multiple",
+                label: "Terapia Ocupacional",
+                value: "terapiaOcupacional",
+            },
+            {
+                label: "Fisioterapia",
+                value: "fisioterapia",
+            },
+            {
+                label: "Psiquiatria",
+                value: "psiquiatria",
+            },
+            {
+                label: "Neuropsicologia",
+                value: "neuropsicologia",
+            },
+            {
+                label: "Medicina interna",
+                value: "medicinaInterna",
+            },
+            {
+                label: "Pediatria",
+                value: "pediatria",
+            },
+            {
+                label: "Psicopedagogia",
+                value: "psicopedagogia",
             },
             {
                 label: "Otra",
@@ -205,4 +230,42 @@ export const academicFormValues: AcademicFormValuesType[] = [
             },
         ],
     },
+    {
+        component: "multipleSelect",
+        name: "therapys",
+        id: "therapy-id",
+        label: "Asiste a terapias",
+        menuItem: [
+            {
+                label: "Psicologia",
+                value: "psicologia",
+            },
+            {
+                label: "Fonoaudiologia",
+                value: "fonoaudiologia",
+            },
+            {
+                label: "Terapia Ocupacional",
+                value: "terapiaOcupacional",
+            },
+            {
+                label: "Fisioterapia",
+                value: "fisioterapia",
+            },
+            {
+                label: "Psiquiatria",
+                value: "psiquiatria",
+            },
+            {
+                label: "Terapia integral",
+                value: "terapiaIntegral",
+            }
+        ],
+    },{
+        component: "checkbox",
+        name: "exceptionalAbility",
+        id: "exceptional-ability",
+        label: "Capacidad excepcional",
+    },
+
 ]

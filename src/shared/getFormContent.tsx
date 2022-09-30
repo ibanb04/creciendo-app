@@ -1,4 +1,5 @@
 import { ControllerAutoComplete } from "../helpers/ControllerAutoComplete";
+import { ControllerCheckbox } from "../helpers/ControllerCheckbox";
 import { ControllerDatePicker } from "../helpers/ControllerDatePicker";
 import { ControllerFormMultipleSelect } from "../helpers/ControllerFormMultipleSelect";
 import { ControllerFormSelect } from "../helpers/ControllerFormSelect";
@@ -63,6 +64,14 @@ const getFormContent = (item: any, control: any) => {
                     label={item.label}
                     size="small"
                     menuItem={item.menuItem}
+                />
+            );
+        case "checkbox":
+            return (
+                <ControllerCheckbox
+                    control={control}
+                    name={item.name}
+                    label={item.label}
                 />
             );
         default:
