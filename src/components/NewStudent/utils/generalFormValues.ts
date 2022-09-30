@@ -14,7 +14,7 @@ type menuItem = {
 };
 
 
-const Departamentos: string[]= ['Amazonas',
+const Departamentos: string[] = ['Amazonas',
   'Antioquia',
   'Arauca',
   'Atlántico',
@@ -135,6 +135,12 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "city-of-birth",
     type: "text",
     label: "Ciudad de Nacimiento",
+  },
+  {
+    component: "datePicker",
+    name: "dateOfBirth",
+    label: "Fecha de Nacimiento",
+
   },
   {
     component: "textField",
