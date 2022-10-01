@@ -51,7 +51,7 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
         >
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} label={label} {...field}>
-            {name === "cityOfBirth" &&
+            {(name === "cityOfBirth" || name === "expulsorCity" )&&
               cities?.map((item: any, index: number) => (
                 <MenuItem key={key + index} value={item}>
                   {item}
