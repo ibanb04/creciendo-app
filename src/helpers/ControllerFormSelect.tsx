@@ -4,7 +4,7 @@ import { Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { getDepartments } from "../services/getDepartments";
-
+import Alert from '@mui/material/Alert';
 interface ControllerFormSelectProps {
   control: any;
   name: string;
@@ -38,7 +38,7 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   );
 
   const cities = data?.map((city: any) => city.municipio);
-
+  console.log(cities);
   return (
     <Controller
       name={name}
@@ -51,17 +51,23 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
         >
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} label={label} {...field}>
-            {(name === "cityOfBirth" || name === "expulsorCity" )&&
-              cities?.map((item: any, index: number) => (
-                <MenuItem key={key + index} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
+            {
+              name === "cityOfBirth" || name === "expulsorCity" &&
+                nameDepartment
+                ? (
+                  cities?.map((item: any, index: number) => (
+                    <MenuItem key={key + index} value={item}>
+                      {item}
+                    </MenuItem>
+                  )))
+                : <Alert severity="error">Debe escoger un Departamento!</Alert>
+            }
             {menuItem?.map((item: any, index: number) => (
               <MenuItem key={key + index} value={item.value}>
                 {item.label}
               </MenuItem>
             ))}
+
           </Select>
         </FormControl>
       )}
