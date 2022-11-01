@@ -26,7 +26,7 @@ interface GeneralFormInputs {
 
 export const GeneralForm: FC = () => {
   const { control } = useFormContext<GeneralFormInputs>();
-
+  console.log(control);
   const key = useId();
   return (
     <>

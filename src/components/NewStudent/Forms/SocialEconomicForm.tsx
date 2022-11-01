@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
-import { useId } from "react";
+import { useId, FC } from 'react';
 import { useFormContext } from "react-hook-form";
 import getFormContent from "../../../shared/getFormContent";
 import { socialEconomicFormValues } from "../utils/socialEconomicFormValues";
 
-export const SocialEconomicForm = () => {
+export const SocialEconomicForm: FC = () => {
   const { control } = useFormContext();
   const key = useId();
 
