@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-datepicker": "^4.4.2"
+    "@types/react-datepicker": "^4.4.2",
+    "dayjs": "^1.11.6"
   }
 }

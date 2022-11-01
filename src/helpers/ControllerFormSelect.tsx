@@ -1,4 +1,4 @@
-import { FC, useEffect, useId, useState } from "react";
+import { FC,  useId } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -38,7 +38,6 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   );
 
   const cities = data?.map((city: any) => city.municipio);
-  console.log(cities);
   return (
     <Controller
       name={name}
