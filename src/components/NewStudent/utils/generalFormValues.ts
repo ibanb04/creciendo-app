@@ -1,6 +1,6 @@
 import { Departamentos } from "./departamentos";
 
-type GeneralFormValuesType = {
+export type GeneralFormValuesType = {
   component?: string;
   id?: string;
   name?: string;

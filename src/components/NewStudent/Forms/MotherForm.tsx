@@ -1,22 +1,24 @@
-import { studentStateFormValues } from "../utils/studentStateFormValues";
 import { useFormContext } from 'react-hook-form';
 import { useId, FC } from 'react';
-import getFormContent from "../../../shared/getFormContent";
+import { motherFormValues } from '../utils/motherFormValues';
 import { Grid } from '@mui/material';
+import getFormContent from '../../../shared/getFormContent';
 
-export const StudentStateForm: FC = () => {
+const MotherForm: FC = () => {
   const { control } = useFormContext();
   const key = useId();
 
   return (
-   <>
+    <>
       {
-        studentStateFormValues.map((item, index) => (
+        motherFormValues.map((item, index) => (
           <Grid key={key + index} item xs={12} sm={3}>
             {getFormContent(item, control)}
           </Grid>
         ))
       }
-   </>
+    </>
   )
 }
+
+export default MotherForm
