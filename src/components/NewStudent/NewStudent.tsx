@@ -91,14 +91,15 @@ export const NewStudent = () => {
 
   return (
     <>
-      <Grid item xs={12} sx={{ mb: 2 }}>
-        <Typography color="secondary.main" variant="h5">
-          Nuevo Estudiante
-        </Typography>
-        <Divider />
-      </Grid>
-      <Grid item xs={12}>
-        <Box sx={{ maxWidth: "100%" }}>
+
+      <Grid item xs={12} >
+        <Box sx={{ backgroundColor: '#f8f8f8', maxWidth: "100%", boxShadow: 3, padding: 4, borderRadius: 4, mb: 3, mr: 3 }} >
+          <Grid item xs={12} sx={{ mb: 3 }} >
+            <Typography color="secondary.main" variant="h5">
+              Nuevo Estudiante
+            </Typography>
+            <Divider />
+          </Grid>
           <Stepper activeStep={activeStep} orientation="vertical">
             {steps.map((step, index) => (
               <Step key={id + index}>
