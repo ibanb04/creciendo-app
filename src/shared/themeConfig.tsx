@@ -3,15 +3,16 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#ffebda",
+      main: "#f42272",
+
     },
     secondary: {
       main: "#272144",
+      light: "#f8f8f8",
     },
-    tertiary: {
-      main: "#611b9b",
-      lightGreen: "#cffccd",
-      yellow: "#ffffcc",
+    neutral: {
+      main: '#f8f8f8',
+      contrastText: '#fff',
     },
   },
   shape: {
@@ -22,28 +23,24 @@ export const theme = createTheme({
       variants: [
         {
           props: { variant: "contained" },
-          style: { borderRadius: 50 },
+          style: { borderRadius: 18 },
         },
       ],
     },
   },
 });
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Palette {
-    tertiary: Palette["secondary"];
+    neutral: Palette['primary'];
   }
   interface PaletteOptions {
-    tertiary?: PaletteOptions["secondary"];
+    neutral: PaletteOptions['primary'];
   }
-  interface SimplePaletteColorOptions {
-    lightGreen?: string;
-    yellow?: string;
-  }
-}
 
+}
 declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
-    tertiary: true;
+    neutral: true;
   }
 }
