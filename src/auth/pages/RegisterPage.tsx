@@ -7,7 +7,6 @@ import {
     Typography,
 } from "@mui/material";
 
-import CloseIcon from "@mui/icons-material/Close";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 
@@ -20,10 +19,11 @@ interface IFormInputs {
 }
 
 export const RegisterPage = () => {
-    const { control, handleSubmit } = useForm<IFormInputs>();
+    const { control, handleSubmit, formState: { errors } } = useForm<IFormInputs>();
     const onSubmit: SubmitHandler<IFormInputs> = data => {
         console.log(data)
     };
+
     return (
         <AuthLayout title="Crear cuenta">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -33,14 +33,17 @@ export const RegisterPage = () => {
                             name="displayName"
                             control={control}
                             defaultValue=""
+                            rules={{ required: true, pattern: { value: /^[A-Za-z]+$/i, message: ' solo letras' } }}
                             render={({ field }) => (
                                 <TextField
                                     label="Nombre completo"
                                     type="text"
                                     placeholder="Nombre completo"
                                     fullWidth
-                                    {...field}
-                                    //value={field.value}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    helperText={errors.displayName?.message}
+                                    error={!!errors.displayName}
                                 />
                             )}
                         />
@@ -51,14 +54,18 @@ export const RegisterPage = () => {
                             name="email"
                             control={control}
                             defaultValue=""
+                            rules={{ required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: ' Email invalido' } }}
                             render={({ field }) => (
                                 <TextField
                                     label="Correo"
                                     type="email"
                                     placeholder="correo@google.com"
                                     fullWidth
-                                    //value={email}
-                                    {...field}
+                                    helperText={errors.email?.message}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    inputRef={field.ref}
+                                    error={!!errors.email}
                                 />
                             )}
                         />
@@ -70,15 +77,19 @@ export const RegisterPage = () => {
                             name="password"
                             control={control}
                             defaultValue=""
+                            rules={{ minLength: { value: 6, message: 'Debe tener almenos 6 caraacteres' }, required: true }}
                             render={({ field }) => (
                                 <TextField
+                                    // {...field}
                                     label="Contraseña"
                                     type="password"
                                     placeholder="Contraseña"
                                     fullWidth
-                                    helperText=""
-                                   // value={password}
-                                   {...field}
+                                    helperText={errors.password?.type === "minLength" && errors.password?.message}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    inputRef={field.ref}
+                                    error={!!errors.password}
                                 />
                             )}
                         />
