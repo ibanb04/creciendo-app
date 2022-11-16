@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import departmentReducer from "../slice/department.slice";
+import departmentReducer from "../store/slices/department.slice";
 declare global {
     type RootState = ReturnType<typeof rootReducer>;
   }

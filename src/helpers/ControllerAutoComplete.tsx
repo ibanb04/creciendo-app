@@ -2,7 +2,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import { FC } from "react";
 import { Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setDepartment } from "../slice/department.slice";
+import { setDepartment } from "../store/slices/department.slice";
 
 interface ControllerAutoCompleteProps {
   control: any;
