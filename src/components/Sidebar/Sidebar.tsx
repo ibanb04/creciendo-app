@@ -88,7 +88,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
             boxSizing: "border-box",
             boxShadow: 3,
             backgroundImage:
-              " linear-gradient(159deg, rgba(241,241,241,1) 44%, rgba(244,34,114,0.7259278711484594) 100%);",
+              "linear-gradient(305deg, rgba(251,250,205,1) 35%, rgba(230,130,255,1) 100%)",
           },
         }}
         variant="persistent"
