@@ -7,7 +7,7 @@ declare global {
 
 const rootReducer = combineReducers({
   department: departmentReducer,
-  authReducer,
+  auth: authReducer,
 });
 
 export default rootReducer;
