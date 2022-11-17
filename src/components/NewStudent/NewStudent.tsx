@@ -93,7 +93,7 @@ export const NewStudent = () => {
     <>
 
       <Grid item xs={12} >
-        <Box sx={{ backgroundColor: '#f8f8f8', maxWidth: "100%", boxShadow: 3, padding: 4, borderRadius: 4, mb: 3, mr: 3 }} >
+        <Box sx={{ backgroundColor: '#f8f8f8', minWidth: { xs: 'none', md: '100%' }, maxWidth: "100%", boxShadow: 3,pl: 4, pr: 2, py: 4, borderRadius: 4, mb: 3, mr: { xs: 3, md: 0 } }} >
           <Grid item xs={12} sx={{ mb: 3 }} >
             <Typography color="secondary.main" variant="h5">
               Nuevo Estudiante
