@@ -1,5 +1,5 @@
 import { Box, Grid, styled, Toolbar } from "@mui/material";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { DrawerHeader, Sidebar } from "../components/Sidebar";
 import { RegisterStudent } from "../components/RegisterStudent/RegisterStudent";
 import { NavBar } from "../components/NavBar";
@@ -41,13 +41,15 @@ export const DashboardRoutes = () => {
         <Toolbar />
         <Main open={open}>
           <DrawerHeader />
-          <Grid container direction="row" px={{md:"10%"}}>
+          <Grid container direction="row" px={{ md: "10%" }}>
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
               <Route path="/estudiantes/nuevo" element={<NewStudent />} />
               <Route path="/matriculas" element={<Enrollment />} />
               <Route path="/entrevistas" element={<Interview />} />
               <Route path="/entrevistas/nuevo" element={<NewInterview />} />
+              <Route path="/*" element={ <Navigate to="/" /> } />
+
             </Routes>
           </Grid>
         </Main>

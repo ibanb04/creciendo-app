@@ -56,9 +56,10 @@ export const RegisterPage = () => {
       })
     );
   };
+  /*
   useEffect(() => {
     dispatch(resetErrorMessage());
-  }, []); 
+  }, []); */
   return (
     <AuthLayout title="Crear cuenta">
       <form onSubmit={handleSubmit(onSubmit)}>
