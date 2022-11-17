@@ -41,10 +41,10 @@ export const Login: FC = () => {
   const onSubmit = ({ email, password }: IFormInputs) => {
     dispatch(startSingInWithEmailAndPassword(email, password));
   };
-
+/*
   useEffect(() => {
     dispatch(resetErrorMessage());
-  }, []);
+  }, []);*/
   return (
     <AuthLayout title="Iniciar Sesión">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -147,7 +147,7 @@ export const Login: FC = () => {
           </Grid>
 
           <Grid container direction="row" justifyContent="end">
-            <Link component={RouterLink} color="inherit" to="/register">
+            <Link component={RouterLink} color="inherit" to="/auth/register">
               Crear una cuenta
             </Link>
           </Grid>

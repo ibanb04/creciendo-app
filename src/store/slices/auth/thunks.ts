@@ -1,5 +1,5 @@
 import { Action, AnyAction } from "@reduxjs/toolkit";
-import { loginWithEmailAndPassword, registerUserWithEmailAndPassword } from "../../../firebase/providers";
+import { loginWithEmailAndPassword, logoutFirebase, registerUserWithEmailAndPassword } from "../../../firebase/providers";
 import { checkingCredentials, login, logout } from "./auth.slice";
 
 export interface Dispatch<A extends Action = AnyAction> {
@@ -46,3 +46,10 @@ export const startSingInWithEmailAndPassword = (
   };
 
 }
+
+export const startLogout = () => {
+  return async (dispatch: Dispatch) => {
+    await logoutFirebase();
+    dispatch(logout({ code: "" }));
+  };
+};

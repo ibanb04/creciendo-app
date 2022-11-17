@@ -10,8 +10,8 @@ import Menu from "@mui/material/Menu";
 import { FC, Fragment, useContext, useState } from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { AuthContext } from "../../auth/authContext";
-import { types } from "../../auth/types/types";
+import { useAppDispatch } from "../../store/useAppDispatch";
+import { startLogout } from '../../store/slices/auth/thunks';
 
 interface NavBarProps {
   open?: boolean;
@@ -29,12 +29,10 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
   interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
   }
-  const { dispatch } = useContext(AuthContext);
+  const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    dispatch({
-      type: types.logout,
-    });
+    dispatch(startLogout());
   };
 
   const AppBar = styled(MuiAppBar, {
