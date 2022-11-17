@@ -1,5 +1,6 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { FirebaseAuth } from "./config";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore/lite";
+import { FirebaseAuth, FirebaseDB } from "./config";
 
 export const registerUserWithEmailAndPassword = async (
   email: string,
@@ -13,7 +14,9 @@ export const registerUserWithEmailAndPassword = async (
       email,
       password
     );
-    console.log(resp);
+    await updateProfile(resp.user, { displayName });
+    const docRef = doc(FirebaseDB, `usuarios/${resp.user.uid}`);
+    await setDoc(docRef, { email: email, rol: role });
     return {
       ok: true,
       displayName,
