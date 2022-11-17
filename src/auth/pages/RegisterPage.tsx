@@ -140,6 +140,9 @@ export const RegisterPage = () => {
             <Controller
               name="role"
               control={control}
+              rules={{
+                required: true,
+              }}
               render={({ field }) => (
                 <FormControl fullWidth>
                   <InputLabel id="user-type">Tipo de Usuario</InputLabel>
@@ -149,6 +152,7 @@ export const RegisterPage = () => {
                     label="user-type"
                     value={field.value || ""}
                     onChange={field.onChange}
+                    error={!!errors.role}
                   >
                     <MenuItem value="ADMIN">Administrador</MenuItem>
                     <MenuItem value="USER">Usuario</MenuItem>
