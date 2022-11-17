@@ -31,7 +31,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     name: "middleName",
     type: "text",
     label: "Segundo Nombre",
-    placeholder: "Segundo Nombre aqui",
+    placeholder: "Escriba aqui",
   },
   {
     component: "textField",
@@ -47,7 +47,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "second-surname",
     type: "text",
     label: "Segundo Apellido",
-    placeholder: "Segundo Apellido aqui",
+    placeholder: "Escriba aquí",
   },
   {
     component: "select",
@@ -71,7 +71,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "id-number",
     type: "number",
     label: "Numero de Documento",
-    placeholder: "Numero de Documento aqui",
+    placeholder: "Escriba aquí",
   },
 
   {
@@ -104,7 +104,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "city-of-birth",
     type: "text",
     label: "Ciudad de Nacimiento",
-  },
+  },  
   {
     component: "datePicker",
     name: "dateOfBirth",
@@ -117,7 +117,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "expedition-place",
     type: "text",
     label: "Lugar de Expedicion",
-    placeholder: "Lugar de Expedicion aqui",
+    placeholder: "Escrbir aqui",
   },
   {
     component: "textField",

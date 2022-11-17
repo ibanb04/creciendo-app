@@ -25,7 +25,7 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
   variant,
   type,
   margin,
-  maxRows = 1,
+  maxRows = 0,
 }) => {
   return (
     <Controller
