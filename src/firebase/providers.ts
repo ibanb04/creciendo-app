@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseAuth, FirebaseDB } from "./config";
 
@@ -30,3 +30,24 @@ export const registerUserWithEmailAndPassword = async (
     };
   }
 };
+
+export const loginWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
+  try {
+    const resp = await signInWithEmailAndPassword(FirebaseAuth, email, password);
+    const { displayName, photoURL, uid } = resp.user;
+    return {
+      ok: true,
+      displayName,
+      photoURL,
+      uid,
+    }
+  } catch (error) {
+    return {
+      ok: false,
+      errorMessage: error,
+    };
+  }
+}

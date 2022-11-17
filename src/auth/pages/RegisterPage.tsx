@@ -1,21 +1,26 @@
 import { Link as RouterLink } from "react-router-dom";
 import {
+  Alert,
+  Collapse,
   Button,
   FormControl,
   Grid,
   InputLabel,
   Link,
+  IconButton,
   MenuItem,
   Select,
   TextField,
   Typography,
 } from "@mui/material";
-
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 
 import { startCreatingUserWithEmailAndPassword } from "../../store/slices/auth/thunks";
-import { useAppDispatch } from "../../store/useAppDispatch";
+import { useAppDispatch, useAppSelector } from "../../store/useAppDispatch";
+import CloseIcon from '@mui/icons-material/Close';
+import { resetErrorMessage } from "../../store/slices/auth/auth.slice";
+import { useState, useEffect, useMemo } from 'react';
 
 interface IFormInputs {
   displayName: string;
@@ -25,13 +30,17 @@ interface IFormInputs {
 }
 
 export const RegisterPage = () => {
+  const { status, errorMessage } = useAppSelector((state) => state.auth);
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInputs>();
   const dispatch = useAppDispatch();
+  const isAutenticated = useMemo(() => status === "checking", [status]);
 
+  const [open, setOpen] = useState(true);
   const onSubmit: SubmitHandler<IFormInputs> = ({
     email,
     password,
@@ -47,7 +56,9 @@ export const RegisterPage = () => {
       })
     );
   };
-
+  useEffect(() => {
+    dispatch(resetErrorMessage());
+  }, []); 
   return (
     <AuthLayout title="Crear cuenta">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -161,6 +172,29 @@ export const RegisterPage = () => {
               )}
             />
           </Grid>
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <Collapse in={open}>
+              <Alert
+                severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ display: errorMessage ? "wrap" : "none" }}
+              >
+                {errorMessage}
+              </Alert>
+            </Collapse>
+          </Grid>
+
 
           <Grid item xs={12} sx={{ mt: 2 }}>
             <Button type="submit" variant="contained" fullWidth>
