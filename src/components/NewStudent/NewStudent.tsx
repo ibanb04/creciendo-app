@@ -16,8 +16,6 @@ import { SocialEconomicForm } from "./Forms/SocialEconomicForm";
 import { FamiliarForm } from "./Forms/FamiliarForm";
 import { StudentStateForm } from "./Forms/StudentStateForm";
 import { useNavigate } from "react-router-dom";
-import { startStudenRegister } from "../../firebase/providers";
-import { defaultValues } from "./utils/defaultValues";
 
 function getSteps() {
   return [
@@ -48,7 +46,27 @@ function getStepContent(step: any) {
 
 export const NewStudent = () => {
   const methods = useForm({
-    defaultValues: defaultValues,
+    defaultValues: {
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      secondSurname: "",
+      colegio: "",
+      ciudad: "",
+      idType: "",
+      idNumber: "",
+      birthDate: "",
+      age: "",
+      gender: "",
+      departmentOfBirth: "",
+      cityOfBirth: "",
+      expeditionPlace: "",
+      dateOfBirth: "",
+      address: "",
+      barrio: "",
+      tel: "",
+      especially: "",
+    },
   });
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
@@ -57,7 +75,7 @@ export const NewStudent = () => {
 
   const handleNext = (data: any) => {
     if (activeStep === steps.length - 1) {
-      startStudenRegister(data);
+      console.log(data);
       navigate("/estudiantes");
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
