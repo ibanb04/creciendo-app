@@ -1,4 +1,4 @@
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import {
   Alert,
   Button,
@@ -30,6 +30,7 @@ export const Login: FC = () => {
   const { status, errorMessage } = useAppSelector((state) => state.auth);
   const [open, setOpen] = useState(true);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -41,10 +42,15 @@ export const Login: FC = () => {
   const onSubmit = ({ email, password }: IFormInputs) => {
     dispatch(startSingInWithEmailAndPassword(email, password));
   };
-/*
-  useEffect(() => {
+
+  const handleClick = () => {
     dispatch(resetErrorMessage());
-  }, []);*/
+    navigate('/auth/register');
+  };
+  /*
+    useEffect(() => {
+      dispatch(resetErrorMessage());
+    }, []);*/
   return (
     <AuthLayout title="Iniciar Sesión">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -146,10 +152,16 @@ export const Login: FC = () => {
 
           </Grid>
 
-          <Grid container direction="row" justifyContent="end">
-            <Link component={RouterLink} color="inherit" to="/auth/register">
-              Crear una cuenta
-            </Link>
+          <Grid
+            container
+            direction="row"
+            justifyContent="end"
+            sx={{ cursor: "pointer", textDecoration: 'underline' }}
+            onClick={handleClick}
+          >
+
+            Crear una cuenta
+
           </Grid>
         </Grid>
       </form>

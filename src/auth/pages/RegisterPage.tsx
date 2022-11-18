@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   Alert,
   Collapse,
@@ -38,6 +38,7 @@ export const RegisterPage = () => {
     formState: { errors },
   } = useForm<IFormInputs>();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isAutenticated = useMemo(() => status === "checking", [status]);
 
   const [open, setOpen] = useState(true);
@@ -55,6 +56,10 @@ export const RegisterPage = () => {
         role,
       })
     );
+  };
+  const handleClick = () => {
+    dispatch(resetErrorMessage());
+    navigate('/auth/login');
   };
   /*
   useEffect(() => {
@@ -206,9 +211,11 @@ export const RegisterPage = () => {
 
         <Grid container direction="row" sx={{ mt: 2 }} justifyContent="end">
           <Typography sx={{ mr: 1 }}>¿Ya tienes cuenta?</Typography>
-          <Link component={RouterLink} color="inherit" to="/auth/login">
+          <Grid item onClick={handleClick} sx={{ cursor: "pointer", textDecoration: 'underline' }}>
             ingresar
-          </Link>
+          </Grid>
+
+
         </Grid>
       </form>
     </AuthLayout>
