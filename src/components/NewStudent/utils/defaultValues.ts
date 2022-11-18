@@ -54,8 +54,8 @@ interface DefaultValuesProps {
   expulsionDate: string;
   certificate: string;
   guardianName: string;
-  guardianTel: string;
-  guardianId: string;
+  guardiantTel: string;
+  guardiantId: string;
   guardiantExpeditionPlace: string;
   guardiantRelationship: string;
   guardiantEmail: string;
@@ -123,8 +123,8 @@ export const defaultValues: DefaultValuesProps = {
   expulsionDate: "",
   certificate: "",
   guardianName: "",
-  guardianTel: "",
-  guardianId: "",
+  guardiantTel: "",
+  guardiantId: "",
   guardiantExpeditionPlace: "",
   guardiantRelationship: "",
   guardiantEmail: "",
