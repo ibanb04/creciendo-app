@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseAuth, FirebaseDB } from "./config";
 
@@ -36,21 +40,25 @@ export const loginWithEmailAndPassword = async (
   password: string
 ) => {
   try {
-    const resp = await signInWithEmailAndPassword(FirebaseAuth, email, password);
+    const resp = await signInWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
     const { displayName, photoURL, uid } = resp.user;
     return {
       ok: true,
       displayName,
       photoURL,
       uid,
-    }
+    };
   } catch (error) {
     return {
       ok: false,
       errorMessage: error,
     };
   }
-}
+};
 
 export const logoutFirebase = async () => {
   try {
@@ -58,5 +66,13 @@ export const logoutFirebase = async () => {
     return { ok: true };
   } catch (error) {
     return { ok: false, errorMessage: error };
+  }
+};
+export const startStudenRegister = async (data: any) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
+    setDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
   }
 };
