@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { FirebaseAuth } from "./config";
+import { doc, setDoc } from "firebase/firestore/lite";
+import { FirebaseAuth, FirebaseDB } from "./config";
 
 export const registerUserWithEmailAndPassword = async (
   email: string,
@@ -25,5 +26,14 @@ export const registerUserWithEmailAndPassword = async (
       ok: false,
       errorMessage: error,
     };
+  }
+};
+
+export const startStudenRegister = async (data: any) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
+    setDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
   }
 };
