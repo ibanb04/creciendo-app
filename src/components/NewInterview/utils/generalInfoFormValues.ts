@@ -29,7 +29,35 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         type: "text",
         label: "Segundo Apellido",
         placeholder: "Escriba aqui",
-    }, {
+    },
+    {
+        component: "select",
+        label: "Tipo de Documento",
+        name: "studentIdType",
+        id: "student-id-type",
+        menuItem: [
+            {
+                label: "Tarjeta de identidad",
+                value: "TI",
+            },
+            {
+                label: "Registro civil",
+                value: "RC",
+            },
+        ],
+    },
+    {
+        component: "textField",
+        name: "studentId",
+        id: "student-id",
+        type: "text",
+        label: "Numero de identificacion",
+        placeholder: "Escriba aqui",
+
+    },
+
+
+    {
         component: "datePicker",
         name: "birthDate",
         id: "birth-date",
