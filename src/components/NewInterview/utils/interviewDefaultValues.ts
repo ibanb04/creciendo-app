@@ -53,6 +53,8 @@ export interface interviewDefaultValuesProps {
   secondLastName: string;
   secondName: string;
   siblingsPosition: string;
+  studentId: string;
+  studentIdType: string;
   sphincterControl: string;
   studentLivesWithBrothers: string;
   surgery: string;
@@ -120,6 +122,8 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   secondLastName: "",
   secondName: "",
   siblingsPosition: "",
+  studentId: "",
+  studentIdType: "",
   sphincterControl: "",
   studentLivesWithBrothers: "",
   surgery: "",
