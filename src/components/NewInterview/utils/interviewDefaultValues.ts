@@ -36,6 +36,7 @@ export interface interviewDefaultValuesProps {
   guardiantId: string;
   guardiantRelationship: string;
   headControl: string;
+  idNumber?: string;
   illnessesSuffered: string;
   interviewerName: string;
   kindOfDream: string;

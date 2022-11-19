@@ -5,6 +5,8 @@ import {
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseAuth, FirebaseDB } from "./config";
+import { studentDefaultValuesProps } from '../components/NewStudent/utils/studentDefaultValues';
+import { interviewDefaultValuesProps } from '../components/NewInterview/utils/interviewDefaultValues';
 
 export const registerUserWithEmailAndPassword = async (
   email: string,
@@ -68,7 +70,7 @@ export const logoutFirebase = async () => {
     return { ok: false, errorMessage: error };
   }
 };
-export const startStudenRegister = async (data: any) => {
+export const startStudenRegister = async (data: studentDefaultValuesProps | interviewDefaultValuesProps) => {
   try {
     const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
     setDoc(docuRef, data);
@@ -76,3 +78,12 @@ export const startStudenRegister = async (data: any) => {
     console.log(error);
   }
 };
+
+export const registerInterview = async (data:  studentDefaultValuesProps | interviewDefaultValuesProps) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
+    setDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
+  }
+}
