@@ -1,5 +1,4 @@
 import { FC } from 'react';
-
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -13,7 +12,7 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { startStudenRegister } from "../../firebase/providers";
+import { startStudenRegister, registerInterview } from '../../firebase/providers';
 import { studentDefaultValuesProps } from '../../components/NewStudent/utils/studentDefaultValues';
 import { interviewDefaultValuesProps } from '../../components/NewInterview/utils/interviewDefaultValues';
 
@@ -27,7 +26,7 @@ interface FormLayoutProps {
 }
 
 const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectRoute, steps, defaultValues }) => {
-    const methods = useForm({
+    const methods = useForm<studentDefaultValuesProps | interviewDefaultValuesProps>({
         defaultValues: defaultValues,
     });
     const [activeStep, setActiveStep] = useState(0);
@@ -35,13 +34,13 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
     const id = useId();
     const navigate = useNavigate();
 
-    const handleNext = (data: any) => {
+    const handleNext = (data: studentDefaultValuesProps | interviewDefaultValuesProps) => {
         if (activeStep === steps.length - 1) {
             if (redirectRoute === '/estudiantes') {
                 startStudenRegister(data);
             }
             if (redirectRoute === '/entrevistas') {
-                console.log(data);
+                registerInterview(data);
             }
 
             navigate(redirectRoute);

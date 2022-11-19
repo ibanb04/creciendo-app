@@ -44,6 +44,7 @@ export interface studentDefaultValuesProps {
   eps: string;
   socioeconomicLevel: string;
   sisbenLevel: string;
+  studentId?: string;
   sisbenId: string;
   beneficiaryPrograms: string;
   etnia: string;
