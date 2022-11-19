@@ -4,13 +4,9 @@ import { Controller, useFormContext } from "react-hook-form";
 import getFormContent from "../../../shared/getFormContent";
 import { academicFormValues } from "../utils/academicFormValues";
 
-interface AcademicFormInputs {
-  colegio: string;
-  ciudad: string;
-}
 
 export const AcademicForm: FC = () => {
-  const { control } = useFormContext<AcademicFormInputs>();
+  const { control } = useFormContext();
 
   const key = useId();
   return (

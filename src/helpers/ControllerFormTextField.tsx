@@ -13,6 +13,7 @@ interface ControllerFormTextFieldProps {
   size: "medium" | "small" | undefined;
   variant: "filled" | "outlined" | "standard";
   maxRows?: number;
+  rows?: number;
 }
 
 export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
@@ -25,6 +26,7 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
   variant,
   type,
   margin,
+  rows,
   maxRows = 0,
 }) => {
   return (
@@ -42,6 +44,7 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
           placeholder={placeholder}
           margin={margin}
           size={size}
+          rows={rows}
           sx={{ width: { xs: "80%", sm: "90%" } }}
           {...field}
         />

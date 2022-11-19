@@ -19,6 +19,7 @@ const getFormContent = (item: any, control: any) => {
                     margin={"normal"}
                     size={"small"}
                     variant={"outlined"}
+                    rows={item.rows}
                     maxRows={item.maxRows}
                 />
             );
