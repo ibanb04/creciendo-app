@@ -1,4 +1,4 @@
-interface DefaultValuesProps {
+export interface studentDefaultValuesProps {
   firstName: string;
   middleName: string;
   lastName: string;
@@ -67,7 +67,7 @@ interface DefaultValuesProps {
   AttendInAlternation: string;
 }
 
-export const defaultValues: DefaultValuesProps = {
+export const studentDefaultValues: studentDefaultValuesProps = {
   firstName: "",
   middleName: "",
   lastName: "",

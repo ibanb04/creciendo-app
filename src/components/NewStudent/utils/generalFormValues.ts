@@ -8,6 +8,7 @@ export type GeneralFormValuesType = {
   label?: string;
   placeholder?: string;
   menuItem?: menuItem[] | string[];
+  rows?: number;
 };
 
 type menuItem = {
