@@ -1,4 +1,3 @@
-import { psychoAffectivityFormValues } from '../utils/psychoAffectivityFormValues';
 import { useId } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Grid } from '@mui/material';
