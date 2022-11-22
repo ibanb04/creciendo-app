@@ -6,7 +6,7 @@ export interface studentDefaultValuesProps {
   colegio: string;
   ciudad: string;
   idType: string;
-  idNumber: string;
+  idNumber: number | undefined;
   birthDate: string;
   age: string;
   gender: string;
@@ -44,7 +44,7 @@ export interface studentDefaultValuesProps {
   eps: string;
   socioeconomicLevel: string;
   sisbenLevel: string;
-  studentId?: string;
+  studentId?: number | undefined;
   sisbenId: string;
   beneficiaryPrograms: string;
   etnia: string;
@@ -76,7 +76,7 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   colegio: "",
   ciudad: "",
   idType: "",
-  idNumber: "",
+  idNumber: undefined,
   birthDate: "",
   age: "",
   gender: "",
@@ -133,6 +133,6 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   anotherContactName: "",
   anotherContactTel: "",
   anotherContactRelationship: "",
-  studentState: "",
+  studentState: "MATRICULADO",
   AttendInAlternation: "",
 };

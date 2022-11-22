@@ -50,7 +50,7 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         component: "textField",
         name: "studentId",
         id: "student-id",
-        type: "text",
+        type: "number",
         label: "Numero de identificacion",
         placeholder: "Escriba aqui",
 
