@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore/lite";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
 import { FirebaseAuth, FirebaseDB } from "./config";
 import { studentDefaultValuesProps } from '../components/NewStudent/utils/studentDefaultValues';
 import { interviewDefaultValuesProps } from '../components/NewInterview/utils/interviewDefaultValues';
@@ -79,7 +79,7 @@ export const startStudenRegister = async (data: studentDefaultValuesProps | inte
   }
 };
 
-export const registerInterview = async (data:  studentDefaultValuesProps | interviewDefaultValuesProps) => {
+export const registerInterview = async (data: studentDefaultValuesProps | interviewDefaultValuesProps) => {
   try {
     const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
     setDoc(docuRef, data);
@@ -87,3 +87,9 @@ export const registerInterview = async (data:  studentDefaultValuesProps | inter
     console.log(error);
   }
 }
+
+export const getStudents = async () => {
+  const querySnapshot = await getDocs(collection(FirebaseDB, 'estudiantes/'));
+  const students = await querySnapshot.docs.map(doc => doc.data());
+  return students;
+};

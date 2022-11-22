@@ -7,8 +7,9 @@ export const studentStateFormValues: GeneralFormValuesType[] = [
         name: "studentState",
         id: "student-state",
         menuItem: [
-            { label: "Matriculado", value: "registered", },
-            { label: "Retirado", value: "retired", },
+            { label: "Matriculado", value: "MATRICULADO", },
+            { label: "Retirado", value: "RETIRADO", },
+            { label: "Deserto", value: "DESERTO", },
         ],
     },
     {

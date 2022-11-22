@@ -36,7 +36,7 @@ export interface interviewDefaultValuesProps {
   guardiantId: string;
   guardiantRelationship: string;
   headControl: string;
-  idNumber?: string;
+  idNumber?: number | undefined;
   illnessesSuffered: string;
   interviewerName: string;
   kindOfDream: string;
@@ -54,7 +54,7 @@ export interface interviewDefaultValuesProps {
   secondLastName: string;
   secondName: string;
   siblingsPosition: string;
-  studentId: string;
+  studentId: number | undefined;
   studentIdType: string;
   sphincterControl: string;
   studentLivesWithBrothers: string;
@@ -123,7 +123,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   secondLastName: "",
   secondName: "",
   siblingsPosition: "",
-  studentId: "",
+  studentId: undefined,
   studentIdType: "",
   sphincterControl: "",
   studentLivesWithBrothers: "",
