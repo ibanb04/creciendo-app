@@ -108,7 +108,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
   },  
   {
     component: "datePicker",
-    name: "dateOfBirth",
+    name: "birthDate",
     label: "Fecha de Nacimiento",
 
   },

@@ -26,6 +26,7 @@ export interface studentDefaultValuesProps {
   disability: string;
   disabilityDescription: string;
   diagnosis: string;
+  degreeToApply: string;
   exceptionalAbility: string;
   fatherName: string;
   fatherTel: string;
@@ -50,8 +51,8 @@ export interface studentDefaultValuesProps {
   etnia: string;
   resguardo: string;
   conflictVictim: string;
-  ExpulsorDepartment: string;
-  ExpulsorCity: string;
+  expulsorDepartment: string;
+  expulsorCity: string;
   expulsionDate: string;
   certificate: string;
   guardianName: string;
@@ -81,6 +82,7 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   age: "",
   gender: "",
   departmentOfBirth: "",
+  degreeToApply: "",
   cityOfBirth: "",
   expeditionPlace: "",
   dateOfBirth: "",
@@ -119,8 +121,8 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   etnia: "",
   resguardo: "",
   conflictVictim: "",
-  ExpulsorDepartment: "",
-  ExpulsorCity: "",
+  expulsorDepartment: "",
+  expulsorCity: "",
   expulsionDate: "",
   certificate: "",
   guardianName: "",

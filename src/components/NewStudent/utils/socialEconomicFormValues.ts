@@ -77,7 +77,7 @@ export const socialEconomicFormValues: object[] = [
     },
     {
         component: "autocomplete",
-        name: "ExpulsorDepartment",
+        name: "expulsorDepartment",
         label: "Departamento expulsor",
         id: "expulsor-department",
         placeholder: "Selecione o escriba aqui",

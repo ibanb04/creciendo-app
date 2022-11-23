@@ -1,24 +1,69 @@
-import { Button, Container, Link, Paper, Skeleton, Stack } from "@mui/material";
+import {
+  Button,
+  Container,
+  Link,
+  Paper,
+  Skeleton,
+  Stack,
+  TextField,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridToolbarContainer,
+  useGridApiContext,
+} from "@mui/x-data-grid";
 import { useMemo, useState } from "react";
 import { getStudents } from "../../firebase/providers";
 import { useQuery } from "react-query";
 import Label from "../../ui/label";
 import SchoolIcon from "@mui/icons-material/School";
+import { debounce } from "@mui/material/utils";
+
+const CustomToolbar = () => {
+  const apiRef = useGridApiContext();
+  const [searchValue, setSearchValue] = useState("");
+
+  const updateSearchValue = useMemo(() => {
+    return debounce((newValue) => {
+      apiRef.current.setQuickFilterValues(
+        newValue.split(" ").filter((word) => word !== "")
+      );
+    }, 500);
+  }, [apiRef]);
+
+  const handleSearchValueChange = (event) => {
+    const newValue = event.target.value;
+    setSearchValue(newValue);
+    updateSearchValue(newValue);
+  };
+  return (
+    <GridToolbarContainer sx={{ p: 2 }}>
+      <TextField
+        value={searchValue}
+        size="small"
+        onChange={handleSearchValueChange}
+        label="Buscar estudiante"
+      />
+    </GridToolbarContainer>
+  );
+};
 
 export const RegisterStudent = () => {
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(5);
+  const { data, isLoading } = useQuery(["students"], () => getStudents());
+
   const columns = useMemo(
     () => [
-      { field: "idNumber", headerName: "ID", type: "number", width: 120 },
+      { field: "idNumber", headerName: "ID", width: 120 },
       { field: "idType", headerName: "TIPO ", width: 60 },
       { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
-      { field: "middleName", headerName: "SEGUNDO NOMBRE", width: 130 },
+      //{ field: "middleName", headerName: "SEGUNDO NOMBRE", width: 130 },
       { field: "lastName", headerName: "PRIMER APELLIDO", width: 130 },
-      { field: "secondSurname", headerName: "SEGUNDO APELLIDO", width: 130 },
+      //{ field: "secondSurname", headerName: "SEGUNDO APELLIDO", width: 130 },
+      { field: "grade", headerName: "GRADO", width: 88 },
       {
         field: "studentState",
         headerName: "ESTADO",
@@ -33,12 +78,12 @@ export const RegisterStudent = () => {
           }
         },
       },
+      { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
+      { field: "guardianName", headerName: "ACUDIENTE", width: 100 },
     ],
-    []
+    [data]
   );
-  const { data, isLoading } = useQuery(["students"], () => getStudents());
 
-  console.log(data);
   return (
     <>
       <Container>
@@ -65,7 +110,7 @@ export const RegisterStudent = () => {
         </Stack>
 
         {!isLoading ? (
-          <Paper>
+          <Paper elevation={4}>
             <div style={{ height: 400, width: "100%" }}>
               <DataGrid
                 columns={columns}
@@ -73,7 +118,14 @@ export const RegisterStudent = () => {
                 getRowId={(row) => parseInt(row.idNumber)}
                 pageSize={pageSize}
                 onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                rowsPerPageOptions={[10, 15, 20]}
+                rowsPerPageOptions={[5, 10, 20]}
+                components={{
+                  Toolbar: CustomToolbar,
+                }}
+                disableColumnFilter
+                disableColumnMenu
+                disableColumnSelector
+                disableDensitySelector
                 pagination
                 checkboxSelection
               />
