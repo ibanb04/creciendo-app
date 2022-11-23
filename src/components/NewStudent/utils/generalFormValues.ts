@@ -92,6 +92,14 @@ export const generalFormValues: GeneralFormValuesType[] = [
     ],
   },
   {
+    component: "textField",
+    name: "age",
+    id: "age",
+    type: "number",
+    label: "Edad",
+    placeholder: "Escriba aquí",
+  },
+  {
     component: "autocomplete",
     name: "departmentOfBirth",
     label: "Departamento de Nacimiento",
