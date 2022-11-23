@@ -20,39 +20,16 @@ export const academicFormValues: AcademicFormValuesType[] = [
         name: "grade",
         id: "grade",
         menuItem: [
-            {
-                label: "Prejardin",
-                value: "prejardin",
-            },
-            {
-                label: "Jardin",
-                value: "jardin",
-            },
-            {
-                label: "Transicion",
-                value: "transicion",
-            },
-            {
-                label: "Primero",
-                value: "primero",
-            },
-            {
-                label: "Segundo",
-                value: "segundo",
-            },
-            {
-                label: "Tercero",
-                value: "tercero",
-            },
-            {
-                label: "Cuarto",
-                value: "cuarto",
-            },
-            {
-                label: "Quinto",
-                value: "quinto",
-            },
-        ],
+            { label: "Párvulo", value: "párvulo", },
+            { label: "Prejardín", value: "prejardín", },
+            { label: "Jardín", value: "jardín", },
+            { label: "Transición", value: "transición", },
+            { label: "Primero", value: "primero", },
+            { label: "Segundo", value: "segundo", },
+            { label: "Tercero", value: "tercero", },
+            { label: "Cuarto", value: "cuarto", },
+            { label: "Quinto", value: "quinto", },
+        ]
     },
     {
         component: "select",
@@ -60,39 +37,16 @@ export const academicFormValues: AcademicFormValuesType[] = [
         name: "lastGrade",
         id: "last-grade",
         menuItem: [
-            {
-                label: "Prejardin",
-                value: "prejardin",
-            },
-            {
-                label: "Jardin",
-                value: "jardin",
-            },
-            {
-                label: "Transicion",
-                value: "transicion",
-            },
-            {
-                label: "Primero",
-                value: "primero",
-            },
-            {
-                label: "Segundo",
-                value: "segundo",
-            },
-            {
-                label: "Tercero",
-                value: "tercero",
-            },
-            {
-                label: "Cuarto",
-                value: "cuarto",
-            },
-            {
-                label: "Quinto",
-                value: "quinto",
-            },
-        ],
+            { label: "Párvulo", value: "párvulo", },
+            { label: "Prejardín", value: "prejardín", },
+            { label: "Jardín", value: "jardín", },
+            { label: "Transición", value: "transición", },
+            { label: "Primero", value: "primero", },
+            { label: "Segundo", value: "segundo", },
+            { label: "Tercero", value: "tercero", },
+            { label: "Cuarto", value: "cuarto", },
+            { label: "Quinto", value: "quinto", },
+        ]
     },
     {
         component: "textField",
@@ -261,7 +215,7 @@ export const academicFormValues: AcademicFormValuesType[] = [
                 value: "terapiaIntegral",
             }
         ],
-    },{
+    }, {
         component: "checkbox",
         name: "exceptionalAbility",
         id: "exceptional-ability",

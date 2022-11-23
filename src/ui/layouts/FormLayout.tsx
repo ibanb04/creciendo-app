@@ -37,6 +37,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
     const handleNext = (data: studentDefaultValuesProps | interviewDefaultValuesProps) => {
         if (activeStep === steps.length - 1) {
             if (redirectRoute === '/estudiantes') {
+                console.log(data);
                 startStudenRegister(data);
             }
             if (redirectRoute === '/entrevistas') {

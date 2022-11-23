@@ -28,7 +28,6 @@ const getFormContent = (item: any, control: any) => {
                 <ControllerFormSelect
                     control={control}
                     name={item.name}
-                    defaultValue=""
                     size="small"
                     label={item.label}
                     menuItem={item.menuItem}
