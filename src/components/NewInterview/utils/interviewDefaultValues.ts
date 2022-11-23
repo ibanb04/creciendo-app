@@ -17,6 +17,8 @@ export interface interviewDefaultValuesProps {
   degreeToApply: string;
   diseaseDiagnosis: string;
   dorsalControl: string;
+  educationalInstitutionApplied1: string;
+  educationalInstitutionApplied2: string;
   emotionalRelationshipAnotherFamilyMember: string;
   emotionalRelationshipWithFather: string;
   emotionalRelationshipWithMother: string;
@@ -40,17 +42,27 @@ export interface interviewDefaultValuesProps {
   illnessesSuffered: string;
   interviewerName: string;
   kindOfDream: string;
+  lastSchoolGrade1: string;
+  lastSchoolGrade2: string;
+  lastSchoolYear1: string;
+  lastSchoolYear2: string;
   legalGuardian: string;
+  listTeamworkActivities: string;
   mothersBrothers: string;
   nightDreamDuration: string;
   notPeopleStudentLivesWith: string;
   numberOfSiblings: string;
   otherKidsInFamily: string;
   peopleStudentLivesWith: string;
+  performance: string;
   pregnancySummary: string;
   psychoMotorDevelopment: string;
   reactionToPunishment: string;
   reasonForUseOfIncubator: string;
+  relationshipWithTeachers: string;
+  schoolAdaptationProcess: string;
+  scholarAchievements: string;
+  scholarDifficulties: string;
   secondLastName: string;
   secondName: string;
   siblingsPosition: string;
@@ -60,12 +72,14 @@ export interface interviewDefaultValuesProps {
   studentLivesWithBrothers: string;
   surgery: string;
   surgeryDescription: string;
+  teamworkActivities: string;
   treatmentDescription: string;
   treatmentSpecialties: string;
   typeOfBirth: string;
   useOfIncubator: string;
   walk: string;
-
+  withdrawalReason1: string;
+  withdrawalReason2: string;
 }
 
 export const interviewDefaultValues: interviewDefaultValuesProps = {
@@ -87,6 +101,8 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   degreeToApply: "",
   diseaseDiagnosis: "",
   dorsalControl: "",
+  educationalInstitutionApplied1: "",
+  educationalInstitutionApplied2: "",
   emotionalRelationshipAnotherFamilyMember: "",
   emotionalRelationshipWithFather: "",
   emotionalRelationshipWithMother: "",
@@ -109,17 +125,27 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   illnessesSuffered: "",
   interviewerName: "",
   kindOfDream: "",
+  lastSchoolGrade1: "",
+  lastSchoolGrade2: "",
+  lastSchoolYear1: "",
+  lastSchoolYear2: "",
   legalGuardian: "",
+  listTeamworkActivities: "",
   mothersBrothers: "",
   nightDreamDuration: "",
   notPeopleStudentLivesWith: "",
   numberOfSiblings: "",
   otherKidsInFamily: "",
   peopleStudentLivesWith: "",
+  performance: "",
   pregnancySummary: "",
   psychoMotorDevelopment: "",
   reactionToPunishment: "",
   reasonForUseOfIncubator: "",
+  relationshipWithTeachers: "",
+  schoolAdaptationProcess: "",
+  scholarAchievements: "",
+  scholarDifficulties: "",
   secondLastName: "",
   secondName: "",
   siblingsPosition: "",
@@ -129,9 +155,12 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   studentLivesWithBrothers: "",
   surgery: "",
   surgeryDescription: "",
+  teamworkActivities: "",
   treatmentDescription: "",
   treatmentSpecialties: "",
   typeOfBirth: "",
   useOfIncubator: "",
   walk: "",
+  withdrawalReason1: "",
+  withdrawalReason2: "",
 };
