@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import { startStudenRegister, registerInterview } from '../../firebase/providers';
 import { studentDefaultValuesProps } from '../../components/NewStudent/utils/studentDefaultValues';
 import { interviewDefaultValuesProps } from '../../components/NewInterview/utils/interviewDefaultValues';
+import { useAppDispatch } from '../../store/useAppDispatch';
+import { setFetching } from '../../store/slices/student/student.slice';
 
 
 interface FormLayoutProps {
@@ -33,11 +35,15 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
 
     const id = useId();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        dispatch(setFetching(true));
+    }, []);
+    
     const handleNext = (data: studentDefaultValuesProps | interviewDefaultValuesProps) => {
         if (activeStep === steps.length - 1) {
             if (redirectRoute === '/estudiantes') {
-                console.log(data);
                 startStudenRegister(data);
             }
             if (redirectRoute === '/entrevistas') {

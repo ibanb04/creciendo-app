@@ -1,7 +1,6 @@
 export interface interviewDefaultValuesProps {
   accidents: string;
   accidentsDescription: string;
-  acquisitionOfLanguage: string;
   additionalComments: string;
   age: string;
   allergies: string;
@@ -11,10 +10,10 @@ export interface interviewDefaultValuesProps {
   behaviorWithAdults: string;
   behaviorWithOtherChildren: string;
   birthDate: string;
+  bothParents: string;
   congenitalDiseases: string;
   crawl: string;
   dayDreamDuration: string;
-  degreeToApply: string;
   diseaseDiagnosis: string;
   dorsalControl: string;
   educationalInstitutionApplied1: string;
@@ -27,13 +26,13 @@ export interface interviewDefaultValuesProps {
   emotionalRelationshipWithotherChildren: string;
   enuresis: string;
   familyHistoryOfDisabilities: string;
-  fathersBoth: string;
   fathersBrothers: string;
   firstLastName: string;
   firstName: string;
   firstSentences: string;
   firstWords: string;
   followsInstructions: string;
+  gradeToApply: string;
   guardianName: string;
   guardiantId: string;
   guardiantRelationship: string;
@@ -42,6 +41,7 @@ export interface interviewDefaultValuesProps {
   illnessesSuffered: string;
   interviewerName: string;
   kindOfDream: string;
+  languageAcquisition: string;
   lastSchoolGrade1: string;
   lastSchoolGrade2: string;
   lastSchoolYear1: string;
@@ -50,7 +50,7 @@ export interface interviewDefaultValuesProps {
   listTeamworkActivities: string;
   mothersBrothers: string;
   nightDreamDuration: string;
-  notPeopleStudentLivesWith: string;
+  peopleStudentDontLivesWith: string;
   numberOfSiblings: string;
   otherKidsInFamily: string;
   peopleStudentLivesWith: string;
@@ -58,6 +58,7 @@ export interface interviewDefaultValuesProps {
   pregnancySummary: string;
   psychoMotorDevelopment: string;
   reactionToPunishment: string;
+  reactionToFrustation: string;
   reasonForUseOfIncubator: string;
   relationshipWithTeachers: string;
   schoolAdaptationProcess: string;
@@ -83,9 +84,11 @@ export interface interviewDefaultValuesProps {
 }
 
 export const interviewDefaultValues: interviewDefaultValuesProps = {
+
+
   accidents: "",
   accidentsDescription: "",
-  acquisitionOfLanguage: "",
+  languageAcquisition: "",
   additionalComments: "",
   age: "",
   allergies: "",
@@ -98,11 +101,9 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   congenitalDiseases: "",
   crawl: "",
   dayDreamDuration: "",
-  degreeToApply: "",
+  gradeToApply: "",
   diseaseDiagnosis: "",
   dorsalControl: "",
-  educationalInstitutionApplied1: "",
-  educationalInstitutionApplied2: "",
   emotionalRelationshipAnotherFamilyMember: "",
   emotionalRelationshipWithFather: "",
   emotionalRelationshipWithMother: "",
@@ -111,7 +112,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   emotionalRelationshipWithotherChildren: "",
   enuresis: "",
   familyHistoryOfDisabilities: "",
-  fathersBoth: "",
+  bothParents: "",
   fathersBrothers: "",
   firstLastName: "",
   firstName: "",
@@ -125,27 +126,17 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   illnessesSuffered: "",
   interviewerName: "",
   kindOfDream: "",
-  lastSchoolGrade1: "",
-  lastSchoolGrade2: "",
-  lastSchoolYear1: "",
-  lastSchoolYear2: "",
   legalGuardian: "",
-  listTeamworkActivities: "",
   mothersBrothers: "",
   nightDreamDuration: "",
-  notPeopleStudentLivesWith: "",
+  peopleStudentDontLivesWith: "",
   numberOfSiblings: "",
   otherKidsInFamily: "",
   peopleStudentLivesWith: "",
-  performance: "",
   pregnancySummary: "",
   psychoMotorDevelopment: "",
-  reactionToPunishment: "",
+  reactionToFrustation: "",
   reasonForUseOfIncubator: "",
-  relationshipWithTeachers: "",
-  schoolAdaptationProcess: "",
-  scholarAchievements: "",
-  scholarDifficulties: "",
   secondLastName: "",
   secondName: "",
   siblingsPosition: "",
@@ -155,12 +146,25 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   studentLivesWithBrothers: "",
   surgery: "",
   surgeryDescription: "",
-  teamworkActivities: "",
   treatmentDescription: "",
   treatmentSpecialties: "",
   typeOfBirth: "",
   useOfIncubator: "",
   walk: "",
+  educationalInstitutionApplied1: "",
+  educationalInstitutionApplied2: "",
+  lastSchoolGrade1: "",
+  lastSchoolGrade2: "",
+  lastSchoolYear1: "",
+  lastSchoolYear2: "",
+  listTeamworkActivities: "",
+  performance: "",
+  reactionToPunishment: "",
+  relationshipWithTeachers: "",
+  schoolAdaptationProcess: "",
+  scholarAchievements: "",
+  scholarDifficulties: "",
+  teamworkActivities: "",
   withdrawalReason1: "",
   withdrawalReason2: "",
 };

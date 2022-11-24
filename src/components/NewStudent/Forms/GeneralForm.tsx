@@ -7,10 +7,8 @@ import getFormContent from '../../../shared/getFormContent';
 interface GeneralFormInputs {
   firstName: string;
   middleName: string;
-  lastName: string;
-  secondSurname: string;
-  colegio: string;
-  ciudad: string;
+  firstLastName: string;
+  secondLastName: string;
   idType: string;
   idNumber: string;
   birthDate: SetStateAction<Date>;
@@ -21,12 +19,11 @@ interface GeneralFormInputs {
   expeditionPlace: string;
   address: string;
   neighborhood: string;
-  tel: string;
+  studentPhoneNumber: string;
 }
 
 export const GeneralForm: FC = () => {
   const { control } = useFormContext<GeneralFormInputs>();
-  console.log(control);
   const key = useId();
   return (
     <>

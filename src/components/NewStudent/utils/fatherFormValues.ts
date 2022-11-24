@@ -6,7 +6,7 @@ export const fatherFormValues: GeneralFormValuesType[] = [
         name: "fatherName",
         id: "father-name",
         type: "text",
-        label: "Nombre de la Madre",
+        label: "Nombre del padre",
         placeholder: "Escriba aqui",
     },
     {
@@ -21,7 +21,7 @@ export const fatherFormValues: GeneralFormValuesType[] = [
         name: "fatherProfession",
         id: "father-profession",
         type: "text",
-        label: "Profesion de la Madre",
+        label: "Profesion del padre",
         placeholder: "Escriba aqui",
     }, {
         component: "textField",

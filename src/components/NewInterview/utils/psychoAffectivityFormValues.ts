@@ -10,7 +10,7 @@ export const psychoAffectivityFormValues: GeneralFormValuesType[] = [
         placeholder: "Escriba aqui",
     }, {
         component: "textField",
-        name: "notPeopleStudentLivesWith",
+        name: "peopleStudentDontLivesWith",
         id: "not-people-student-lives-with",
         type: "text",
         label: " ¿qué relación tienes? En caso de no convivir con sus padres",
@@ -56,8 +56,8 @@ export const psychoAffectivityFormValues: GeneralFormValuesType[] = [
         placeholder: "Escriba aqui",
     }, {
         component: "textField",
-        name: "fathersBoth",
-        id: "fathers-both",
+        name: "bothParents",
+        id: "both-parents",
         type: "number",
         label: "Hermanos ambos",
         placeholder: "Escriba aqui",
