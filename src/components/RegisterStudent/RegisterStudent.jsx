@@ -15,12 +15,14 @@ import {
   GridToolbarContainer,
   useGridApiContext,
 } from "@mui/x-data-grid";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getStudents } from "../../firebase/providers";
 import { useQuery } from "react-query";
 import Label from "../../ui/label";
 import SchoolIcon from "@mui/icons-material/School";
 import { debounce } from "@mui/material/utils";
+import { useAppDispatch, useAppSelector } from "../../store/useAppDispatch";
+import { setFetching } from "../../store/slices/student/student.slice";
 
 const CustomToolbar = () => {
   const apiRef = useGridApiContext();
@@ -53,7 +55,18 @@ const CustomToolbar = () => {
 
 export const RegisterStudent = () => {
   const [pageSize, setPageSize] = useState(5);
-  const { data, isLoading } = useQuery(["students"], () => getStudents());
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setFetching(false));
+  }, []);
+
+  const {isFetching} = useAppSelector(state => state.student);
+
+    const { data, isLoading } = useQuery([isFetching], () =>
+    getStudents()
+  );
+
 
   const columns = useMemo(
     () => [
@@ -61,11 +74,11 @@ export const RegisterStudent = () => {
       { field: "idType", headerName: "TIPO ", width: 60 },
       { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
       //{ field: "middleName", headerName: "SEGUNDO NOMBRE", width: 130 },
-      { field: "lastName", headerName: "PRIMER APELLIDO", width: 130 },
-      //{ field: "secondSurname", headerName: "SEGUNDO APELLIDO", width: 130 },
+      { field: "firstLastName", headerName: "PRIMER APELLIDO", width: 130 },
+      //{ field: "secondLastName", headerName: "SEGUNDO APELLIDO", width: 130 },
       { field: "grade", headerName: "GRADO", width: 88 },
       {
-        field: "studentState",
+        field: "studentApproval",
         headerName: "ESTADO",
         width: 130,
         renderCell: (params) => {
@@ -79,10 +92,10 @@ export const RegisterStudent = () => {
         },
       },
       { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
-      { field: "guardianName", headerName: "ACUDIENTE", width: 100 },
+      { field: "guardianName", headerName: "ACUDIENTE", width: 130 },
     ],
-    [data]
   );
+
 
   return (
     <>
@@ -94,7 +107,7 @@ export const RegisterStudent = () => {
           mb={5}
         >
           <Typography variant="h4" gutterBottom>
-            <SchoolIcon fontSize="large" /> Estudiantes
+            Estudiantes
           </Typography>
           <Link
             underline="none"
