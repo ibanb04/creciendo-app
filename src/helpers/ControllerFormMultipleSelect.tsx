@@ -45,6 +45,7 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
 
             sx={{ width: { xs: "80%", sm: "90%" } }}
             SelectProps={{
+              defaultValue: [],
               multiple: true,
               value: value,
               renderValue: (selected: any) => selected.join(", "),

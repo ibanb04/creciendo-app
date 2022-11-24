@@ -6,6 +6,7 @@ type AcademicFormValuesType = {
     label?: string;
     placeholder?: string;
     maxRows?: number;
+    rows?: number;
     menuItem?: menuItem[] | string[];
 };
 type menuItem = {
@@ -14,6 +15,15 @@ type menuItem = {
 };
 
 export const academicFormValues: AcademicFormValuesType[] = [
+    {
+        component: "textField",
+        id: "studentEmail",
+        name: "studentEmail",
+        type: "email",
+        label: "Correo electrónico",
+        placeholder: "Correo electrónico",
+
+    },
     {
         component: "select",
         label: "Grado a Cursar",
@@ -79,8 +89,12 @@ export const academicFormValues: AcademicFormValuesType[] = [
                 value: "reprobado",
             },
             {
+                label: "Desertó",
+                value: "desertó",
+            },
+            {
                 label: "Primera vez",
-                value: "nuevo",
+                value: "primera vez",
             },
         ],
     },
@@ -90,31 +104,50 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "reason",
         type: "text",
         label: "Motivo de retiro",
-        maxRows: 4,
+        maxRows: 5,
         placeholder: "¿Cual?",
 
-    }, {
+    },
+    {
         component: "select",
-        label: "Discapacidad",
-        name: "disability",
-        id: "disability",
+        label: "Modalidad Educativa",
+        name: "educationalModality",
+        id: "educational-modality",
         menuItem: [
             {
-                label: "fisica",
-                value: "fisica",
+                label: "Educación Tradicional",
+                value: "educación tradicional",
             },
             {
-                label: "cognitiva",
-                value: "cognitiva",
+                label: "Inclusión",
+                value: "inclusión",
             },
-            {
-                label: "multiple",
-                value: "multiple",
-            },
-            {
-                label: "otra",
-                value: "otra",
-            },
+        ],
+    },
+    {
+        component: "multipleSelect",
+        name: "enterWithBehaviourRecord",
+        id: "enter-with-behaviour-record",
+        label: "Ingresa con acta de compromiso",
+        menuItem: [
+            { label: "Acta de nivelación académica", value: "Acta de nivelación académica ", },
+            { label: "Acta de convivencia escolar", value: "Acta de convivencia escolar", },
+        ],
+    },
+    {
+        component: "multipleSelect",
+        name: "studentDisability",
+        id: "student-disability-id",
+        label: "Discapacidad",
+        menuItem: [
+            { label: "Auditiva", value: "auditiva", },
+            { label: "Visual", value: "visual", },
+            { label: "Física", value: "física", },
+            { label: "Cognitiva", value: "cognitiva", },
+            { label: "Psicosocial", value: "psicosocial", },
+            { label: "Sensorial", value: "sensorial", },
+            { label: "Otra", value: "otra", },
+
         ],
     },
     {
@@ -122,8 +155,8 @@ export const academicFormValues: AcademicFormValuesType[] = [
         name: "disabilityDescription",
         id: "disability-description",
         type: "text",
-        label: "Descripcion de la discapacidad",
-        maxRows: 4,
+        label: "Descripcion de la discapacidad(si aplica)",
+        maxRows: 8,
         placeholder: "¿Cual?",
     },
     {
@@ -132,8 +165,8 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "diagnosis",
         type: "text",
         label: "Diagnotico",
-        maxRows: 4,
-        placeholder: "¿Cual?",
+        maxRows: 8,
+        placeholder: "Escriba aqui",
     },
 
     {
@@ -142,17 +175,18 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "especially-id",
         label: "Especialidades Tratadas",
         menuItem: [
+            { label: "ninguna", value: "ninguna", },
             {
                 label: "Psicologia",
                 value: "psicologia",
             },
             {
-                label: "Fonoaudiologia",
-                value: "fonoaudiologia",
+                label: "Fonoaudiología",
+                value: "fonoaudiología",
             },
             {
                 label: "Terapia Ocupacional",
-                value: "terapiaOcupacional",
+                value: "terapia ocupacional",
             },
             {
                 label: "Fisioterapia",
@@ -163,20 +197,17 @@ export const academicFormValues: AcademicFormValuesType[] = [
                 value: "psiquiatria",
             },
             {
-                label: "Neuropsicologia",
-                value: "neuropsicologia",
+                label: "Neuropsicología",
+                value: "neuropsicología",
             },
-            {
-                label: "Medicina interna",
-                value: "medicinaInterna",
-            },
+
             {
                 label: "Pediatria",
                 value: "pediatria",
             },
             {
-                label: "Psicopedagogia",
-                value: "psicopedagogia",
+                label: "Psicopedagogía",
+                value: "psicopedagogía",
             },
             {
                 label: "Otra",
@@ -190,35 +221,44 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "therapy-id",
         label: "Asiste a terapias",
         menuItem: [
+            { label: "ninguna", value: "ninguna", },
             {
-                label: "Psicologia",
-                value: "psicologia",
+                label: "Psicología",
+                value: "psicología",
             },
             {
-                label: "Fonoaudiologia",
-                value: "fonoaudiologia",
+                label: "Fonoaudiología",
+                value: "fonoaudiología",
             },
             {
-                label: "Terapia Ocupacional",
-                value: "terapiaOcupacional",
+                label: "Terapia ocupacional",
+                value: "terapia ocupacional",
             },
             {
                 label: "Fisioterapia",
                 value: "fisioterapia",
             },
             {
-                label: "Psiquiatria",
-                value: "psiquiatria",
+                label: "Psiquiatría",
+                value: "psiquiatría infantil",
+            },
+            {
+                label: "Terapia cognitiva",
+                value: "terapia cognitiva",
             },
             {
                 label: "Terapia integral",
-                value: "terapiaIntegral",
+                value: "terapia integral",
+            },
+            {
+                label: "Otra",
+                value: "otra",
             }
         ],
     }, {
         component: "checkbox",
-        name: "exceptionalAbility",
-        id: "exceptional-ability",
+        name: "exceptionalPerformance",
+        id: "exceptional-performance",
         label: "Capacidad excepcional",
     },
 

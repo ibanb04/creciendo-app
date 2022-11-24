@@ -13,6 +13,9 @@ import {
 import { FirebaseAuth, FirebaseDB } from "./config";
 import { studentDefaultValuesProps } from "../components/NewStudent/utils/studentDefaultValues";
 import { interviewDefaultValuesProps } from "../components/NewInterview/utils/interviewDefaultValues";
+import { useAppDispatch } from "../store/useAppDispatch";
+import { setFetching } from "../store/slices/student/student.slice";
+import { Dispatch } from "../store/slices/auth/thunks";
 
 export const registerUserWithEmailAndPassword = async (
   email: string,
@@ -98,7 +101,7 @@ export const registerInterview = async (
   }
 };
 
-export const getStudents = async () => {
+export const getStudents = async() => {
   const querySnapshot = await getDocs(collection(FirebaseDB, "estudiantes/"));
   const students = await querySnapshot.docs.map((doc) => doc.data());
   return students;

@@ -72,8 +72,8 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         placeholder: "Escriba aqui",
     }, {
         component: "select",
-        name: 'degreeToApply',
-        id: "degree-to-apply",
+        name: 'gradeToApply',
+        id: "grade-to-apply",
         label: "Grado a cursar",
         menuItem: [
             { label: "Párvulo", value: "párvulo", },

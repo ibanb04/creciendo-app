@@ -1,33 +1,29 @@
 export interface studentDefaultValuesProps {
   firstName: string;
   middleName: string;
-  lastName: string;
-  secondSurname: string;
-  colegio: string;
-  ciudad: string;
+  firstLastName: string;
+  secondLastName: string;
   idType: string;
   idNumber: number | undefined;
   birthDate: string;
   age: string;
   gender: string;
-  departmentOfBirth: string;
+  birthDepartment: string;
   cityOfBirth: string;
   expeditionPlace: string;
-  dateOfBirth: string;
   address: string;
-  barrio: string;
-  tel: string;
+  neighborhood: string;
+  studentPhoneNumber: string;
   grade: string;
   lastGrade: string;
   school: string;
   schoolCity: string;
   academicSituation: string;
   reason: string;
-  disability: string;
   disabilityDescription: string;
   diagnosis: string;
-  degreeToApply: string;
-  exceptionalAbility: string;
+  gradeToApply: string;
+  exceptionalPerformance: boolean;
   fatherName: string;
   fatherTel: string;
   fatherProfession: string;
@@ -43,18 +39,19 @@ export interface studentDefaultValuesProps {
   motherEmail: string;
   motherlivesWithStudent: string;
   eps: string;
-  socioeconomicLevel: string;
+  housingStratum: string;
   sisbenLevel: string;
   studentId?: number | undefined;
-  sisbenId: string;
+  studentEmail: string;
+  sisbenCarnet: string;
   beneficiaryPrograms: string;
-  etnia: string;
-  resguardo: string;
+  ethnicity: string;
+  indigenousShelter: string;
   conflictVictim: string;
-  expulsorDepartment: string;
-  expulsorCity: string;
-  expulsionDate: string;
-  certificate: string;
+  ejectorDepartment: string;
+  ejectorMunicipality: string;
+  ejectionDate: string;
+  ejectionCertificate: string;
   guardianName: string;
   guardiantTel: string;
   guardiantId: string;
@@ -65,40 +62,36 @@ export interface studentDefaultValuesProps {
   anotherContactName: string;
   anotherContactTel: string;
   anotherContactRelationship: string;
-  studentState: string;
-  AttendInAlternation: string;
+  studentApproval: string;
+  faceToFaceAuthorization: boolean;
 }
 
 export const studentDefaultValues: studentDefaultValuesProps = {
   firstName: "",
   middleName: "",
-  lastName: "",
-  secondSurname: "",
-  colegio: "",
-  ciudad: "",
+  firstLastName: "",
+  secondLastName: "",
   idType: "",
   idNumber: undefined,
   birthDate: "",
   age: "",
   gender: "",
-  departmentOfBirth: "",
-  degreeToApply: "",
+  birthDepartment: "",
+  gradeToApply: "",
   cityOfBirth: "",
   expeditionPlace: "",
-  dateOfBirth: "",
   address: "",
-  barrio: "",
-  tel: "",
+  neighborhood: "",
+  studentPhoneNumber: "",
   grade: "",
   lastGrade: "",
   school: "",
   schoolCity: "",
   academicSituation: "",
   reason: "",
-  disability: "",
   disabilityDescription: "",
   diagnosis: "",
-  exceptionalAbility: "",
+  exceptionalPerformance: false,
   fatherName: "",
   fatherTel: "",
   fatherProfession: "",
@@ -114,17 +107,18 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   motherEmail: "",
   motherlivesWithStudent: "",
   eps: "",
-  socioeconomicLevel: "",
+  studentEmail: "",
+  housingStratum: "",
   sisbenLevel: "",
-  sisbenId: "",
+  sisbenCarnet: "",
   beneficiaryPrograms: "",
-  etnia: "",
-  resguardo: "",
+  ethnicity: "",
+  indigenousShelter: "",
   conflictVictim: "",
-  expulsorDepartment: "",
-  expulsorCity: "",
-  expulsionDate: "",
-  certificate: "",
+  ejectorDepartment: "",
+  ejectorMunicipality: "",
+  ejectionDate: "",
+  ejectionCertificate: "",
   guardianName: "",
   guardiantTel: "",
   guardiantId: "",
@@ -135,6 +129,6 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   anotherContactName: "",
   anotherContactTel: "",
   anotherContactRelationship: "",
-  studentState: "MATRICULADO",
-  AttendInAlternation: "",
+  studentApproval: "MATRICULADO",
+  faceToFaceAuthorization: true,
 };

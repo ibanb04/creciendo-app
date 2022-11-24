@@ -10,8 +10,8 @@ export const observedAspectsFormValues: GeneralFormValuesType[] = [
         placeholder: "Escriba aqui",
     }, {
         component: "textField",
-        name: "acquisitionOfLanguage",
-        id: "acquisition-of-language",
+        name: "languageAcquisition",
+        id: "language-acquisition",
         type: "text",
         label: "Adquisición del lenguaje",
         placeholder: "Escriba aqui",

@@ -41,7 +41,7 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   return (
     <Controller
       name={name}
-      defaultValue={defaultValue}
+      defaultValue=""
       control={control}
       render={({ field }) => (
         <FormControl
@@ -49,8 +49,8 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
           size={size}
         >
           <InputLabel id={id}>{label}</InputLabel>
-          <Select labelId={id} id={id} label={label} {...field}>
-            {name === "cityOfBirth" || name === "expulsorCity" ? (
+          <Select labelId={id} id={id} defaultValue="" label={label} {...field}>
+            {name === "cityOfBirth" || name === "ejectorMunicipality" ? (
               nameDepartment ? (
                 cities?.map((item: any, index: number) => (
                   <MenuItem key={key + index} value={item}>

@@ -4,7 +4,7 @@ export const studentStateFormValues: GeneralFormValuesType[] = [
     {
         component: "select",
         label: "Estado",
-        name: "studentState",
+        name: "studentApproval",
         id: "student-state",
         menuItem: [
             { label: "Matriculado", value: "MATRICULADO", },
@@ -14,8 +14,8 @@ export const studentStateFormValues: GeneralFormValuesType[] = [
     },
     {
         component: "checkbox",
-        name: "AttendInAlternation",
+        name: "faceToFaceAuthorization",
         id: "attend-in-alternation",
-        label: "¿Asistira en Alternancia?",
+        label: "Autorizo la presencialidad del Alumno",
     },
 ]

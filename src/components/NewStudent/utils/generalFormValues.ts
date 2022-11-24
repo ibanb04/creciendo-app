@@ -36,15 +36,15 @@ export const generalFormValues: GeneralFormValuesType[] = [
   },
   {
     component: "textField",
-    name: "lastName",
-    id: "last-name",
+    name: "firstLastName",
+    id: "first-last-name",
     type: "text",
     label: "Primer Apellido",
     placeholder: "Primer Apellido aqui",
   },
   {
     component: "textField",
-    name: "secondSurname",
+    name: "secondLastName",
     id: "second-surname",
     type: "text",
     label: "Segundo Apellido",
@@ -64,6 +64,10 @@ export const generalFormValues: GeneralFormValuesType[] = [
         label: "Registro civil",
         value: "RC",
       },
+      {
+        label: "Extranjero",
+        value: "EX",
+      }
     ],
   },
   {
@@ -101,9 +105,9 @@ export const generalFormValues: GeneralFormValuesType[] = [
   },
   {
     component: "autocomplete",
-    name: "departmentOfBirth",
+    name: "birthDepartment",
     label: "Departamento de Nacimiento",
-    id: "department",
+    id: "birth-department",
     placeholder: "Departamento de Nacimiento aqui",
     menuItem: Departamentos,
   },
@@ -113,7 +117,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "city-of-birth",
     type: "text",
     label: "Ciudad de Nacimiento",
-  },  
+  },
   {
     component: "datePicker",
     name: "birthDate",
@@ -138,16 +142,16 @@ export const generalFormValues: GeneralFormValuesType[] = [
   },
   {
     component: "textField",
-    name: "barrio",
-    id: "barrio",
+    name: "neighborhood",
+    id: "neighborhood",
     type: "text",
     label: "Barrio",
     placeholder: "Barrio aqui",
   },
   {
     component: "textField",
-    name: "tel",
-    id: "tel",
+    name: "studentPhoneNumber",
+    id: "studentPhoneNumber",
     type: "tel",
     label: "Celular",
     placeholder: "Celular aqui",
