@@ -19,10 +19,8 @@ import { useEffect, useMemo, useState } from "react";
 import { getStudents } from "../../firebase/providers";
 import { useQuery } from "react-query";
 import Label from "../../ui/label";
-import SchoolIcon from "@mui/icons-material/School";
 import { debounce } from "@mui/material/utils";
 import { useAppDispatch, useAppSelector } from "../../store/useAppDispatch";
-import { setFetching } from "../../store/slices/student/student.slice";
 
 const CustomToolbar = () => {
   const apiRef = useGridApiContext();
@@ -56,46 +54,41 @@ const CustomToolbar = () => {
 export const RegisterStudent = () => {
   const [pageSize, setPageSize] = useState(5);
   const dispatch = useAppDispatch();
+  const [students, setstudents] = useState([]);
 
-  useEffect(() => {
-    dispatch(setFetching(false));
-  }, []);
-
-  const {isFetching} = useAppSelector(state => state.student);
-
-    const { data, isLoading } = useQuery([isFetching], () =>
+  const { data, isLoading, isFetching } = useQuery(["students"], () =>
     getStudents()
   );
 
+  useEffect(() => {
+    if (data) setstudents(data);
+  }, [isFetching]);
 
-  const columns = useMemo(
-    () => [
-      { field: "idNumber", headerName: "ID", width: 120 },
-      { field: "idType", headerName: "TIPO ", width: 60 },
-      { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
-      //{ field: "middleName", headerName: "SEGUNDO NOMBRE", width: 130 },
-      { field: "firstLastName", headerName: "PRIMER APELLIDO", width: 130 },
-      //{ field: "secondLastName", headerName: "SEGUNDO APELLIDO", width: 130 },
-      { field: "grade", headerName: "GRADO", width: 88 },
-      {
-        field: "studentApproval",
-        headerName: "ESTADO",
-        width: 130,
-        renderCell: (params) => {
-          if (params.value === "MATRICULADO") {
-            return <Label color={"success"}>{params.value}</Label>;
-          } else if (params.value === "DESERTO") {
-            return <Label color={"warning"}>{params.value}</Label>;
-          } else {
-            return <Label color={"error"}>{params.value}</Label>;
-          }
-        },
+  const columns = useMemo(() => [
+    { field: "idNumber", headerName: "ID", width: 120 },
+    { field: "idType", headerName: "TIPO ", width: 60 },
+    { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
+    //{ field: "middleName", headerName: "SEGUNDO NOMBRE", width: 130 },
+    { field: "firstLastName", headerName: "PRIMER APELLIDO", width: 130 },
+    //{ field: "secondLastName", headerName: "SEGUNDO APELLIDO", width: 130 },
+    { field: "grade", headerName: "GRADO", width: 88 },
+    {
+      field: "studentApproval",
+      headerName: "ESTADO",
+      width: 130,
+      renderCell: (params) => {
+        if (params.value === "MATRICULADO") {
+          return <Label color={"success"}>{params.value}</Label>;
+        } else if (params.value === "DESERTO") {
+          return <Label color={"warning"}>{params.value}</Label>;
+        } else {
+          return <Label color={"error"}>{params.value}</Label>;
+        }
       },
-      { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
-      { field: "guardianName", headerName: "ACUDIENTE", width: 130 },
-    ],
-  );
-
+    },
+    { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
+    { field: "guardianName", headerName: "ACUDIENTE", width: 130 },
+  ]);
 
   return (
     <>
@@ -127,7 +120,7 @@ export const RegisterStudent = () => {
             <div style={{ height: 400, width: "100%" }}>
               <DataGrid
                 columns={columns}
-                rows={data}
+                rows={students}
                 getRowId={(row) => parseInt(row.idNumber)}
                 pageSize={pageSize}
                 onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}

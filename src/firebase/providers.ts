@@ -14,7 +14,6 @@ import { FirebaseAuth, FirebaseDB } from "./config";
 import { studentDefaultValuesProps } from "../components/NewStudent/utils/studentDefaultValues";
 import { interviewDefaultValuesProps } from "../components/NewInterview/utils/interviewDefaultValues";
 import { useAppDispatch } from "../store/useAppDispatch";
-import { setFetching } from "../store/slices/student/student.slice";
 import { Dispatch } from "../store/slices/auth/thunks";
 
 export const registerUserWithEmailAndPassword = async (
