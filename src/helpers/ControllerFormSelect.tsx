@@ -1,4 +1,4 @@
-import { FC, useId, useState } from 'react';
+import { FC, useId, useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -32,13 +32,22 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
 
   const { data } = useQuery(
     [nameDepartment],
-    () => getDepartments(nameDepartment || ejectorDepartment) ,
+    () => getDepartments(nameDepartment),
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const { data: ejectorDepartmentData } = useQuery(
+    [ejectorDepartment],
+    () => getDepartments(ejectorDepartment),
     {
       refetchOnWindowFocus: false,
     }
   );
 
   const cities = data?.map((city: any) => city.municipio);
+  const cities2 = ejectorDepartmentData?.map((city: any) => city.municipio);
   return (
     <Controller
       name={name}
@@ -51,26 +60,29 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
         >
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} defaultValue="" label={label} {...field}>
-            {
-              (name === "cityOfBirth" || name === "ejectorMunicipality")
-                ?
-                (
-                  nameDepartment || ejectorDepartment ? (
-                    cities?.map((item: any, index: number) => (
-                      <MenuItem key={key + index} value={item}>
-                        {item}
-                      </MenuItem>
-                    ))
-                  ) : (
-                    <Alert severity="error">Debe escoger un Departamento!</Alert>
-                  )
-                ) : (
-                  menuItem?.map((item: any, index: number) => (
-                    <MenuItem key={key + index} value={item.value}>
-                      {item.label}
-                    </MenuItem>
-                  ))
-                )}
+            {name === "cityOfBirth" || name === "ejectorMunicipality" ? (
+              nameDepartment && name === "cityOfBirth" ? (
+                cities?.map((item: any, index: number) => (
+                  <MenuItem key={key + index} value={item}>
+                    {item}
+                  </MenuItem>
+                ))
+              ) : ejectorDepartment && name === "ejectorMunicipality" ? (
+                cities2?.map((item: any, index: number) => (
+                  <MenuItem key={key + index} value={item}>
+                    {item}
+                  </MenuItem>
+                ))
+              ) : (
+                <Alert severity="error">Debe escoger un Departamento!</Alert>
+              )
+            ) : (
+              menuItem?.map((item: any, index: number) => (
+                <MenuItem key={key + index} value={item.value}>
+                  {item.label}
+                </MenuItem>
+              ))
+            )}
           </Select>
         </FormControl>
       )}
