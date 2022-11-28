@@ -1,30 +1,23 @@
-import {
-  Button,
-  Container,
-  Link,
-  Paper,
-  Skeleton,
-  Stack,
-} from "@mui/material";
+import { Button, Container, Link, Paper, Skeleton, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
-import {
-  DataGrid,
-} from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useMemo, useState } from "react";
 import { getStudents } from "../../firebase/providers";
 import { useQuery } from "react-query";
 import Label from "../../ui/label";
 import CustomDataGridToolbar from "./helpers/CustomDataGridToolbar";
 import UserActions from "./helpers/UserActions";
+import { setStudent } from "../../store/slices/student/student.slice";
+import { useAppDispatch } from "../../store/useAppDispatch";
 
 export const RegisterStudent = () => {
   const [pageSize, setPageSize] = useState(5);
   const [students, setstudents] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
   const [rowId, setRowId] = useState(null);
-
+  const dispatch = useAppDispatch();
   const { data, isLoading, isFetching } = useQuery(["students"], () =>
     getStudents()
   );
@@ -57,8 +50,13 @@ export const RegisterStudent = () => {
     },
     { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
     { field: "guardianName", headerName: "ACUDIENTE", width: 130 },
-    { field: "actions", headerName: "OPCIONES", width: 130, type: "actions", renderCell: params =>  <UserActions {...{params} } /> },
-
+    {
+      field: "actions",
+      headerName: "OPCIONES",
+      width: 130,
+      type: "actions",
+      renderCell: (params) => <UserActions {...{ params }} />,
+    },
   ]);
 
   const handleSelectRows = (ids) => {
@@ -68,8 +66,6 @@ export const RegisterStudent = () => {
     );
     setSelectedRows(selectedRows?.map((row) => row.idNumber));
   };
-
-  
 
   return (
     <>
@@ -86,6 +82,7 @@ export const RegisterStudent = () => {
           <Link
             underline="none"
             color="secondary.main"
+            onClick={() => dispatch(setStudent(null))}
             component={RouterLink}
             to="nuevo"
           >

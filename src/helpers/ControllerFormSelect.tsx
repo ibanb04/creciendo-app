@@ -26,13 +26,14 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   id,
 }) => {
   const key = useId();
-  const { nameDepartment, ejectorDepartment } = useSelector(
+  const { birthDepartment } = useSelector(
     (state: RootState) => state.department
   );
+  const { ejectorDepartment } = useAppSelector((state) => state.ejectorDepartment);
 
   const { data } = useQuery(
-    [nameDepartment],
-    () => getDepartments(nameDepartment),
+    [birthDepartment],
+    () => getDepartments(birthDepartment),
     {
       refetchOnWindowFocus: false,
     }
@@ -47,7 +48,7 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   );
 
   const cities = data?.map((city: any) => city.municipio);
-  const cities2 = ejectorDepartmentData?.map((city: any) => city.municipio);
+  const ejectorCities = ejectorDepartmentData?.map((city: any) => city.municipio);
   return (
     <Controller
       name={name}
@@ -61,14 +62,14 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} defaultValue="" label={label} {...field}>
             {name === "cityOfBirth" || name === "ejectorMunicipality" ? (
-              nameDepartment && name === "cityOfBirth" ? (
+              birthDepartment && name === "cityOfBirth" ? (
                 cities?.map((item: any, index: number) => (
                   <MenuItem key={key + index} value={item}>
                     {item}
                   </MenuItem>
                 ))
               ) : ejectorDepartment && name === "ejectorMunicipality" ? (
-                cities2?.map((item: any, index: number) => (
+                ejectorCities?.map((item: any, index: number) => (
                   <MenuItem key={key + index} value={item}>
                     {item}
                   </MenuItem>

@@ -3,13 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const departmentSlice = createSlice({
   name: "department",
   initialState: {
-    nameDepartment: "",
-    ejectorDepartment: "",
+    birthDepartment: "",
   },
   reducers: {
     setDepartment: (state, { payload }) => {
-      state.nameDepartment = payload.nameDepartment;
-      state.ejectorDepartment = payload.ejectorDepartment;
+      state.birthDepartment = payload;
     },
   },
 });
