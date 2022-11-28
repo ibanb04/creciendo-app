@@ -100,8 +100,26 @@ export const registerInterview = async (
   }
 };
 
-export const getStudents = async() => {
+export const getStudentById = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);
+    const docSnap = await getDoc(docuRef);
+    console.log(docSnap.data());
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const getStudents = async () => {
   const querySnapshot = await getDocs(collection(FirebaseDB, "estudiantes/"));
   const students = await querySnapshot.docs.map((doc) => doc.data());
   return students;
 };
+
+

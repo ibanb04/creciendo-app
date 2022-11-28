@@ -3,6 +3,8 @@ import { FC } from "react";
 import { Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setDepartment } from "../store/slices/department.slice";
+import { resetDepartmentValue, setStudent } from "../store/slices/student/student.slice";
+import { useAppDispatch, useAppSelector } from "../store/useAppDispatch";
 
 interface ControllerAutoCompleteProps {
   control: any;
@@ -22,7 +24,8 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
   id,
   placeholder,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const { selectetStudent } = useAppSelector((state) => state.student);
   return (
     <Controller
       name={name}
@@ -33,8 +36,10 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
           options={menuItem.map((option) => option)}
           sx={{ mt: 2, width: { xs: "80%", sm: "90%" } }}
           size={size}
+          value={selectetStudent?.birthDepartment ? selectetStudent[name] : value}
           onChange={(_, data) => {
             onChange(data);
+            selectetStudent?.birthDepartment && dispatch(resetDepartmentValue());
             dispatch(setDepartment(data));
             return data;
           }}

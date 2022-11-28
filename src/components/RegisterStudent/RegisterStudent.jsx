@@ -5,56 +5,25 @@ import {
   Paper,
   Skeleton,
   Stack,
-  TextField,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
 import {
   DataGrid,
-  GridToolbarContainer,
-  useGridApiContext,
 } from "@mui/x-data-grid";
 import { useEffect, useMemo, useState } from "react";
 import { getStudents } from "../../firebase/providers";
 import { useQuery } from "react-query";
 import Label from "../../ui/label";
-import { debounce } from "@mui/material/utils";
-import { useAppDispatch, useAppSelector } from "../../store/useAppDispatch";
-
-const CustomToolbar = () => {
-  const apiRef = useGridApiContext();
-  const [searchValue, setSearchValue] = useState("");
-
-  const updateSearchValue = useMemo(() => {
-    return debounce((newValue) => {
-      apiRef.current.setQuickFilterValues(
-        newValue.split(" ").filter((word) => word !== "")
-      );
-    }, 500);
-  }, [apiRef]);
-
-  const handleSearchValueChange = (event) => {
-    const newValue = event.target.value;
-    setSearchValue(newValue);
-    updateSearchValue(newValue);
-  };
-  return (
-    <GridToolbarContainer sx={{ p: 2 }}>
-      <TextField
-        value={searchValue}
-        size="small"
-        onChange={handleSearchValueChange}
-        label="Buscar estudiante"
-      />
-    </GridToolbarContainer>
-  );
-};
+import CustomDataGridToolbar from "./helpers/CustomDataGridToolbar";
+import UserActions from "./helpers/UserActions";
 
 export const RegisterStudent = () => {
   const [pageSize, setPageSize] = useState(5);
-  const dispatch = useAppDispatch();
   const [students, setstudents] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [rowId, setRowId] = useState(null);
 
   const { data, isLoading, isFetching } = useQuery(["students"], () =>
     getStudents()
@@ -88,7 +57,19 @@ export const RegisterStudent = () => {
     },
     { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
     { field: "guardianName", headerName: "ACUDIENTE", width: 130 },
+    { field: "actions", headerName: "OPCIONES", width: 130, type: "actions", renderCell: params =>  <UserActions {...{params} } /> },
+
   ]);
+
+  const handleSelectRows = (ids) => {
+    const selectedIDs = new Set(ids);
+    const selectedRows = students.filter((row) =>
+      selectedIDs.has(parseInt(row.idNumber))
+    );
+    setSelectedRows(selectedRows?.map((row) => row.idNumber));
+  };
+
+  
 
   return (
     <>
@@ -126,7 +107,7 @@ export const RegisterStudent = () => {
                 onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                 rowsPerPageOptions={[5, 10, 20]}
                 components={{
-                  Toolbar: CustomToolbar,
+                  Toolbar: () => CustomDataGridToolbar(selectedRows),
                 }}
                 disableColumnFilter
                 disableColumnMenu
@@ -134,6 +115,8 @@ export const RegisterStudent = () => {
                 disableDensitySelector
                 pagination
                 checkboxSelection
+                onRowClick={(params) => setRowId(params.id)}
+                onSelectionModelChange={(ids) => handleSelectRows(ids)}
               />
             </div>
           </Paper>
