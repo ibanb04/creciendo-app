@@ -1,10 +1,11 @@
-import { FC,  useId } from "react";
+import { FC, useId, useState } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { getDepartments } from "../services/getDepartments";
 import Alert from "@mui/material/Alert";
+import { useAppSelector } from "../store/useAppDispatch";
 interface ControllerFormSelectProps {
   control: any;
   name: string;
@@ -25,19 +26,29 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
   id,
 }) => {
   const key = useId();
-  const { nameDepartment } = useSelector(
+  const { birthDepartment } = useSelector(
     (state: RootState) => state.department
   );
+  const { ejectorDepartment } = useAppSelector((state) => state.ejectorDepartment);
 
   const { data } = useQuery(
-    [nameDepartment],
-    () => getDepartments(nameDepartment),
+    [birthDepartment],
+    () => getDepartments(birthDepartment),
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const { data: ejectorDepartmentData } = useQuery(
+    [ejectorDepartment],
+    () => getDepartments(ejectorDepartment),
     {
       refetchOnWindowFocus: false,
     }
   );
 
   const cities = data?.map((city: any) => city.municipio);
+  const ejectorCities = ejectorDepartmentData?.map((city: any) => city.municipio);
   return (
     <Controller
       name={name}
@@ -51,8 +62,14 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
           <InputLabel id={id}>{label}</InputLabel>
           <Select labelId={id} id={id} defaultValue="" label={label} {...field}>
             {name === "cityOfBirth" || name === "ejectorMunicipality" ? (
-              nameDepartment ? (
+              birthDepartment && name === "cityOfBirth" ? (
                 cities?.map((item: any, index: number) => (
+                  <MenuItem key={key + index} value={item}>
+                    {item}
+                  </MenuItem>
+                ))
+              ) : ejectorDepartment && name === "ejectorMunicipality" ? (
+                ejectorCities?.map((item: any, index: number) => (
                   <MenuItem key={key + index} value={item}>
                     {item}
                   </MenuItem>

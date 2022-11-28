@@ -66,12 +66,14 @@ export interface studentDefaultValuesProps {
   faceToFaceAuthorization: boolean;
 }
 
+
+
 export const studentDefaultValues: studentDefaultValuesProps = {
   firstName: "",
   middleName: "",
   firstLastName: "",
   secondLastName: "",
-  idType: "",
+  idType: "", 
   idNumber: undefined,
   birthDate: "",
   age: "",
