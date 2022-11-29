@@ -32,7 +32,7 @@ function getStepContent(step: number) {
   }
 }
 
-export const NewStudent = () => {
+export const AddOrEditStudent = () => {
 
   return (
     <>

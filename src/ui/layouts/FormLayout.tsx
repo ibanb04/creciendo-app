@@ -13,8 +13,8 @@ import Paper from "@mui/material/Paper";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { startStudenRegister, registerInterview } from '../../firebase/providers';
-import { studentDefaultValuesProps } from '../../components/NewStudent/utils/studentDefaultValues';
-import { interviewDefaultValuesProps } from '../../components/NewInterview/utils/interviewDefaultValues';
+import { studentDefaultValuesProps } from '../../components/AddOrEditStudent/utils/studentDefaultValues';
+import { interviewDefaultValuesProps } from '../../components/AddOrEditInterview/utils/interviewDefaultValues';
 import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
 import { setStudent } from '../../store/slices/student/student.slice';
 

@@ -5,8 +5,8 @@ export * from "./Enrollment";
 export * from "./Interview";
 export * from "./ListStudents";
 export * from "./ListInterviews";
-export * from "./NewInterview"
-export * from "./NewStudent"
+export * from "./AddOrEditInterview"
+export * from "./AddOrEditStudent"
 export * from "./SearchStudent"
 export * from "./RegisterStudent"
 export * from "../auth/pages/Login"
