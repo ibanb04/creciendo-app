@@ -4,10 +4,10 @@ import { DrawerHeader, Sidebar } from "../components/Sidebar";
 import { RegisterStudent } from "../components/RegisterStudent/RegisterStudent";
 import { NavBar } from "../components/NavBar";
 import { useState } from "react";
-import { NewStudent } from "../components/NewStudent";
 import { Enrollment } from "../components/Enrollment";
 import { Interview } from "../components/Interview";
-import { NewInterview } from "../components/NewInterview";
+import { AddOrEditStudent } from '../components/AddOrEditStudent/AddOrEditStudent';
+import { AddOrEditInterview } from "../components/AddOrEditInterview";
 
 const drawerWidth = 250;
 
@@ -41,15 +41,16 @@ export const DashboardRoutes = () => {
         <Toolbar />
         <Main open={open}>
           <DrawerHeader />
-          <Grid container direction="row" pr={{ md: 11  }}>
+          <Grid container direction="row" pr={{ md: 11 }}>
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
-              <Route path="/estudiantes/nuevo" element={<NewStudent />} />
+              <Route path="/estudiantes/nuevo" element={<AddOrEditStudent action="add" />} />
+              <Route path="/estudiantes/editar" element={<AddOrEditStudent action="edit"/>} />
               <Route path="/matriculas" element={<Enrollment />} />
               <Route path="/entrevistas" element={<Interview />} />
-              <Route path="/entrevistas/nuevo" element={<NewInterview />} />
-              <Route path="/*" element={ <Navigate to="/" /> } />
-
+              <Route path="/entrevistas/nuevo" element={<AddOrEditInterview />} />
+              <Route path="/entrevistas/editar" element={<AddOrEditInterview />} />
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </Grid>
         </Main>

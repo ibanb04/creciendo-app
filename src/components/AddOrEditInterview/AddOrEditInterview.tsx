@@ -54,7 +54,7 @@ function getStepContent(step: number) {
   }
 }
 
-export const NewInterview = () => {
+export const AddOrEditInterview = () => {
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { GeneralFormValuesType } from "../../NewStudent/utils/generalFormValues";
+import { GeneralFormValuesType } from "../../AddOrEditStudent/utils/generalFormValues";
 
 export const observedAspectsFormValues: GeneralFormValuesType[] = [
     {

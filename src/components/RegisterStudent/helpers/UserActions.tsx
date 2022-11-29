@@ -20,7 +20,7 @@ const UserActions: FC<UserActionsProps> = ({ params }) => {
         dispatch(setStudent(params.row));
         dispatch(setDepartment(params.row.birthDepartment));
         dispatch(setEjectorDepartment(params.row.ejectorDepartment));
-        navigate('/estudiantes/nuevo');
+        navigate('/estudiantes/editar');
     };
 
     const handleDelete = () => {

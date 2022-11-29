@@ -12,9 +12,9 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { startStudenRegister, registerInterview } from '../../firebase/providers';
-import { studentDefaultValuesProps } from '../../components/NewStudent/utils/studentDefaultValues';
-import { interviewDefaultValuesProps } from '../../components/NewInterview/utils/interviewDefaultValues';
+import { startStudenRegister, registerInterview, updateStudent } from '../../firebase/providers';
+import { studentDefaultValuesProps } from '../../components/AddOrEditStudent/utils/studentDefaultValues';
+import { interviewDefaultValuesProps } from '../../components/AddOrEditInterview/utils/interviewDefaultValues';
 import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
 import { setStudent } from '../../store/slices/student/student.slice';
 
@@ -25,14 +25,15 @@ interface FormLayoutProps {
     redirectRoute: string;
     steps: string[];
     defaultValues?: studentDefaultValuesProps | interviewDefaultValuesProps;
+    action?: string;
 }
 
-const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectRoute, steps, defaultValues }) => {
+const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectRoute, action, steps, defaultValues }) => {
     const dispatch = useAppDispatch();
     const { selectetStudent } = useAppSelector((state) => state.student);
 
     const methods = useForm<studentDefaultValuesProps | interviewDefaultValuesProps>({
-        defaultValues:  selectetStudent ? selectetStudent : defaultValues ,
+        defaultValues: selectetStudent ? selectetStudent : defaultValues,
     });
     const [activeStep, setActiveStep] = useState(0);
     const id = useId();
@@ -40,11 +41,17 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
 
     const handleNext = (data: studentDefaultValuesProps | interviewDefaultValuesProps) => {
         if (activeStep === steps.length - 1) {
-            if (redirectRoute === '/estudiantes') {
+            if (redirectRoute === '/estudiantes' && action === 'add') {
                 dispatch(setStudent(null));
                 startStudenRegister(data);
             }
-            if (redirectRoute === '/entrevistas') {
+            if (redirectRoute === '/estudiantes' && action === 'edit') {
+                console.log(data);
+                updateStudent(data);
+                dispatch(setStudent(null));
+            }
+
+            if (redirectRoute === '/entrevistas' && action === 'add') {
                 registerInterview(data);
             }
 

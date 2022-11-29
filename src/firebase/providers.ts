@@ -9,12 +9,11 @@ import {
   getDoc,
   getDocs,
   setDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 import { FirebaseAuth, FirebaseDB } from "./config";
-import { studentDefaultValuesProps } from "../components/NewStudent/utils/studentDefaultValues";
-import { interviewDefaultValuesProps } from "../components/NewInterview/utils/interviewDefaultValues";
-import { useAppDispatch } from "../store/useAppDispatch";
-import { Dispatch } from "../store/slices/auth/thunks";
+import { studentDefaultValuesProps } from "../components/AddOrEditStudent/utils/studentDefaultValues";
+import { interviewDefaultValuesProps } from "../components/AddOrEditInterview/utils/interviewDefaultValues";
 
 export const registerUserWithEmailAndPassword = async (
   email: string,
@@ -89,6 +88,14 @@ export const startStudenRegister = async (
   }
 };
 
+export const updateStudent = async (data: any) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
+    updateDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const registerInterview = async (
   data: studentDefaultValuesProps | interviewDefaultValuesProps
 ) => {
