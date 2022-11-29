@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -96,6 +97,17 @@ export const updateStudent = async (data: any) => {
     console.log(error);
   }
 };
+
+export const deleteStudent = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);
+    deleteDoc(docuRef);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export const registerInterview = async (
   data: studentDefaultValuesProps | interviewDefaultValuesProps
 ) => {
