@@ -1,21 +1,24 @@
-import { Button, Container, Link, Paper, Skeleton, Stack } from "@mui/material";
+import { Button, Chip, Container, Link, Paper, Skeleton, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
-import { useEffect, useMemo, useState } from "react";
+import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import React, { useEffect, useMemo, useState } from "react";
 import { getStudents } from "../../firebase/providers";
 import { useQuery } from "react-query";
-import Label from "../../ui/label";
 import CustomDataGridToolbar from "./helpers/CustomDataGridToolbar";
 import UserActions from "./helpers/UserActions";
 import { setStudent } from "../../store/slices/student/student.slice";
 import { useAppDispatch } from "../../store/useAppDispatch";
+import { DocumentData } from "firebase/firestore/lite";
+import FaceIcon from '@mui/icons-material/Face';
+import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
+import NotInterestedIcon from '@mui/icons-material/NotInterested';
 
 export const RegisterStudent = () => {
   const [pageSize, setPageSize] = useState(5);
-  const [students, setstudents] = useState([]);
-  const [selectedRows, setSelectedRows] = useState([]);
+  const [students, setstudents] = useState<DocumentData[]>([]);
+  const [selectedRows, setSelectedRows] = useState<any>([]);
   const [rowId, setRowId] = useState(null);
   const dispatch = useAppDispatch();
   const { data, isLoading, isFetching } = useQuery(["students"], () =>
@@ -26,7 +29,17 @@ export const RegisterStudent = () => {
     if (data) setstudents(data);
   }, [isFetching]);
 
-  const columns = useMemo(() => [
+  const RenderUserActions = (params: GridRenderCellParams) => <UserActions {...{ params }} />;
+  const RenderStudentStatus = (params: GridRenderCellParams) => {
+    if (params.value === "MATRICULADO") {
+      return <Chip  label="Activo" color="success" size="small" icon={<FaceIcon />} />
+    } else if (params.value === "DESERTO") {
+      return <Chip label="Desertó"  size="small"  color="warning" icon={<NotInterestedIcon/>} />
+    } else {
+      return <Chip label="Retirado" size="small"  color="error" icon={<DoDisturbOnIcon/>} />
+    }
+  }
+  const columns: GridColDef[] = useMemo(() => [
     { field: "idNumber", headerName: "ID", width: 120 },
     { field: "idType", headerName: "TIPO ", width: 60 },
     { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
@@ -38,15 +51,7 @@ export const RegisterStudent = () => {
       field: "studentApproval",
       headerName: "ESTADO",
       width: 130,
-      renderCell: (params) => {
-        if (params.value === "MATRICULADO") {
-          return <Label color={"success"}>{params.value}</Label>;
-        } else if (params.value === "DESERTO") {
-          return <Label color={"warning"}>{params.value}</Label>;
-        } else {
-          return <Label color={"error"}>{params.value}</Label>;
-        }
-      },
+      renderCell: RenderStudentStatus
     },
     { field: "guardiantTel", headerName: "CONTACTO", width: 105 },
     { field: "guardianName", headerName: "ACUDIENTE", width: 130 },
@@ -55,16 +60,16 @@ export const RegisterStudent = () => {
       headerName: "OPCIONES",
       width: 130,
       type: "actions",
-      renderCell: (params) => <UserActions {...{ params }} />,
+      renderCell: RenderUserActions,
     },
-  ]);
+  ], []);
 
-  const handleSelectRows = (ids) => {
+  const handleSelectRows = (ids: any) => {
     const selectedIDs = new Set(ids);
     const selectedRows = students.filter((row) =>
       selectedIDs.has(parseInt(row.idNumber))
     );
-    setSelectedRows(selectedRows?.map((row) => row.idNumber));
+    setSelectedRows(selectedRows?.map((row: any) => row.idNumber));
   };
 
   return (
@@ -112,7 +117,7 @@ export const RegisterStudent = () => {
                 disableDensitySelector
                 pagination
                 checkboxSelection
-                onRowClick={(params) => setRowId(params.id)}
+                onRowClick={(params: any) => setRowId(params.id)}
                 onSelectionModelChange={(ids) => handleSelectRows(ids)}
               />
             </div>
