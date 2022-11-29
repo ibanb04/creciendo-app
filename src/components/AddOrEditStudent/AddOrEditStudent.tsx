@@ -6,6 +6,8 @@ import { StudentStateForm } from "./Forms/StudentStateForm";
 import { studentDefaultValues } from "./utils/studentDefaultValues";
 import FormLayout from '../../ui/layouts/FormLayout';
 import { FC } from "react";
+import { useAppSelector } from '../../store/useAppDispatch';
+import { useNavigate } from 'react-router-dom';
 
 const steps = [
   "Información General del Alumno:",
@@ -36,14 +38,17 @@ interface FormLayoutProps {
   action: string;
 }
 export const AddOrEditStudent: FC<FormLayoutProps> = ({ action }) => {
+  const { selectetStudent } = useAppSelector((state) => state.student);
+  const navigate = useNavigate();
 
   return (
     <>
       {
         action === 'add' ?
           <FormLayout title="Nuevo Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" steps={steps} action={action} defaultValues={studentDefaultValues} />
-          :
+          : selectetStudent ?
           <FormLayout title="Editar Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" action={action} steps={steps} />
+          : navigate('/estudiantes')
       }
     </>
   );

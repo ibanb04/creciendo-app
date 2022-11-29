@@ -120,6 +120,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
   },
   {
     component: "datePicker",
+    id: "birth-date",
     name: "birthDate",
     label: "Fecha de Nacimiento",
 
