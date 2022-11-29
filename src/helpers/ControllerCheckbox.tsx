@@ -14,12 +14,22 @@ export const ControllerCheckbox: FC<ControllerCheckboxProps> = ({
     label
 }) => {
     return (
-
-        <Controller
-            name={name}
-            control={control}
-            render={({ field }) =>  <FormControlLabel sx={{mt:2}} control={<Checkbox defaultChecked {...field} />} label={label} />}
+        <FormControlLabel
+            sx={{ mt: 2 }}
+            control={
+                <Controller
+                    name={name}
+                    control={control}
+                    render={({ field: props }) => (
+                        <Checkbox
+                            {...props}
+                            checked={props.value}
+                            onChange={(e) => props.onChange(e.target.checked)}
+                        />
+                    )}
+                />
+            }
+            label={label}
         />
-
     )
 }
