@@ -53,6 +53,7 @@ const getFormContent = (item: any, control: any) => {
                     name={item.name}
                     label={item.label}
                     size="small"
+                    id={item.id}
                 />
             );
         case "multipleSelect":

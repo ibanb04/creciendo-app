@@ -111,6 +111,7 @@ export const socialEconomicFormValues: object[] = [
     {
         component: "datePicker",
         name: "ejectionDate",
+        id: "ejection-date",
         label: "Fecha expulsión",
     },
     {
