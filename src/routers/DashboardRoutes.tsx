@@ -44,12 +44,12 @@ export const DashboardRoutes = () => {
           <Grid container direction="row" pr={{ md: 11 }}>
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
-              <Route path="/estudiantes/nuevo" element={<AddOrEditStudent />} />
-              <Route path="/estudiantes/edit" element={<AddOrEditStudent />} />
+              <Route path="/estudiantes/nuevo" element={<AddOrEditStudent action="add" />} />
+              <Route path="/estudiantes/editar" element={<AddOrEditStudent action="edit"/>} />
               <Route path="/matriculas" element={<Enrollment />} />
               <Route path="/entrevistas" element={<Interview />} />
               <Route path="/entrevistas/nuevo" element={<AddOrEditInterview />} />
-              <Route path="/entrevistas/edit" element={<AddOrEditInterview />} />
+              <Route path="/entrevistas/editar" element={<AddOrEditInterview />} />
               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </Grid>

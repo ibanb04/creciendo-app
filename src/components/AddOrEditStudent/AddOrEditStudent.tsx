@@ -5,6 +5,7 @@ import { FamiliarForm } from "./Forms/FamiliarForm";
 import { StudentStateForm } from "./Forms/StudentStateForm";
 import { studentDefaultValues } from "./utils/studentDefaultValues";
 import FormLayout from '../../ui/layouts/FormLayout';
+import { FC } from "react";
 
 const steps = [
   "Información General del Alumno:",
@@ -31,12 +32,19 @@ function getStepContent(step: number) {
       return "unknown step";
   }
 }
-
-export const AddOrEditStudent = () => {
+interface FormLayoutProps {
+  action: string;
+}
+export const AddOrEditStudent: FC<FormLayoutProps> = ({ action }) => {
 
   return (
     <>
-      <FormLayout title="Nuevo Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" steps={steps} defaultValues={studentDefaultValues} />
+      {
+        action === 'add' ?
+          <FormLayout title="Nuevo Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" steps={steps} action={action} defaultValues={studentDefaultValues} />
+          :
+          <FormLayout title="Editar Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" action={action} steps={steps} />
+      }
     </>
   );
 };
