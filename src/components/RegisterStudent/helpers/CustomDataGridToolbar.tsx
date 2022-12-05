@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import ReplayIcon from '@mui/icons-material/Replay';
 import {
     GridToolbarContainer,
     useGridApiContext,
@@ -29,6 +30,10 @@ const CustomDataGridToolbar = (selectedRows: []) => {
         setSearchValue(newValue);
         updateSearchValue(newValue);
     };
+
+    const handleRefresh = () => {
+        window.location.reload();
+    };
     return (
         <>
 
@@ -46,19 +51,24 @@ const CustomDataGridToolbar = (selectedRows: []) => {
                         {selectedRows.length} seleccionados
                     </Typography>
                 ) : (
-                    <GridToolbarContainer >
-                        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                            <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                            <TextField
-                                value={searchValue}
-                                size="small"
-                                variant="standard"
+                    <>
+                        <GridToolbarContainer >
+                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <TextField
+                                    value={searchValue}
+                                    size="small"
+                                    variant="standard"
 
-                                onChange={handleSearchValueChange}
-                                label="Buscar estudiante"
-                            />
-                        </Box>
-                    </GridToolbarContainer>
+                                    onChange={handleSearchValueChange}
+                                    label="Buscar estudiante"
+                                />
+                            </Box>
+                        </GridToolbarContainer>
+                        <IconButton aria-label="refresh" onClick={handleRefresh} >
+                            <ReplayIcon />
+                        </IconButton>
+                    </>
                 )
                 }
 
