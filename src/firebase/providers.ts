@@ -142,3 +142,8 @@ export const getStudents = async () => {
 };
 
 
+export const getInterviews = async () => {
+  const querySnapshot = await getDocs(collection(FirebaseDB, "entrevistas/"));
+  const interviews = await querySnapshot.docs.map((doc) => doc.data());
+  return interviews;
+};

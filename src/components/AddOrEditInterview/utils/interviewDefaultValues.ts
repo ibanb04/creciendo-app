@@ -35,6 +35,7 @@ export interface interviewDefaultValuesProps {
   gradeToApply: string;
   guardianName: string;
   guardiantId: string;
+  guardiantPhone: string;
   guardiantRelationship: string;
   headControl: string;
   idNumber?: number | undefined;
@@ -121,6 +122,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   followsInstructions: "",
   guardianName: "",
   guardiantId: "",
+  guardiantPhone: "",
   guardiantRelationship: "",
   headControl: "",
   illnessesSuffered: "",

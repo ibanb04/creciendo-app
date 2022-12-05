@@ -45,11 +45,11 @@ export const DashboardRoutes = () => {
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
               <Route path="/estudiantes/nuevo" element={<AddOrEditStudent action="add" />} />
-              <Route path="/estudiantes/editar" element={<AddOrEditStudent action="edit"/>} />
+              <Route path="/estudiantes/editar" element={<AddOrEditStudent action="edit" />} />
               <Route path="/matriculas" element={<Enrollment />} />
               <Route path="/entrevistas" element={<Interview />} />
-              <Route path="/entrevistas/nuevo" element={<AddOrEditInterview />} />
-              <Route path="/entrevistas/editar" element={<AddOrEditInterview />} />
+              <Route path="/entrevistas/nuevo" element={<AddOrEditInterview action="add" />} />
+              <Route path="/entrevistas/editar" element={<AddOrEditInterview action="edit" />} />
               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </Grid>

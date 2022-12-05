@@ -24,6 +24,14 @@ export const guardianFormValues: GeneralFormValuesType[] = [
         label: "Parentesco",
         placeholder: "Escriba aqui",
     }, {
+        component: "textField",
+        name: "guardiantPhone",
+        id: "guardiant-phone",
+        type: "text",
+        label: "Telefono",
+        placeholder: "Escriba aqui",
+    },
+    {
 
         component: "textField",
         name: "interviewerName",

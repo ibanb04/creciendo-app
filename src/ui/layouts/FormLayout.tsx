@@ -52,6 +52,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
             }
 
             if (redirectRoute === '/entrevistas' && action === 'add') {
+                console.log(data);
                 registerInterview(data);
             }
 

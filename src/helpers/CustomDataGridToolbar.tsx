@@ -6,14 +6,13 @@ import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import ReplayIcon from '@mui/icons-material/Replay';
 import {
     GridToolbarContainer,
     useGridApiContext,
 } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
-const CustomDataGridToolbar = (selectedRows: []) => {
+const CustomDataGridToolbar = (selectedRows: [], label: string) => {
     const apiRef = useGridApiContext();
     const [searchValue, setSearchValue] = useState("");
 
@@ -61,7 +60,7 @@ const CustomDataGridToolbar = (selectedRows: []) => {
                                     variant="standard"
 
                                     onChange={handleSearchValueChange}
-                                    label="Buscar estudiante"
+                                    label={label}
                                 />
                             </Box>
                         </GridToolbarContainer>

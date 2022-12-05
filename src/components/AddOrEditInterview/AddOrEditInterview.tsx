@@ -11,6 +11,8 @@ import PrenatalHistoryForm from './Forms/PrenatalHistoryForm';
 import PsychoAffectivityForm from './Forms/PsychoAffectivityForm';
 import PsychoPedagogicalHistoryForm from './Forms/PsychoPedagogicalHistoryForm';
 import { interviewDefaultValues } from './utils/interviewDefaultValues';
+import { FormLayoutProps } from '../AddOrEditStudent/AddOrEditStudent';
+import { FC } from 'react';
 
 const steps = [
   "Información del Acudiente:",
@@ -37,7 +39,7 @@ function getStepContent(step: number) {
     case 3:
       return <EarlyChildhoodForm />;
     case 4:
-        return <ObservedAspectsForm />;
+      return <ObservedAspectsForm />;
     case 5:
       return <MedicalHistoryForm />;
     case 6:
@@ -48,17 +50,17 @@ function getStepContent(step: number) {
       return <PsychoPedagogicalHistoryForm />;
     case 9:
       return <AdditionalCommetsForm />;
-    
+
     default:
       return "unknown step";
   }
 }
 
-export const AddOrEditInterview = () => {
+export const AddOrEditInterview: FC<FormLayoutProps> = ({ action }) => {
 
   return (
     <>
-      <FormLayout title="Nueva Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" steps={steps} defaultValues={interviewDefaultValues} />
+      <FormLayout title="Nueva Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" steps={steps} action={action} defaultValues={interviewDefaultValues} />
     </>
   );
 };
