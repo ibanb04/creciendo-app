@@ -1,4 +1,3 @@
-
 import FormLayout from '../../ui/layouts/FormLayout';
 import AdditionalCommetsForm from './Forms/AdditionalCommetsForm';
 import EarlyChildhoodForm from './Forms/EarlyChildhoodForm';
@@ -11,8 +10,9 @@ import PrenatalHistoryForm from './Forms/PrenatalHistoryForm';
 import PsychoAffectivityForm from './Forms/PsychoAffectivityForm';
 import PsychoPedagogicalHistoryForm from './Forms/PsychoPedagogicalHistoryForm';
 import { interviewDefaultValues } from './utils/interviewDefaultValues';
-import { FormLayoutProps } from '../AddOrEditStudent/AddOrEditStudent';
 import { FC } from 'react';
+import { useAppSelector } from '../../store/useAppDispatch';
+import { useNavigate } from 'react-router-dom';
 
 const steps = [
   "Información del Acudiente:",
@@ -56,11 +56,21 @@ function getStepContent(step: number) {
   }
 }
 
-export const AddOrEditInterview: FC<FormLayoutProps> = ({ action }) => {
-
+interface AddOrEditInterviewProps {
+  action?: string;
+}
+export const AddOrEditInterview: FC<AddOrEditInterviewProps> = ({ action }) => {
+  const navigate = useNavigate();
+  const { selectedInterview } = useAppSelector((state) => state.interview);
   return (
     <>
-      <FormLayout title="Nueva Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" steps={steps} action={action} defaultValues={interviewDefaultValues} />
+      {
+        action === 'add' ?
+          <FormLayout title="Nueva Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" steps={steps} action={action} defaultValues={interviewDefaultValues} />
+          : selectedInterview ?
+            <FormLayout title="Editar Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" action={action} steps={steps} />
+            : navigate('/entrevistas')
+      }
     </>
   );
 };

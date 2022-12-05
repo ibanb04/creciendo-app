@@ -12,11 +12,12 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { startStudenRegister, registerInterview, updateStudent } from '../../firebase/providers';
+import { startStudenRegister, registerInterview, updateStudent, updateInterview } from '../../firebase/providers';
 import { studentDefaultValuesProps } from '../../components/AddOrEditStudent/utils/studentDefaultValues';
 import { interviewDefaultValuesProps } from '../../components/AddOrEditInterview/utils/interviewDefaultValues';
 import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
 import { setStudent } from '../../store/slices/student/student.slice';
+import { setInterview } from '../../store/slices/interview/interview.slice';
 
 
 interface FormLayoutProps {
@@ -31,9 +32,10 @@ interface FormLayoutProps {
 const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectRoute, action, steps, defaultValues }) => {
     const dispatch = useAppDispatch();
     const { selectetStudent } = useAppSelector((state) => state.student);
+    const { selectedInterview } = useAppSelector((state) => state.interview);
 
     const methods = useForm<studentDefaultValuesProps | interviewDefaultValuesProps>({
-        defaultValues: selectetStudent ? selectetStudent : defaultValues,
+        defaultValues: selectetStudent ? selectetStudent : selectedInterview ? selectedInterview : defaultValues,
     });
     const [activeStep, setActiveStep] = useState(0);
     const id = useId();
@@ -46,16 +48,17 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                 startStudenRegister(data);
             }
             if (redirectRoute === '/estudiantes' && action === 'edit') {
-                console.log(data);
                 updateStudent(data);
                 dispatch(setStudent(null));
             }
 
             if (redirectRoute === '/entrevistas' && action === 'add') {
-                console.log(data);
                 registerInterview(data);
             }
-
+            if (redirectRoute === '/entrevistas' && action === 'edit') {
+                dispatch(setInterview(null));
+                updateInterview(data);
+            }
             navigate(redirectRoute);
         }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);

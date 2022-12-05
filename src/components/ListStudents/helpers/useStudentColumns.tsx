@@ -7,7 +7,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 
-const RenderUserActions = (params: GridRenderCellParams) => <UserActions {...{ params }} />;
+const RenderUserActions = (params: GridRenderCellParams) => <UserActions {...{ params, redirectRoute: '/estudiantes/editar' }} />;
 const RenderStudentStatus = (params: GridRenderCellParams) => {
   if (params.value === "MATRICULADO") {
     return <Chip label="Activo" color="success" size="small" icon={< FaceIcon />} />

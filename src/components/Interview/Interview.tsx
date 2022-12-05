@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
 import { ListInterviews } from '../ListInterviews';
 import { useAppDispatch } from '../../store/useAppDispatch';
+import { setInterview } from '../../store/slices/interview/interview.slice';
 
 export const Interview = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +23,7 @@ export const Interview = () => {
           <Link
             underline="none"
             color="secondary.main"
-            //onClick={() => dispatch()}
+            onClick={() => dispatch(setInterview(null))}
             component={RouterLink}
             to="nuevo"
           >
