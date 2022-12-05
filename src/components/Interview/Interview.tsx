@@ -1,27 +1,39 @@
-import { Button, Grid, Link } from "@mui/material";
+import { Button, Grid, Link, Container, Stack, Skeleton, Paper } from '@mui/material';
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
+import { ListInterviews } from '../ListInterviews';
+import { useAppDispatch } from '../../store/useAppDispatch';
 
 export const Interview = () => {
+  const dispatch = useAppDispatch();
   return (
     <>
-      <Grid item xs={8} sm={10}>
-        <Typography variant="h5"> Entrevistas</Typography>
-      </Grid>
-      <Grid item xs={4} sm={2}>
-        <Link
-          underline="none"
-          color="secondary.main"
-          component={RouterLink}
-          to="nuevo"
+      <Container>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          mb={5}
         >
-          <Button variant="contained">
-            <AddIcon />
-            &nbsp; Nuevo
-          </Button>
-        </Link>
-      </Grid>
+          <Typography variant="h4" gutterBottom>
+            Entrevistas
+          </Typography>
+          <Link
+            underline="none"
+            color="secondary.main"
+            //onClick={() => dispatch()}
+            component={RouterLink}
+            to="nuevo"
+          >
+            <Button variant="contained">
+              <AddIcon />
+              &nbsp; Nuevo
+            </Button>
+          </Link>
+        </Stack>
+        <ListInterviews />
+      </Container>
     </>
   );
 };

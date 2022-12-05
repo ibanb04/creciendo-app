@@ -34,7 +34,7 @@ function getStepContent(step: number) {
       return "unknown step";
   }
 }
-interface FormLayoutProps {
+export interface FormLayoutProps {
   action: string;
 }
 export const AddOrEditStudent: FC<FormLayoutProps> = ({ action }) => {
@@ -47,8 +47,8 @@ export const AddOrEditStudent: FC<FormLayoutProps> = ({ action }) => {
         action === 'add' ?
           <FormLayout title="Nuevo Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" steps={steps} action={action} defaultValues={studentDefaultValues} />
           : selectetStudent ?
-          <FormLayout title="Editar Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" action={action} steps={steps} />
-          : navigate('/estudiantes')
+            <FormLayout title="Editar Estudiante" getStepContent={getStepContent} redirectRoute="/estudiantes" action={action} steps={steps} />
+            : navigate('/estudiantes')
       }
     </>
   );
