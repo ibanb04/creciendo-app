@@ -11,10 +11,12 @@ import { setEjectorDepartment } from '../../../store/slices/department/ejectorDe
 import { deleteStudent } from '../../../firebase/providers';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import { setInterview } from '../../../store/slices/interview/interview.slice';
 
 
 interface UserActionsProps {
     params: any;
+    redirectRoute?: string;
 }
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -24,7 +26,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 
-const UserActions: FC<UserActionsProps> = ({ params }) => {
+const UserActions: FC<UserActionsProps> = ({ params, redirectRoute }) => {
     const [open, setOpen] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const handleClickOpen = () => {
@@ -39,17 +41,27 @@ const UserActions: FC<UserActionsProps> = ({ params }) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const handleEdit = () => {
-        dispatch(setStudent(params.row));
-        dispatch(setDepartment(params.row.birthDepartment));
-        dispatch(setEjectorDepartment(params.row.ejectorDepartment));
-        navigate('/estudiantes/editar');
+        if (redirectRoute === '/estudiantes/editar') {
+            dispatch(setStudent(params.row));
+            dispatch(setDepartment(params.row.birthDepartment));
+            dispatch(setEjectorDepartment(params.row.ejectorDepartment));
+            navigate(redirectRoute);
+        } else if (redirectRoute === '/entrevistas/editar') {
+            dispatch(setStudent(null));
+            dispatch(setInterview(params.row));
+            navigate(redirectRoute);
+        }
     };
 
     const handleDelete = () => {
-        deleteStudent(params.row.idNumber);
-        setOpenAlert(true);
-        setOpen(false);
-        //window.location.reload();
+        if (redirectRoute === '/estudiantes/editar') {
+            deleteStudent(params.row.idNumber);
+            setOpenAlert(true);
+            setOpen(false);
+            //window.location.reload();
+        } else {
+            console.log("No se ha implementado la eliminación de entrevistas");
+        }
     };
     return (
         <>

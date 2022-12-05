@@ -98,6 +98,15 @@ export const updateStudent = async (data: any) => {
   }
 };
 
+export const updateInterview = async (data: any) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
+    updateDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteStudent = async (id: string) => {
   try {
     const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);

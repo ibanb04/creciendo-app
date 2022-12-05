@@ -34,9 +34,7 @@ export const RegisterStudent = () => {
             </Button>
           </Link>
         </Stack>
-
         <ListStudents />
-
       </Container>
     </>
   );

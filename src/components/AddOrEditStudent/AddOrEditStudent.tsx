@@ -4,10 +4,10 @@ import { SocialEconomicForm } from "./Forms/SocialEconomicForm";
 import { FamiliarForm } from "./Forms/FamiliarForm";
 import { StudentStateForm } from "./Forms/StudentStateForm";
 import { studentDefaultValues } from "./utils/studentDefaultValues";
-import FormLayout from '../../ui/layouts/FormLayout';
 import { FC } from "react";
 import { useAppSelector } from '../../store/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
+import FormLayout from '../../ui/layouts/FormLayout';
 
 const steps = [
   "Información General del Alumno:",
@@ -34,10 +34,11 @@ function getStepContent(step: number) {
       return "unknown step";
   }
 }
-export interface FormLayoutProps {
-  action: string;
+
+interface AddOrEditStudentProps {
+  action?: string;
 }
-export const AddOrEditStudent: FC<FormLayoutProps> = ({ action }) => {
+export const AddOrEditStudent: FC<AddOrEditStudentProps> = ({ action }) => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const navigate = useNavigate();
 
