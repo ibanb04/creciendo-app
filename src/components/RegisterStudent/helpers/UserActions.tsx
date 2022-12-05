@@ -49,14 +49,15 @@ const UserActions: FC<UserActionsProps> = ({ params }) => {
         deleteStudent(params.row.idNumber);
         setOpenAlert(true);
         setOpen(false);
+        //window.location.reload();
     };
     return (
         <>
             <Stack direction="row" spacing={1}  >
-                <IconButton aria-label="edit"  onClick={handleEdit}  >
+                <IconButton aria-label="edit" onClick={handleEdit}  >
                     <EditIcon />
                 </IconButton>
-                <IconButton aria-label="delete" color="error"  onClick={handleClickOpen} >
+                <IconButton aria-label="delete" color="error" onClick={handleClickOpen} >
                     <DeleteIcon />
                 </IconButton>
                 <Dialog
