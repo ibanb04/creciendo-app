@@ -116,6 +116,15 @@ export const deleteStudent = async (id: string) => {
   }
 };
 
+export const deleteInterview = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${id}`);
+    deleteDoc(docuRef);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 export const registerInterview = async (
   data: studentDefaultValuesProps | interviewDefaultValuesProps

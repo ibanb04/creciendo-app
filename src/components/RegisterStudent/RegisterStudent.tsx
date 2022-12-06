@@ -1,13 +1,11 @@
-import { Button, Chip, Container, Link, Paper, Skeleton, Stack } from "@mui/material";
+import { Button, Chip, Container, Link, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
-import { setStudent } from "../../store/slices/student/student.slice";
-import { useAppDispatch } from "../../store/useAppDispatch"
 import { ListStudents } from "../ListStudents";
+import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAndInterviewState';
 
 export const RegisterStudent = () => {
-  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -24,7 +22,7 @@ export const RegisterStudent = () => {
           <Link
             underline="none"
             color="secondary.main"
-            onClick={() => dispatch(setStudent(null))}
+            onClick={useResetStudentAndInterviewState()}
             component={RouterLink}
             to="nuevo"
           >

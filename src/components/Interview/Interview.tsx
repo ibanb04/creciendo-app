@@ -5,9 +5,11 @@ import { Link as RouterLink } from "react-router-dom";
 import { ListInterviews } from '../ListInterviews';
 import { useAppDispatch } from '../../store/useAppDispatch';
 import { setInterview } from '../../store/slices/interview/interview.slice';
+import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAndInterviewState';
 
 export const Interview = () => {
-  const dispatch = useAppDispatch();
+
+
   return (
     <>
       <Container>
@@ -23,7 +25,7 @@ export const Interview = () => {
           <Link
             underline="none"
             color="secondary.main"
-            onClick={() => dispatch(setInterview(null))}
+            onClick={useResetStudentAndInterviewState()}
             component={RouterLink}
             to="nuevo"
           >
