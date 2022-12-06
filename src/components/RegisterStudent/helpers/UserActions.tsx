@@ -8,7 +8,7 @@ import { setStudent } from '../../../store/slices/student/student.slice';
 import { useNavigate } from 'react-router-dom';
 import { setDepartment } from '../../../store/slices/department/department.slice';
 import { setEjectorDepartment } from '../../../store/slices/department/ejectorDepartment.slice';
-import { deleteStudent } from '../../../firebase/providers';
+import { deleteStudent, deleteInterview } from '../../../firebase/providers';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { setInterview } from '../../../store/slices/interview/interview.slice';
@@ -42,6 +42,7 @@ const UserActions: FC<UserActionsProps> = ({ params, redirectRoute }) => {
     const navigate = useNavigate();
     const handleEdit = () => {
         if (redirectRoute === '/estudiantes/editar') {
+            dispatch(setInterview(null));
             dispatch(setStudent(params.row));
             dispatch(setDepartment(params.row.birthDepartment));
             dispatch(setEjectorDepartment(params.row.ejectorDepartment));
@@ -56,12 +57,12 @@ const UserActions: FC<UserActionsProps> = ({ params, redirectRoute }) => {
     const handleDelete = () => {
         if (redirectRoute === '/estudiantes/editar') {
             deleteStudent(params.row.idNumber);
-            setOpenAlert(true);
-            setOpen(false);
-            //window.location.reload();
         } else {
-            console.log("No se ha implementado la eliminación de entrevistas");
+            deleteInterview(params.row.studentId);
         }
+        setOpenAlert(true);
+        setOpen(false);
+        //window.location.reload();
     };
     return (
         <>
