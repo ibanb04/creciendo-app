@@ -6,6 +6,7 @@ import { useQuery } from "react-query";
 import { Paper, Stack, Skeleton } from '@mui/material';
 import CustomDataGridToolbar from "../../helpers/CustomDataGridToolbar";
 import { useStudentColumns } from "./helpers/useStudentColumns";
+import Checkbox from '@mui/material/Checkbox';
 
 export const ListStudents = () => {
 
@@ -45,6 +46,9 @@ export const ListStudents = () => {
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               rowsPerPageOptions={[5, 10, 20]}
               components={{
+                BaseCheckbox(props) {
+                  return <Checkbox {...props} color="secondary" />;
+                },
                 Toolbar: () => CustomDataGridToolbar(selectedRows, "Buscar Estudiantes"),
               }}
               disableColumnFilter

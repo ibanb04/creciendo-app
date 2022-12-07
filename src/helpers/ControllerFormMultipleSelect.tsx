@@ -38,8 +38,9 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
           <TextField
             select
             id={id}
-            variant="outlined"
+            // variant="outlined"
             label={label}
+            variant="filled"
             size={size}
             margin={margin}
 

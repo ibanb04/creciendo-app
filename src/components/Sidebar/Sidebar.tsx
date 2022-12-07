@@ -14,9 +14,16 @@ import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import svg from "../../assets/img/EscudoCreciendo.png";
 import { Grid, Link } from "@mui/material";
 import { Box } from "@mui/system";
-import Face6Icon from "@mui/icons-material/Face6";
+import FaceIcon from '@mui/icons-material/Face';
 import FeedIcon from "@mui/icons-material/Feed";
 import { Link as RouterLink } from "react-router-dom";
+import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
+import BadgeIcon from '@mui/icons-material/Badge';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import PixIcon from '@mui/icons-material/Pix';
+import HiveIcon from '@mui/icons-material/Hive';
+import SafetyDividerIcon from '@mui/icons-material/SafetyDivider';
+import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
 
 export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -61,19 +68,19 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
   }, [withScreen, setOpen]);
   const listSidebar: ListSidebar[] = [
     {
-      title: "Gestionar Estudiante",
+      title: "   Estudiantes",
       path: "/estudiantes",
-      icon: Face6Icon,
+      icon: FaceIcon,
     },
     {
-      title: "Gestionar Matricula",
+      title: "Gestionar matrícula ",
       path: "/matriculas",
-      icon: FeedIcon,
+      icon: BadgeIcon,
     },
     {
       title: "Entrevistas",
       path: "/entrevistas",
-      icon: FamilyRestroomIcon,
+      icon: HiveIcon,
     },
   ];
 
@@ -87,8 +94,11 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
             width: drawerWidth,
             boxSizing: "border-box",
             boxShadow: 3,
-            backgroundImage:
-              "linear-gradient(305deg, rgba(251,250,205,1) 35%, rgba(230,130,255,1) 100%)",
+            minHeight: "100vh",
+            backgroundImage: `url(${bg_blurry_gradient_form})`,
+            backgroundPosition: "center",
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
           },
         }}
         variant="persistent"
@@ -121,6 +131,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
                 width: 100,
                 maxHeight: { xs: 167, md: 167 },
                 maxWidth: { xs: 167, md: 167 },
+                boxShadow: 3,
               }}
               alt="Colegio Creciendo"
               src={svg}
@@ -139,11 +150,11 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
               onClick={handleDrawerCloseMobil}
             >
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton >
                   <ListItemIcon>
                     <Box component={item.icon} />
                   </ListItemIcon>
-                  <ListItemText primary={item.title} />
+                  <ListItemText primaryTypographyProps={{ style: { color: "#000000" } }} primary={item.title} />
                 </ListItemButton>
               </ListItem>
             </Link>

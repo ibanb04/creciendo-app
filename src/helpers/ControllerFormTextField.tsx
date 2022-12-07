@@ -39,13 +39,16 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
           multiline
           maxRows={maxRows}
           label={label}
-          variant={variant}
+          variant="filled"
+
           type={type}
           placeholder={placeholder}
           margin={margin}
           size={size}
           rows={rows}
-          sx={{ width: { xs: "80%", sm: "90%" } }}
+          sx={{
+            width: { xs: "80%", sm: "90%" }
+          }}
           {...field}
         />
       )}

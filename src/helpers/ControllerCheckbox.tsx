@@ -23,6 +23,7 @@ export const ControllerCheckbox: FC<ControllerCheckboxProps> = ({
                     render={({ field: props }) => (
                         <Checkbox
                             {...props}
+                            color="secondary"
                             checked={props.value}
                             onChange={(e) => props.onChange(e.target.checked)}
                         />

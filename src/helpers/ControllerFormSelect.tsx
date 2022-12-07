@@ -56,6 +56,7 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
       control={control}
       render={({ field }) => (
         <FormControl
+          variant="filled"
           sx={{ mt: 2, width: { xs: "80%", sm: "90%" } }}
           size={size}
         >

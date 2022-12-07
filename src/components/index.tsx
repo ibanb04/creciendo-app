@@ -7,6 +7,5 @@ export * from "./ListStudents";
 export * from "./ListInterviews";
 export * from "./AddOrEditInterview"
 export * from "./AddOrEditStudent"
-export * from "./SearchStudent"
 export * from "./RegisterStudent"
 export * from "../auth/pages/Login"

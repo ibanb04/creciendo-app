@@ -18,6 +18,9 @@ import { interviewDefaultValuesProps } from '../../components/AddOrEditInterview
 import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
 import { setStudent } from '../../store/slices/student/student.slice';
 import { setInterview } from '../../store/slices/interview/interview.slice';
+import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
+import wave_bg from '../../assets/wave_bg.svg'
+
 
 
 interface FormLayoutProps {
@@ -76,16 +79,26 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
         <>
 
             <Grid item xs={12} >
-                <Box sx={{ backgroundColor: '#f8f8f8', minWidth: { xs: 'none', md: '100%' }, maxWidth: "100%", boxShadow: 3, pl: 4, pr: 2, py: 4, borderRadius: 4, mb: 3, mr: { xs: 3, md: 0 } }} >
+                <Box sx={{
+                    minHeight: "100vh",
+                    backgroundImage: `url(${bg_blurry_gradient_form})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    minWidth: { xs: 'none', md: '100%' },
+                    maxWidth: "100%",
+                    boxShadow: 5,
+                    pl: 4, pr: 2, py: 4, borderRadius: 4, mb: 3, mr: { xs: 3, md: 0 }
+                }} >
                     <Grid item xs={12} sx={{ mb: 3 }} >
-                        <Typography color="secondary.main" variant="h5">
+                        <Typography color="secondary.main" variant="h5" sx={{ fontWeight: 600 }}>
                             {title}
                         </Typography>
                         <Divider />
                     </Grid>
                     <Stepper activeStep={activeStep} orientation="vertical">
                         {steps.map((step, index) => (
-                            <Step key={id + index}>
+                            <Step key={id + index} >
                                 <StepLabel
                                     optional={
                                         index === steps.length - 1 ? (
