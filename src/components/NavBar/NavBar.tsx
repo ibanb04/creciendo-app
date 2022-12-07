@@ -60,8 +60,8 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
         color="transparent"
         sx={{
           backdropFilter: "blur(20px)",
-          backgroundImage:
-            " linear-gradient(305deg, rgba(251,250,205,1) 35%, rgba(230,130,255,1) 100%)",
+          backgroundColor: "rgba(229, 128, 255, 0.26)",
+          //boxShadow: "none",
         }}
       >
         <Toolbar>
