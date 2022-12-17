@@ -14,9 +14,9 @@ export const RegisterStudent = () => {
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          mb={5}
+          mb={2}
         >
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" fontWeight={500} gutterBottom>
             Estudiantes
           </Typography>
           <Link

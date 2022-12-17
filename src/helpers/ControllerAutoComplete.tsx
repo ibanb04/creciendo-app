@@ -51,7 +51,7 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
             return data;
           }}
           renderInput={(params) => (
-            <TextField {...params} variant="filled" label={label} placeholder={placeholder} />
+            <TextField {...params} variant="outlined" color="secondary" label={label} placeholder={placeholder} />
           )}
         />
       )}

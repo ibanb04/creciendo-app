@@ -38,9 +38,9 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
           <TextField
             select
             id={id}
-            // variant="outlined"
+            variant="outlined"
             label={label}
-            variant="filled"
+            color="secondary"
             size={size}
             margin={margin}
 
@@ -59,6 +59,7 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
                 <ListItemText primary={item.value} />
               </MenuItem>
             ))}
+
           </TextField>
         );
       }}

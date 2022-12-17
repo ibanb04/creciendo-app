@@ -44,7 +44,8 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
                                 <TextField
                                     {...params}
                                     onBlur={onBlur}
-                                    variant="filled"
+                                    variant="outlined"
+                                    color="secondary"
                                     label={label}
                                     size={size}
                                     name={name}
