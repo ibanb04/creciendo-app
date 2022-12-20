@@ -178,7 +178,7 @@ const AnecdotarioNuevo = () => {
           <p style={{ marginTop: "0pt", marginBottom: "0pt" }}>
             <strong>
               <span style={{ fontFamily: "Arial" }}>
-                IDENTIFICACION DEL ESTUDIANTE:
+               1. IDENTIFICACION DEL ESTUDIANTE:
               </span>
             </strong>
           </p>
@@ -1836,18 +1836,10 @@ const AnecdotarioNuevo = () => {
             </tbody>
           </table>
           <br />
-          <ol style={{ margin: "0pt", paddingLeft: "0pt" }} type={1}>
-            <li
-              style={{
-                marginLeft: "15.01pt",
-                paddingLeft: "2.99pt",
-                fontFamily: "Arial",
-                fontWeight: "bold",
-              }}
-            >
-              ENTREVISTA INICIAL
-            </li>
-          </ol>
+          
+           <span style={{ fontFamily: "Arial", fontWeight: "bold" }}>
+            2. ENTREVISTA INICIAL
+            </span>
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -2108,18 +2100,9 @@ const AnecdotarioNuevo = () => {
             height: "12.9in",
           }}
         >
-          <ol start={3} style={{ margin: "0pt", paddingLeft: "0pt" }} type={1}>
-            <li
-              style={{
-                marginLeft: "33.01pt",
-                paddingLeft: "2.99pt",
-                fontFamily: "Arial",
-                fontWeight: "bold",
-              }}
-            >
-              OBSERVACIONES TRIMESTRALES:
-            </li>
-          </ol>
+          <span style={{ fontFamily: 'Arial', fontWeight: 'bold' }}>
+            3. OBSERVACIONES TRIMESTRALES:
+            </span>
 
           <table
             cellPadding={0}
@@ -3956,19 +3939,9 @@ const AnecdotarioNuevo = () => {
             height: "12.8in",
           }}
         >
-          <ol start={4} style={{ margin: "0pt", paddingLeft: "0pt" }} type={1}>
-            <li
-              style={{
-                marginLeft: "33.01pt",
-                lineHeight: "150%",
-                paddingLeft: "2.99pt",
-                fontFamily: "Arial",
-                fontWeight: "bold",
-              }}
-            >
-              SEGUIMIENTO y EVOLUCION
-            </li>
-          </ol>
+          <span style={{ fontFamily: "Arial" }}>
+            4. SEGUIMIENTO y EVOLUCION
+            </span>
           <table
             cellPadding={0}
             cellSpacing={0}
