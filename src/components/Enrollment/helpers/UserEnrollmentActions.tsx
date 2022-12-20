@@ -4,31 +4,21 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
-
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { GridRenderCellParams } from '@mui/x-data-grid';
-import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-import Checkbox from '@mui/material/Checkbox';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../store/useAppDispatch';
 import { setStudent } from '../../../store/slices/student/student.slice';
 import IconButton from '@mui/material/IconButton';
-
+import DescriptionIcon from '@mui/icons-material/Description';
+import DownloadingIcon from '@mui/icons-material/Downloading';
 interface UserEnrollmentActionsProps {
     params: GridRenderCellParams;
 }
 
-const initialState = [
-    { id: 1, name: 'Matricula', checked: false },
-    { id: 2, name: 'Anectotario Nuevo', checked: false },
-    { id: 3, name: 'Anectotario Antiguo', checked: false },
-    { id: 4, name: 'Autorización', checked: false },
-]
-
 
 const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const [option, setOption] = useState(initialState);
     const navigate = useNavigate();
 
     const open = Boolean(anchorEl);
@@ -40,56 +30,23 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
         setAnchorEl(null);
     };
 
-    const handleMatricula = () => {
-        setOption(option.map((item) => {
-            if (item.id === 1) {
-                return {
-                    ...item,
-                    checked: !item.checked
-                }
-            }
-            return item;
-        }))
-    }
-    const handleAnectotarioNuevo = () => {
-        setOption(option.map((item) => {
-            if (item.id === 2) {
-                return {
-                    ...item,
-                    checked: !item.checked
-                }
-            }
-            return item;
-        }))
-    }
-    const handleAnectotarioAntiguo = () => {
-        setOption(option.map((item) => {
-            if (item.id === 3) {
-                return {
-                    ...item,
-                    checked: !item.checked
-                }
-            }
-            return item;
-        }))
-    }
-    const handleAutorizacion = () => {
-        setOption(option.map((item) => {
-            if (item.id === 4) {
-                return {
-                    ...item,
-                    checked: !item.checked
-                }
-            }
-            return item;
-        }))
-    }
-
-    const handleDownload = () => {
-        console.log(option);
+    const handleGenerateMatricula = () => {
         dispatch(setStudent(params.row))
         navigate('/contrato-matricula');
     }
+    const handleGenerateAnectotarioNuevo = () => {
+        dispatch(setStudent(params.row))
+        navigate('/anecdotario-nuevo');
+    }
+    const handleGenerateAnectotarioAntiguo = () => {
+        dispatch(setStudent(params.row))
+        navigate('/anecdotario-antiguo');
+    }
+    const handleGenerateAutorizacion = () => {
+        dispatch(setStudent(params.row))
+        navigate('/autorizacion');
+    }
+
 
     return (
         <>
@@ -138,35 +95,37 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleMatricula} >
-                    <Checkbox color='secondary'
-                        checked={option.find((item) => item.id === 1)?.checked}
-                    /> Contrato de matricula
-                </MenuItem>
-                <MenuItem onClick={handleAnectotarioNuevo}>
-                    <Checkbox color='secondary'
-                        checked={option.find((item) => item.id === 2)?.checked}
-                    /> Anectotario Nuevo
-                </MenuItem>
-                <MenuItem onClick={handleAnectotarioAntiguo}>
-                    <Checkbox color='secondary'
-                        checked={option.find((item) => item.id === 3)?.checked}
-                    /> Anectotario Antiguo
-                </MenuItem>
-                <MenuItem onClick={handleAutorizacion}>
-                    <Checkbox color='secondary'
-                        checked={option.find((item) => item.id === 4)?.checked}
-                    /> Autorizacion y concentimiento
+                <MenuItem>
+                    <ListItemIcon>
+                        <DescriptionIcon />
+                    </ListItemIcon>
+                    Generar Documentos
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleDownload}>
-                    <ListItemIcon>
-                        <DownloadForOfflineIcon />
+                <MenuItem onClick={handleGenerateMatricula}>
+                    <ListItemIcon >
+                        <DownloadingIcon />
                     </ListItemIcon>
-                    Descargar
+                    Contrato de matricula
                 </MenuItem>
-
-
+                <MenuItem onClick={handleGenerateAnectotarioNuevo} >
+                    <ListItemIcon>
+                        <DownloadingIcon />
+                    </ListItemIcon>
+                    Anectotario Nuevo
+                </MenuItem>
+                <MenuItem onClick={handleGenerateAnectotarioAntiguo} >
+                    <ListItemIcon>
+                        <DownloadingIcon />
+                    </ListItemIcon>
+                    Anectotario Antiguo
+                </MenuItem>
+                <MenuItem onClick={handleGenerateAutorizacion} >
+                    <ListItemIcon>
+                        <DownloadingIcon />
+                    </ListItemIcon>
+                    Autorización y consentimiento
+                </MenuItem>
             </Menu>
         </>
     )

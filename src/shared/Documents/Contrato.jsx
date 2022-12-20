@@ -1,27 +1,40 @@
 import moment from "moment";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
+import domToPdf from "dom-to-pdf";
 
 const Contrato = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const añoLectivo = new Date().getFullYear() + 1;
-  const navigate = useNavigate();
   const componentRef = useRef();
   const date = moment();
   const currentDate = date.format("D/MM/YYYY");
+  const element = document.querySelector("#contrato");
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+  const options = {
+    filename: `Contrato_${selectetStudent.idNumber}.pdf`,
+    compression: "SLOW",
+  };
 
-  const handleDownload = () => {};
+  const handleDownload = () => {
+    domToPdf(element, options, function (pdf) {
+      console.log("done");
+    });
+  };
 
   return (
     <>
-      <CustomNavBar handlePrint={handlePrint} handleDownload={handleDownload} />
+      <CustomNavBar
+        title="Contrato de Matrícula"
+        handlePrint={handlePrint}
+        handleDownload={handleDownload}
+      />
+
       <div
         ref={componentRef}
         id="contrato"
@@ -32,7 +45,7 @@ const Contrato = () => {
         <div
           className="pag1"
           style={{
-            marginBottom: "2%",
+            height: "12.9in",
           }}
         >
           <p
@@ -68,114 +81,21 @@ const Contrato = () => {
               </span>
             </strong>
           </p>
-          <table
-            cellPadding={0}
-            cellSpacing={0}
+
+          <div
+            className="fecha"
             style={{
-              width: "100%",
-              marginLeft: "8pt",
-              border: "0.75pt solid #262626",
-              borderCollapse: "collapse",
-              float: "right",
+              fontFamily: "Arial",
+              fontWeight: "normal",
+              textAlign: "right",
+              fontSize: "9pt",
             }}
           >
-            <tbody>
-              <tr>
-                <td
-                  style={{
-                    width: "31.8%",
-                    borderRight: "0.75pt solid #262626",
-                    paddingRight: "3.12pt",
+            <span>FECHA:</span>
+            <span>&nbsp;</span>
+            <span>{selectetStudent?.admissionDate?.slice(0,10)}</span>
+          </div>
 
-                    paddingLeft: "4pt",
-                    verticalAlign: "top",
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginTop: "3pt",
-                      marginBottom: "3pt",
-                      pageBreakAfter: "avoid",
-                      fontSize: "9pt",
-                    }}
-                  >
-                    <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Contrato de Matrícula No.
-                    </span>
-                  </h2>
-                </td>
-                <td
-                  style={{
-                    width: "18.96%",
-                    borderRight: "0.75pt solid #262626",
-                    borderLeft: "0.75pt solid #262626",
-                    paddingRight: "3.12pt",
-                    paddingLeft: "3.12pt",
-                    verticalAlign: "top",
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginTop: "3pt",
-                      marginBottom: "3pt",
-                      textAlign: "right",
-                      pageBreakAfter: "avoid",
-                      fontSize: "9pt",
-                    }}
-                  >
-                    <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      40
-                    </span>
-                  </h2>
-                </td>
-                <td
-                  style={{
-                    width: "9.54%",
-                    borderRight: "0.75pt solid #262626",
-                    borderLeft: "0.75pt solid #262626",
-                    paddingRight: "3.12pt",
-                    paddingLeft: "3.12pt",
-                    verticalAlign: "top",
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginTop: "3pt",
-                      marginBottom: "3pt",
-                      pageBreakAfter: "avoid",
-                      fontSize: "9pt",
-                    }}
-                  >
-                    <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Fecha:
-                    </span>
-                  </h2>
-                </td>
-                <td
-                  style={{
-                    width: "39.7%",
-                    borderLeft: "0.75pt solid #262626",
-                    paddingRight: "3.12pt",
-                    paddingLeft: "3.12pt",
-                    verticalAlign: "top",
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginTop: "3pt",
-                      marginBottom: "3pt",
-                      pageBreakAfter: "avoid",
-                      fontSize: "9pt",
-                    }}
-                  >
-                    <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {currentDate}
-                    </span>
-                  </h2>
-                </td>
-              </tr>
-            </tbody>
-          </table>
           <p style={{ marginTop: "1pt", marginBottom: "1pt", fontSize: "9pt" }}>
             <span style={{ fontFamily: "Arial" }}>&nbsp;</span>
           </p>
@@ -392,7 +312,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Fecha Nacimiento: M/D/A
+                      Fecha Nacimiento: 
                     </span>
                   </h2>
                 </td>
@@ -1312,7 +1232,9 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.studentDisability}
+                    {selectetStudent?.studentDisability.map((disability) => (
+                            <span>{disability},</span>
+                        ))}
                     </span>
                   </h2>
                 </td>
@@ -2254,7 +2176,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherIdExpedition}
+                      {selectetStudent?.motherIdExpeditionPlace}
                     </span>
                   </p>
                 </td>
@@ -2612,7 +2534,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherIdExpedition}
+                      {selectetStudent?.fatherIdExpeditionPlace}
                     </span>
                   </p>
                 </td>
@@ -3164,9 +3086,7 @@ const Contrato = () => {
                   >
                     <span style={{ fontFamily: "Arial" }}>
                       Convive con el estudiante:
-                      {selectetStudent.anotherContactLivesWithStudent === true
-                        ? "Si"
-                        : "No"}
+                      {selectetStudent?.anotherContactlivesWithStudent === true ? "Si" : "No"}
                     </span>
                   </p>
                 </td>
@@ -3311,22 +3231,11 @@ const Contrato = () => {
               </tr>
             </tbody>
           </table>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "7pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
         </div>
         <div
           className="pag2"
           style={{
-            paddingTop: "0.5cm",
-            paddingBottom: "1.5cm",
+            height: "12.9in",
           }}
         >
           <p
@@ -3378,16 +3287,28 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
           </p>
-          <p
+          <div
+            className="container-firmas"
             style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "7pt",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
+              fontSize: "9pt",
+              fontFamily: "Arial",
             }}
           >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp;
+            <div className="firma-acudiente">
+              <span sx={{ marginBottom: 10 }}>
+                ________________________________________
+              </span>
+              <br />
+              <span>{selectetStudent.guardianName}</span>
+              <br />
+              <span>C.C {selectetStudent.guardiantId}</span>
+              <br />
+              <span>Firma del padre y/o Acudiente&nbsp;</span>
+            </div>
+            <div className="firma-rectora">
               <img
                 src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-2.jpeg"
                 width={204}
@@ -3395,169 +3316,23 @@ const Contrato = () => {
                 alt="firma diana"
                 style={{ float: "right" }}
               />
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "7pt",
-            }}
-          >
-            <br />
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "7pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "7pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "9pt",
-            }}
-          >
-            <span style={{ fontFamily: "Arial" }}>
-              ______________________________
-            </span>
-            <span style={{ width: "26.84pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: "Arial" }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp;
-            </span>
-            <span style={{ width: "8.68pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: "Arial" }}>
-              _____________________________
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "9pt",
-            }}
-          >
-            <span style={{ fontFamily: "Arial" }}>
-              {selectetStudent.guardianName}
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "9pt",
-            }}
-          >
-            <span style={{ fontFamily: "Arial" }}>
-              C.C {selectetStudent.guardiantId}
-            </span>
-            <span style={{ width: "2.75pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: "Arial" }}>
-              Diana Isabel Arrieta Herrera - Rector
-            </span>
-            <span style={{ width: "30.45pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "9pt",
-            }}
-          >
-            <span style={{ fontFamily: "Arial" }}>
-              Firma del padre y/o Acudiente&nbsp;
-            </span>
-            <span style={{ width: "19.04pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: "Arial" }}>
-              C.C 39.049.284 de Santa Marta
-            </span>
-          </p>
+              <br />
+              <span>________________________________________</span>
+              <br />
+              <span>Diana Isabel Arrieta Herrera</span>
+              <br />
+              <span>C.C 39.049.284 de Santa Marta</span>
+              <br />
+              <span>Firma del Rector&nbsp;</span>
+            </div>
+          </div>
         </div>
         <div
           className="pag3"
           style={{
-            paddingTop: "0.5cm",
-            paddingBottom: "0.8cm",
+            height: "12.9in",
           }}
         >
-          <p
-            style={{
-              height: "750px",
-            }}
-          >
-            &nbsp;
-          </p>
           <p
             style={{
               marginTop: "0pt",
@@ -4308,7 +4083,7 @@ const Contrato = () => {
         <div
           className="pag4"
           style={{
-            paddingTop: "0.5cm",
+            height: "12.9in",
           }}
         >
           <p
@@ -5086,38 +4861,11 @@ Descripción generada automáticamente"
               Parentesco: {selectetStudent.guardiantRelationship}
             </span>
           </p>
-
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "3pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: "Arial" }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "3pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-          </p>
         </div>
         <div
           className="pag5"
           style={{
-            paddingBottom: "0.8cm",
-            paddingTop: "0.8cm",
+            height: "12.9in",
           }}
         >
           <p
@@ -5870,7 +5618,7 @@ Descripción generada automáticamente"
         <div
           className="pag6"
           style={{
-            paddingTop: "0.5cm",
+            height: "12.7in",
           }}
         >
           <p
@@ -6646,32 +6394,6 @@ Descripción generada automáticamente"
             </span>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
               Parentesco: {selectetStudent.guardiantRelationship}
-            </span>
-          </p>
-
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "3pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: "Arial" }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "3pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
             </span>
           </p>
         </div>

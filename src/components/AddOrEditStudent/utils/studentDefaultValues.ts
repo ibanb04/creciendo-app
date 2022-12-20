@@ -1,4 +1,7 @@
+import moment from "moment";
+
 export interface studentDefaultValuesProps {
+  anotherContactlivesWithStudent: string;
   firstName: string;
   middleName: string;
   firstLastName: string;
@@ -29,6 +32,8 @@ export interface studentDefaultValuesProps {
   fatherProfession: string;
   fatherCompanyName: string;
   fatherJobTitle: string;
+  fatherId: string;
+  fatherIdExpeditionPlace: string;
   fatherEmail: string;
   fatherlivesWithStudent: string;
   motherName: string;
@@ -36,6 +41,8 @@ export interface studentDefaultValuesProps {
   motherProfession: string;
   motherCompanyName: string;
   motherJobTitle: string;
+  motherId: string;
+  motherIdExpeditionPlace: string;
   motherEmail: string;
   motherlivesWithStudent: string;
   eps: string;
@@ -64,9 +71,11 @@ export interface studentDefaultValuesProps {
   anotherContactRelationship: string;
   studentApproval: string;
   faceToFaceAuthorization: boolean;
+  admissionDate: string;
 }
 
-
+const date = moment();
+const currentDate = date.format("YYYY/MM/DD 12:00:00");
 
 export const studentDefaultValues: studentDefaultValuesProps = {
   firstName: "",
@@ -92,16 +101,21 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   academicSituation: "",
   reason: "",
   disabilityDescription: "",
+  anotherContactlivesWithStudent: "",
   diagnosis: "",
   exceptionalPerformance: false,
   fatherName: "",
   fatherTel: "",
   fatherProfession: "",
   fatherCompanyName: "",
+  fatherId: "",
+  fatherIdExpeditionPlace: "",
   fatherJobTitle: "",
   fatherEmail: "",
   fatherlivesWithStudent: "",
   motherName: "",
+  motherId: "",
+  motherIdExpeditionPlace: "",
   motherTel: "",
   motherProfession: "",
   motherCompanyName: "",
@@ -133,4 +147,5 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   anotherContactRelationship: "",
   studentApproval: "MATRICULADO",
   faceToFaceAuthorization: true,
+  admissionDate: currentDate,
 };

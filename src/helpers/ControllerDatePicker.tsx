@@ -21,7 +21,8 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
     id,
     size, }
 ) => {
-
+    const date = moment();
+    const currentDate = date.format("D/MM/YYYY");
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Controller
@@ -34,9 +35,9 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
                     <DatePicker
                         label={label}
                         value={value}
-                        inputFormat="dd-MMM-yyyy"
+                        inputFormat="dd/MM/yyyy"
                         onChange={(value) =>
-                            onChange(moment(value).format("YYYY-MM-DD 12:00:00"))
+                            onChange(moment(value).format("YYYY/MM/DD 12:00:00"))
                         }
                         inputRef={ref}
                         renderInput={(params) => (

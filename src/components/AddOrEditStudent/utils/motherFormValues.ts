@@ -11,6 +11,22 @@ export const motherFormValues: GeneralFormValuesType[] = [
     },
     {
         component: "textField",
+        name: "motherId",
+        id: "mother-id",
+        type: "text",
+        label: "Cedula de la Madre",
+        placeholder: "Escriba aqui",
+    },
+    {
+        component: "textField",
+        name: "motherIdExpeditionPlace",
+        id: "mother-id-expedition",
+        type: "text",
+        label: "Lugar de Expedicion",
+        placeholder: "Escriba aqui",
+    },
+    {
+        component: "textField",
         name: "motherTel",
         id: "mother-tel",
         type: "tel",

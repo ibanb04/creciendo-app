@@ -18,15 +18,16 @@ interface Props {
     window?: () => Window;
     children: React.ReactElement;
     handlePrint: any;
-    handleDownload: any;
+    handleDownload?: any;
+    title: string;
 }
 
 export const CustomNavBar = (props: Props) => {
-    const { handlePrint, handleDownload } = props;
+    const { handlePrint, handleDownload, title } = props;
 
     return (
         <>
-            <AppBar color='secondary' >
+            <AppBar color='secondary' position='static' >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -37,9 +38,10 @@ export const CustomNavBar = (props: Props) => {
                         <ArrowBackIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Contrato de Matrícula
+                        {title}
                     </Typography>
                     <IconButton
+                        onClick={handleDownload}
                         size="large"
                         color="inherit"
                     >
@@ -54,10 +56,14 @@ export const CustomNavBar = (props: Props) => {
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Toolbar id="back-to-top-anchor" />
+            <Toolbar id="back-to-top-anchor"
+                sx={{
+                    position: 'absolute',
+                }}
+            />
 
             <ScrollTop {...props}>
-                <Fab size="medium" aria-label="scroll back to top">
+                <Fab size="medium" color='secondary' aria-label="scroll back to top">
                     <KeyboardArrowUpIcon />
                 </Fab>
             </ScrollTop>
