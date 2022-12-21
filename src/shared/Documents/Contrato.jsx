@@ -3,8 +3,9 @@ import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
-import domToPdf from "dom-to-pdf";
 import finger_box from "../../assets/finger_box.png";
+import Pdf from "react-to-pdf";
+import jsPDF from 'jspdf';
 
 const Contrato = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
@@ -12,30 +13,17 @@ const Contrato = () => {
   const componentRef = useRef();
   const date = moment();
   const currentDate = date.format("D/MM/YYYY");
-  const element = document.querySelector("#contrato");
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  const options = {
-    filename: `Contrato_${selectetStudent.idNumber}.pdf`,
-    compression: "SLOW",
-  };
-
-  const handleDownload = () => {
-    domToPdf(element, options, function (pdf) {
-      console.log("done");
-    });
-  };
-
   return (
     <>
       <CustomNavBar
         title="Contrato de Matrícula"
         handlePrint={handlePrint}
-        handleDownload={handleDownload}
       />
-
+    
       <div
         ref={componentRef}
         id="contrato"
@@ -1233,8 +1221,8 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent?.studentDisability.map((disability) => (
-                        <span>{disability},</span>
+                      {selectetStudent?.studentDisability.map((disability, index) => (
+                        <span key={index}>{disability},</span>
                       ))}
                     </span>
                   </h2>
@@ -3341,7 +3329,8 @@ const Contrato = () => {
           </div>
         </div>
 
-        <div className="pag3"
+        <div
+          className="pag3"
           style={{
             height: "12.9in",
           }}
@@ -4093,7 +4082,8 @@ const Contrato = () => {
             </span>
           </p>
         </div>
-        <div className="pag4"
+        <div
+          className="pag4"
           style={{
             height: "12.9in",
           }}
@@ -4573,7 +4563,7 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>Rectora</span>
           </p>
-          
+
           <div
             className="firmas"
             style={{
@@ -4587,7 +4577,7 @@ const Contrato = () => {
           >
             <div className="firma1">
               <span>_________________________________________________</span>
-              <img src={finger_box} alt="huellero"/>
+              <img src={finger_box} alt="huellero" />
               <br />
               <span>FIRMA DEUDOR ACUDIENTE</span>
               <br />
@@ -4606,7 +4596,7 @@ const Contrato = () => {
             </div>
             <div className="firma2">
               <span>_________________________________________________</span>
-              <img src={finger_box} alt="huellero"/>
+              <img src={finger_box} alt="huellero" />
               <br />
               <span>FIRMA CODEUDOR</span>
               <br />
@@ -4625,7 +4615,8 @@ const Contrato = () => {
             </div>
           </div>
         </div>
-        <div className="pag5"
+        <div
+          className="pag5"
           style={{
             height: "13in",
           }}
@@ -5377,7 +5368,8 @@ const Contrato = () => {
             </span>
           </p>
         </div>
-        <div className="pag6"
+        <div
+          className="pag6"
           style={{
             height: "12.6in",
           }}
@@ -5857,7 +5849,7 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>Rectora</span>
           </p>
-          
+
           <div
             className="firmas"
             style={{
@@ -5871,7 +5863,7 @@ const Contrato = () => {
           >
             <div className="firma1">
               <span>_________________________________________________</span>
-              <img src={finger_box} alt="huellero"/>
+              <img src={finger_box} alt="huellero" />
               <br />
               <span>FIRMA DEUDOR ACUDIENTE</span>
               <br />
@@ -5890,7 +5882,7 @@ const Contrato = () => {
             </div>
             <div className="firma2">
               <span>_________________________________________________</span>
-              <img src={finger_box} alt="huellero"/>
+              <img src={finger_box} alt="huellero" />
               <br />
               <span>FIRMA CODEUDOR</span>
               <br />

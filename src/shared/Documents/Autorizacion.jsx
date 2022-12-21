@@ -11,29 +11,16 @@ const Autorizacion = () => {
   const date = moment();
   const currentDate = date.format("DD/MM/YYYY");
   const componentRef = useRef();
-  const element = document.querySelector("#autorizacion");
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  const options = {
-    filename: `Contrato_${selectetStudent.idNumber}.pdf`,
-    compression: "SLOW",
-  };
 
-  const handleDownload = () => {
-    domToPdf(element, options, function (pdf) {
-      console.log("done");
-    });
-  };
-
-  console.log(selectetStudent);
   return (
     <>
       <CustomNavBar
         title="Documento De Autorizaciones y Consentimientos"
         handlePrint={handlePrint}
-        handleDownload={handleDownload}
       />
 
       <div

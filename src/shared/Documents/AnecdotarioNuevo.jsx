@@ -21,23 +21,11 @@ const AnecdotarioNuevo = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  const options = {
-    filename: `Contrato_${selectetStudent.idNumber}.pdf`,
-    compression: "SLOW",
-  };
-
-  const handleDownload = () => {
-    domToPdf(element, options, function (pdf) {
-      console.log("done");
-    });
-  };
-
   return (
     <>
       <CustomNavBar
         title="Documento De Anecdotario Nuevo"
         handlePrint={handlePrint}
-        handleDownload={handleDownload}
       />
 
       <div
@@ -980,8 +968,8 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent?.enterWithBehaviourRecord.map((item) => (
-                        <span>{item},</span>
+                      {selectetStudent?.enterWithBehaviourRecord.map((item, index) => (
+                        <span key={index}>{item},</span>
                       ))}
                     </span>
                   </h2>
@@ -1288,8 +1276,8 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.studentDisability.map((disability) => (
-                        <span>{disability},</span>
+                      {selectetStudent?.studentDisability.map((disability, index) => (
+                        <span key={index}>{disability},</span>
                       ))}
                     </span>
                   </h2>
@@ -1390,8 +1378,8 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.especiallys.map((specialty) => (
-                        <span>{specialty},</span>
+                      {selectetStudent?.especiallys.map((specialty, index) => (
+                        <span key={index}>{specialty},</span>
                       ))}
                     </span>
                   </h2>
@@ -1442,8 +1430,8 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.therapys.map((therapy) => (
-                        <span>{therapy},</span>
+                      {selectetStudent?.therapys.map((therapy, index) => (
+                        <span key={index}>{therapy},</span>
                       ))}
                     </span>
                   </h2>

@@ -40,13 +40,7 @@ export const CustomNavBar = (props: Props) => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         {title}
                     </Typography>
-                    <IconButton
-                        onClick={handleDownload}
-                        size="large"
-                        color="inherit"
-                    >
-                        <DownloadIcon />
-                    </IconButton>
+                    
                     <IconButton
                         size="large"
                         color="inherit"
