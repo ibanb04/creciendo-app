@@ -3340,8 +3340,8 @@ const Contrato = () => {
             </div>
           </div>
         </div>
-        <div
-          className="pag3"
+
+        <div className="pag3"
           style={{
             height: "12.9in",
           }}
@@ -4093,8 +4093,7 @@ const Contrato = () => {
             </span>
           </p>
         </div>
-        <div
-          className="pag4"
+        <div className="pag4"
           style={{
             height: "12.9in",
           }}
@@ -4626,10 +4625,9 @@ const Contrato = () => {
             </div>
           </div>
         </div>
-        <div
-          className="pag5"
+        <div className="pag5"
           style={{
-            height: "12.6in",
+            height: "13in",
           }}
         >
           <p
@@ -5379,10 +5377,9 @@ const Contrato = () => {
             </span>
           </p>
         </div>
-        <div
-          className="pag6"
+        <div className="pag6"
           style={{
-            height: "12.7in",
+            height: "12.6in",
           }}
         >
           <p
@@ -5754,7 +5751,6 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
           </p>
-
           <p
             style={{
               marginTop: "0pt",
@@ -5768,7 +5764,6 @@ const Contrato = () => {
               Santa Marta, a los {currentDate}.
             </span>
           </p>
-
           <p
             style={{
               marginTop: "0pt",
@@ -5862,6 +5857,7 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>Rectora</span>
           </p>
+          
           <div
             className="firmas"
             style={{
