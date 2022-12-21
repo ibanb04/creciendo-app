@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
-import domToPdf from "dom-to-pdf";
 import { getInterviewById } from "../../firebase/providers";
+import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
 
 const AnecdotarioNuevo = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const añoLectivo = new Date().getFullYear() + 1;
   const componentRef = useRef();
-  const element = document.querySelector("#anecdotario-nuevo");
   const [interviewDate, setInterviewDate] = useState("");
 
   useEffect(() => {
@@ -968,9 +967,11 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent?.enterWithBehaviourRecord.map((item, index) => (
-                        <span key={index}>{item},</span>
-                      ))}
+                      {selectetStudent?.enterWithBehaviourRecord.map(
+                        (item, index) => (
+                          <span key={index}>{item},</span>
+                        )
+                      )}
                     </span>
                   </h2>
                 </td>
@@ -1276,9 +1277,11 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.studentDisability.map((disability, index) => (
-                        <span key={index}>{disability},</span>
-                      ))}
+                      {selectetStudent?.studentDisability.map(
+                        (disability, index) => (
+                          <span key={index}>{disability},</span>
+                        )
+                      )}
                     </span>
                   </h2>
                 </td>
@@ -3924,7 +3927,7 @@ const AnecdotarioNuevo = () => {
             </div>
             <div className="container-firma-rector">
               <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671489616_anecdotarios-nuevo/1671489616_anecdotarios-nuevo-1.jpeg"
+                src={firma_diana_arrieta}
                 width={177}
                 height={44}
                 alt=""

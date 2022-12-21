@@ -4,9 +4,8 @@ import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
 import finger_box from "../../assets/finger_box.png";
-import Pdf from "react-to-pdf";
-import jsPDF from 'jspdf';
-
+import logo from "../../assets/img/EscudoCreciendo.png";
+import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
 const Contrato = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const añoLectivo = new Date().getFullYear() + 1;
@@ -19,11 +18,8 @@ const Contrato = () => {
   });
   return (
     <>
-      <CustomNavBar
-        title="Contrato de Matrícula"
-        handlePrint={handlePrint}
-      />
-    
+      <CustomNavBar title="Contrato de Matrícula" handlePrint={handlePrint} />
+
       <div
         ref={componentRef}
         id="contrato"
@@ -46,7 +42,7 @@ const Contrato = () => {
             }}
           >
             <img
-              src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-1.png"
+              src={logo}
               width={62}
               height={61}
               alt="Logo"
@@ -1221,9 +1217,11 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent?.studentDisability.map((disability, index) => (
-                        <span key={index}>{disability},</span>
-                      ))}
+                      {selectetStudent?.studentDisability.map(
+                        (disability, index) => (
+                          <span key={index}>{disability},</span>
+                        )
+                      )}
                     </span>
                   </h2>
                 </td>
@@ -3311,7 +3309,7 @@ const Contrato = () => {
             </div>
             <div className="firma-rectora">
               <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-2.jpeg"
+                src={firma_diana_arrieta}
                 width={204}
                 height={62}
                 alt="firma diana"
@@ -3344,10 +3342,10 @@ const Contrato = () => {
             }}
           >
             <img
-              src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-1.png"
+              src={logo}
               width={62}
               height={61}
-              alt=""
+              alt="logo colegio creciendo"
               style={{ float: "right" }}
             />
             <span
@@ -4488,10 +4486,10 @@ const Contrato = () => {
               }}
             >
               <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-3.jpeg"
+                src={firma_diana_arrieta}
                 width={182}
                 height={55}
-                alt="C:\Users\exito\Desktop\firma diana.jpg"
+                alt="firma"
                 style={{ margin: "0 auto 0 0", display: "block" }}
               />
             </span>
@@ -4630,10 +4628,10 @@ const Contrato = () => {
             }}
           >
             <img
-              src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-1.png"
+              src={logo}
               width={62}
               height={61}
-              alt=""
+              alt="logo colegio creciendo"
               style={{ float: "right" }}
             />
             <span
@@ -5774,10 +5772,10 @@ const Contrato = () => {
               }}
             >
               <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-3.jpeg"
+                src={firma_diana_arrieta}
                 width={182}
                 height={55}
-                alt="C:\Users\exito\Desktop\firma diana.jpg"
+                alt="firma"
                 style={{ margin: "0 auto 0 0", display: "block" }}
               />
             </span>

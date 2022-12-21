@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
-import domToPdf from "dom-to-pdf";
 import moment from "moment";
+import logo from "../../assets/img/EscudoCreciendo.png";
 
 const Autorizacion = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
@@ -52,7 +52,7 @@ const Autorizacion = () => {
             <span style={{ fontFamily: '"Curlz MT"' }}>
               CRECIENDO
               <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671575750_autorizaciones-y-consentimientos-nuevo-2023/1671575750_autorizaciones-y-consentimientos-nuevo-2023-1.png"
+                src={logo}
                 width={60}
                 height={59}
                 alt=""
@@ -421,7 +421,8 @@ const Autorizacion = () => {
           }}
         >
           <span style={{ fontFamily: '"Arial Narrow"' }}>
-            C.C {selectetStudent?.guardiantId} de {selectetStudent?.guardiantExpeditionPlace}
+            C.C {selectetStudent?.guardiantId} de{" "}
+            {selectetStudent?.guardiantExpeditionPlace}
           </span>
         </p>
       </div>

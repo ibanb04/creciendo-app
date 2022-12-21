@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
-import domToPdf from "dom-to-pdf";
+import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
 
 const AnecdotarioAntiguo = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
@@ -3759,7 +3759,7 @@ const AnecdotarioAntiguo = () => {
             </div>
             <div className="container-firma-rector">
               <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671489616_anecdotarios-nuevo/1671489616_anecdotarios-nuevo-1.jpeg"
+              src={firma_diana_arrieta}
                 width={177}
                 height={44}
                 alt=""
