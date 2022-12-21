@@ -1,15 +1,22 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
 import domToPdf from "dom-to-pdf";
+import { getInterviewById } from "../../firebase/providers";
 
 const AnecdotarioNuevo = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const añoLectivo = new Date().getFullYear() + 1;
   const componentRef = useRef();
- 
   const element = document.querySelector("#anecdotario-nuevo");
+  const [interviewDate, setInterviewDate] = useState("");
+
+  useEffect(() => {
+    getInterviewById(selectetStudent.idNumber).then((res) => {
+      setInterviewDate(res.interviewDate);
+    });
+  }, [selectetStudent]);
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -25,7 +32,6 @@ const AnecdotarioNuevo = () => {
     });
   };
 
-  console.log(selectetStudent);
   return (
     <>
       <CustomNavBar
@@ -145,7 +151,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Fecha inscripción:
+                      Fecha inscripción: {interviewDate?.slice(0, 10)}
                     </span>
                   </h2>
                 </td>
@@ -167,7 +173,8 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Fecha matricula:&nbsp; {selectetStudent?.admissionDate?.slice(0, 10)}
+                      Fecha matricula:&nbsp;{" "}
+                      {selectetStudent?.admissionDate?.slice(0, 10)}
                     </span>
                   </h2>
                 </td>
@@ -178,7 +185,7 @@ const AnecdotarioNuevo = () => {
           <p style={{ marginTop: "0pt", marginBottom: "0pt" }}>
             <strong>
               <span style={{ fontFamily: "Arial" }}>
-               1. IDENTIFICACION DEL ESTUDIANTE:
+                1. IDENTIFICACION DEL ESTUDIANTE:
               </span>
             </strong>
           </p>
@@ -409,7 +416,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.birthDate}
+                      {selectetStudent?.birthDate?.slice(0, 10)}
                     </span>
                   </h2>
                 </td>
@@ -1021,7 +1028,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                   {selectetStudent?.lastGrade}
+                      {selectetStudent?.lastGrade}
                     </span>
                   </h2>
                 </td>
@@ -1065,7 +1072,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.academicSituation}    
+                      {selectetStudent?.academicSituation}
                     </span>
                   </h2>
                 </td>
@@ -1111,7 +1118,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.school}
+                      {selectetStudent?.school}
                     </span>
                   </h2>
                 </td>
@@ -1155,7 +1162,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.schoolCity}
+                      {selectetStudent?.schoolCity}
                     </span>
                   </h2>
                 </td>
@@ -1201,7 +1208,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.reason}
+                      {selectetStudent?.reason}
                     </span>
                   </h2>
                 </td>
@@ -1281,9 +1288,9 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.studentDisability.map((disability) => (
-                            <span>{disability},</span>
-                        ))}
+                      {selectetStudent?.studentDisability.map((disability) => (
+                        <span>{disability},</span>
+                      ))}
                     </span>
                   </h2>
                 </td>
@@ -1332,8 +1339,8 @@ const AnecdotarioNuevo = () => {
                       fontSize: "10pt",
                     }}
                   >
-                  <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.diagnosis}
+                    <span style={{ fontFamily: "Arial" }}>
+                      {selectetStudent?.diagnosis}
                     </span>
                   </h2>
                 </td>
@@ -1383,10 +1390,9 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.especiallys.map((specialty) => (
-                            <span>{specialty},</span>
-                        ))}
-
+                      {selectetStudent?.especiallys.map((specialty) => (
+                        <span>{specialty},</span>
+                      ))}
                     </span>
                   </h2>
                 </td>
@@ -1436,9 +1442,9 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.therapys.map((therapy) => (
-                            <span>{therapy},</span>
-                        ))}
+                      {selectetStudent?.therapys.map((therapy) => (
+                        <span>{therapy},</span>
+                      ))}
                     </span>
                   </h2>
                 </td>
@@ -1486,7 +1492,9 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.exceptionalPerformance === true ? "Si" : "No"}
+                      {selectetStudent?.exceptionalPerformance === true
+                        ? "Si"
+                        : "No"}
                     </span>
                   </h2>
                 </td>
@@ -1527,7 +1535,7 @@ const AnecdotarioNuevo = () => {
                       Madre:&nbsp;
                     </span>
                     <span style={{ fontFamily: "Arial" }}>
-                     {selectetStudent?.motherName}
+                      {selectetStudent?.motherName}
                     </span>
                   </h2>
                 </td>
@@ -1574,7 +1582,10 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                    Convive: {selectetStudent?.motherlivesWithStudent === true ? "Si" : "No"}
+                      Convive:{" "}
+                      {selectetStudent?.motherlivesWithStudent === true
+                        ? "Si"
+                        : "No"}
                     </span>
                   </h2>
                 </td>
@@ -1603,9 +1614,8 @@ const AnecdotarioNuevo = () => {
                       Padre:&nbsp;
                     </span>
                     <span style={{ fontFamily: "Arial" }}>
-                        {selectetStudent?.fatherName}
+                      {selectetStudent?.fatherName}
                     </span>
-                   
                   </h2>
                 </td>
                 <td
@@ -1626,9 +1636,7 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Celular: {
-                        selectetStudent?.fatherTel
-                      }
+                      Celular: {selectetStudent?.fatherTel}
                     </span>
                   </h2>
                 </td>
@@ -1652,7 +1660,10 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                    Convive: {selectetStudent?.fatherlivesWithStudent === true ? "Si" : "No"}
+                      Convive:{" "}
+                      {selectetStudent?.fatherlivesWithStudent === true
+                        ? "Si"
+                        : "No"}
                     </span>
                   </h2>
                 </td>
@@ -1727,7 +1738,10 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                        Convive: {selectetStudent?.guardiantlivesWithStudent === true ? "Si" : "No"}
+                      Convive:{" "}
+                      {selectetStudent?.guardiantlivesWithStudent === true
+                        ? "Si"
+                        : "No"}
                     </span>
                   </h2>
                 </td>
@@ -1800,9 +1814,11 @@ const AnecdotarioNuevo = () => {
                       fontSize: "10pt",
                     }}
                   >
-                    <span style={{ fontFamily: "Arial", fontWeight: "normal"  }}>
-                        Convive: &nbsp;
-                   {selectetStudent?.anotherContactlivesWithStudent === true ? "Si" : "No"}
+                    <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
+                      Convive: &nbsp;
+                      {selectetStudent?.anotherContactlivesWithStudent === true
+                        ? "Si"
+                        : "No"}
                     </span>
                   </h2>
                 </td>
@@ -1827,8 +1843,8 @@ const AnecdotarioNuevo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                        Parentesco: &nbsp;
-                   {selectetStudent?.anotherContactRelationship}
+                      Parentesco: &nbsp;
+                      {selectetStudent?.anotherContactRelationship}
                     </span>
                   </h2>
                 </td>
@@ -1836,10 +1852,10 @@ const AnecdotarioNuevo = () => {
             </tbody>
           </table>
           <br />
-          
-           <span style={{ fontFamily: "Arial", fontWeight: "bold" }}>
+
+          <span style={{ fontFamily: "Arial", fontWeight: "bold" }}>
             2. ENTREVISTA INICIAL
-            </span>
+          </span>
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -2100,9 +2116,9 @@ const AnecdotarioNuevo = () => {
             height: "12.9in",
           }}
         >
-          <span style={{ fontFamily: 'Arial', fontWeight: 'bold' }}>
+          <span style={{ fontFamily: "Arial", fontWeight: "bold" }}>
             3. OBSERVACIONES TRIMESTRALES:
-            </span>
+          </span>
 
           <table
             cellPadding={0}
@@ -3936,12 +3952,12 @@ const AnecdotarioNuevo = () => {
         <div
           className="pag4"
           style={{
-            height: "12.8in",
+            height: "12.6in",
           }}
         >
           <span style={{ fontFamily: "Arial" }}>
             4. SEGUIMIENTO y EVOLUCION
-            </span>
+          </span>
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -5982,11 +5998,6 @@ const AnecdotarioNuevo = () => {
               </tr>
             </tbody>
           </table>
-          <p style={{ marginTop: "0pt", marginBottom: "0pt" }}>
-            <strong>
-              <span style={{ fontFamily: "Arial" }}>&nbsp;</span>
-            </strong>
-          </p>
         </div>
       </div>
     </>

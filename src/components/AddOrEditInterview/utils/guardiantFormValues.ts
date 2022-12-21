@@ -40,4 +40,13 @@ export const guardianFormValues: GeneralFormValuesType[] = [
         label: "Entrevistador",
         placeholder: "Escriba aqui",
     },
+    {
+        component: "datePicker",
+        name: "interviewDate",
+        id: "interview-date",
+        type: "text",
+        label: "Fecha de entrevista",
+        placeholder: "Escriba aqui",
+    },
+
 ]

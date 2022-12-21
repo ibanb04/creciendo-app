@@ -141,9 +141,22 @@ export const getStudentById = async (id: string) => {
   try {
     const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);
     const docSnap = await getDoc(docuRef);
-    console.log(docSnap.data());
     if (docSnap.exists()) {
       return docSnap.data();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getInterviewById = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${id}`);
+    const docSnap = await getDoc(docuRef);
+    if (docSnap.exists()) {
+      return await docSnap.data();
     } else {
       return null;
     }

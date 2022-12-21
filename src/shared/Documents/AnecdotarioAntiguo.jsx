@@ -39,6 +39,7 @@ const AnecdotarioAntiguo = () => {
         ref={componentRef}
         style={{
           margin: "5%",
+          marginBottom: "0%",
         }}
       >
         <div
@@ -144,6 +145,7 @@ const AnecdotarioAntiguo = () => {
                       fontSize: "10pt",
                     }}
                   >
+                    
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
                       Fecha matricula:&nbsp;{" "}
                       {selectetStudent?.admissionDate?.slice(0, 10)}
@@ -388,7 +390,7 @@ const AnecdotarioAntiguo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.birthDate}
+                      {selectetStudent?.birthDate?.slice(0, 10)}
                     </span>
                   </h2>
                 </td>
@@ -1177,7 +1179,7 @@ const AnecdotarioAntiguo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.diagnosis}
+                      {selectetStudent?.diagnosis?.slice(0, 65)}
                     </span>
                   </h2>
                 </td>
@@ -3788,7 +3790,7 @@ const AnecdotarioAntiguo = () => {
         <div
           className="pag4"
           style={{
-            height: "12.8in",
+            height: "12.6in",
           }}
         >
           <span
@@ -5842,11 +5844,7 @@ const AnecdotarioAntiguo = () => {
               </tr>
             </tbody>
           </table>
-          <p style={{ marginTop: "0pt", marginBottom: "0pt" }}>
-            <strong>
-              <span style={{ fontFamily: "Arial" }}>&nbsp;</span>
-            </strong>
-          </p>
+         
         </div>
       </div>
     </>

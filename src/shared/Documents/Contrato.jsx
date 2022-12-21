@@ -4,6 +4,7 @@ import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
 import domToPdf from "dom-to-pdf";
+import finger_box from "../../assets/finger_box.png";
 
 const Contrato = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
@@ -93,7 +94,7 @@ const Contrato = () => {
           >
             <span>FECHA:</span>
             <span>&nbsp;</span>
-            <span>{selectetStudent?.admissionDate?.slice(0,10)}</span>
+            <span>{selectetStudent?.admissionDate?.slice(0, 10)}</span>
           </div>
 
           <p style={{ marginTop: "1pt", marginBottom: "1pt", fontSize: "9pt" }}>
@@ -312,7 +313,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Fecha Nacimiento: 
+                      Fecha Nacimiento:
                     </span>
                   </h2>
                 </td>
@@ -334,7 +335,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.birthDate}
+                      {selectetStudent?.birthDate?.slice(0, 10)}
                     </span>
                   </h2>
                 </td>
@@ -1232,9 +1233,9 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                    {selectetStudent?.studentDisability.map((disability) => (
-                            <span>{disability},</span>
-                        ))}
+                      {selectetStudent?.studentDisability.map((disability) => (
+                        <span>{disability},</span>
+                      ))}
                     </span>
                   </h2>
                 </td>
@@ -1914,7 +1915,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.ejectionDate}
+                      {selectetStudent?.ejectionDate?.slice(0, 10)}
                     </span>
                   </h2>
                 </td>
@@ -3025,6 +3026,22 @@ const Contrato = () => {
                   </p>
                 </td>
               </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          className="pag2"
+          style={{
+            height: "12.9in",
+          }}
+        >
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+            }}
+          >
+            <tbody>
               <tr style={{ height: "13.5pt" }}>
                 <td
                   colSpan={2}
@@ -3086,11 +3103,14 @@ const Contrato = () => {
                   >
                     <span style={{ fontFamily: "Arial" }}>
                       Convive con el estudiante:
-                      {selectetStudent?.anotherContactlivesWithStudent === true ? "Si" : "No"}
+                      {selectetStudent?.anotherContactlivesWithStudent === true
+                        ? "Si"
+                        : "No"}
                     </span>
                   </p>
                 </td>
               </tr>
+
               <tr style={{ height: "13.5pt" }}>
                 <td
                   colSpan={2}
@@ -3231,13 +3251,6 @@ const Contrato = () => {
               </tr>
             </tbody>
           </table>
-        </div>
-        <div
-          className="pag2"
-          style={{
-            height: "12.9in",
-          }}
-        >
           <p
             style={{
               textAlign: "justify",
@@ -4455,7 +4468,6 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
           </p>
-
           <p
             style={{
               marginTop: "0pt",
@@ -4469,7 +4481,6 @@ const Contrato = () => {
               Santa Marta, a los {currentDate}.
             </span>
           </p>
-
           <p
             style={{
               marginTop: "0pt",
@@ -4563,309 +4574,62 @@ const Contrato = () => {
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>Rectora</span>
           </p>
-          <p
+          
+          <div
+            className="firmas"
             style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
+              marginTop: 40,
               fontSize: "8.5pt",
+              fontFamily: '"Arial Narrow"',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
             }}
           >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp;
-              <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-4.png"
-                width={512}
-                height={103}
-                alt="Forma, Cuadrado
-
-Descripción generada automáticamente"
-                style={{ float: "right" }}
-              />
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              _________________________________________________&nbsp;
-            </span>
-            <span style={{ width: "9.23pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp;
-            </span>
-            <span style={{ width: "25.14pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              _______________________________________________&nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              FIRMA DEUDOR ACUDIENTE
-            </span>
-            <span style={{ width: "4.54pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              FIRMA CODEUDOR&nbsp;
-            </span>
-            <span style={{ width: "34.05pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "11pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.guardianName}
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.guardianName}
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              ________________________________________________
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ width: "26.16pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-            <span style={{ width: "33.35pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              _______________________________________________
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Nombres y apellidos&nbsp;
-            </span>
-            <span style={{ width: "1.88pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp;
-            </span>
-            <span style={{ width: "25.14pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Nombres y Apellidos&nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              CC No. {selectetStudent.guardiantId}
-            </span>
-            <span style={{ width: "3.52pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              CC No. {selectetStudent.guardiantId}
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Parentesco: {selectetStudent.guardiantRelationship}
-            </span>
-            <span style={{ width: "2.72pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Parentesco: {selectetStudent.guardiantRelationship}
-            </span>
-          </p>
+            <div className="firma1">
+              <span>_________________________________________________</span>
+              <img src={finger_box} alt="huellero"/>
+              <br />
+              <span>FIRMA DEUDOR ACUDIENTE</span>
+              <br />
+              <br />
+              <span style={{ fontSize: "11pt" }}>
+                {selectetStudent.guardianName}
+              </span>
+              <br />
+              <span>_________________________________________________</span>
+              <br />
+              <span>Nombres y apellidos</span>
+              <br />
+              <span>CC No. {selectetStudent?.guardiantId}</span>
+              <br />
+              <span>Parentesco: {selectetStudent?.guardiantRelationship}</span>
+            </div>
+            <div className="firma2">
+              <span>_________________________________________________</span>
+              <img src={finger_box} alt="huellero"/>
+              <br />
+              <span>FIRMA CODEUDOR</span>
+              <br />
+              <br />
+              <span style={{ fontSize: "11pt" }}>
+                {selectetStudent.guardianName}
+              </span>
+              <br />
+              <span>_________________________________________________</span>
+              <br />
+              <span>Nombres y apellidos</span>
+              <br />
+              <span>CC No. {selectetStudent?.guardiantId}</span>
+              <br />
+              <span>Parentesco: {selectetStudent?.guardiantRelationship}</span>
+            </div>
+          </div>
         </div>
         <div
           className="pag5"
           style={{
-            height: "12.9in",
+            height: "12.6in",
           }}
         >
           <p
@@ -6098,304 +5862,56 @@ Descripción generada automáticamente"
           >
             <span style={{ fontFamily: '"Arial Narrow"' }}>Rectora</span>
           </p>
-          <p
+          <div
+            className="firmas"
             style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
+              marginTop: 40,
               fontSize: "8.5pt",
+              fontFamily: '"Arial Narrow"',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-end",
             }}
           >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp;
-              <img
-                src="https://myfiles.space/user_files/139488_543daa43bb1ede3a/1671135613_contrato-de-matricula-nuevo-2023-editado/1671135613_contrato-de-matricula-nuevo-2023-editado-4.png"
-                width={512}
-                height={103}
-                alt="Forma, Cuadrado
-
-Descripción generada automáticamente"
-                style={{ float: "right" }}
-              />
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              _________________________________________________&nbsp;
-            </span>
-            <span style={{ width: "9.23pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp;
-            </span>
-            <span style={{ width: "25.14pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              _______________________________________________&nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              FIRMA DEUDOR ACUDIENTE
-            </span>
-            <span style={{ width: "4.54pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              FIRMA CODEUDOR&nbsp;
-            </span>
-            <span style={{ width: "34.05pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "11pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.guardianName}
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.guardianName}
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              ________________________________________________
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ width: "26.16pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;</span>
-            <span style={{ width: "33.35pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              _______________________________________________
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Nombres y apellidos&nbsp;
-            </span>
-            <span style={{ width: "1.88pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp;
-            </span>
-            <span style={{ width: "25.14pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Nombres y Apellidos&nbsp;
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              CC No. {selectetStudent.guardiantId}
-            </span>
-            <span style={{ width: "3.52pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              CC No. {selectetStudent.guardiantId}
-            </span>
-          </p>
-          <p
-            style={{
-              marginTop: "0pt",
-              marginBottom: "0pt",
-              textAlign: "justify",
-              fontSize: "8.5pt",
-            }}
-          >
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Parentesco: {selectetStudent.guardiantRelationship}
-            </span>
-            <span style={{ width: "2.72pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ width: "35.4pt", display: "inline-block" }}>
-              &nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            </span>
-            <span style={{ fontFamily: '"Arial Narrow"' }}>
-              Parentesco: {selectetStudent.guardiantRelationship}
-            </span>
-          </p>
+            <div className="firma1">
+              <span>_________________________________________________</span>
+              <img src={finger_box} alt="huellero"/>
+              <br />
+              <span>FIRMA DEUDOR ACUDIENTE</span>
+              <br />
+              <br />
+              <span style={{ fontSize: "11pt" }}>
+                {selectetStudent.guardianName}
+              </span>
+              <br />
+              <span>_________________________________________________</span>
+              <br />
+              <span>Nombres y apellidos</span>
+              <br />
+              <span>CC No. {selectetStudent?.guardiantId}</span>
+              <br />
+              <span>Parentesco: {selectetStudent?.guardiantRelationship}</span>
+            </div>
+            <div className="firma2">
+              <span>_________________________________________________</span>
+              <img src={finger_box} alt="huellero"/>
+              <br />
+              <span>FIRMA CODEUDOR</span>
+              <br />
+              <br />
+              <span style={{ fontSize: "11pt" }}>
+                {selectetStudent.guardianName}
+              </span>
+              <br />
+              <span>_________________________________________________</span>
+              <br />
+              <span>Nombres y apellidos</span>
+              <br />
+              <span>CC No. {selectetStudent?.guardiantId}</span>
+              <br />
+              <span>Parentesco: {selectetStudent?.guardiantRelationship}</span>
+            </div>
+          </div>
         </div>
       </div>
     </>

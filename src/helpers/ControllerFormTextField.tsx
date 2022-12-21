@@ -42,13 +42,17 @@ export const ControllerFormTextField: FC<ControllerFormTextFieldProps> = ({
           color="secondary"
           type={type}
           placeholder={placeholder}
+          inputProps={{
+            maxLength: 65,
+          }}
           margin={margin}
           size={size}
           rows={rows}
           sx={{
             width: { xs: "80%", sm: "90%" }
           }}
-          {...field}
+          onChange={(e) => field.onChange(e.target.value.toUpperCase())}
+          value={field.value}
         />
       )}
     />

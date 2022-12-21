@@ -82,7 +82,7 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   middleName: "",
   firstLastName: "",
   secondLastName: "",
-  idType: "", 
+  idType: "",
   idNumber: undefined,
   birthDate: "",
   age: "",
