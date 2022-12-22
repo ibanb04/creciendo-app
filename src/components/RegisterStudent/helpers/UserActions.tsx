@@ -62,12 +62,11 @@ const UserActions: FC<UserActionsProps> = ({ params, redirectRoute }) => {
         }
         setOpenAlert(true);
         setOpen(false);
-        //window.location.reload();
     };
     return (
         <>
             <Stack direction="row" spacing={1}  >
-                <IconButton aria-label="edit" onClick={handleEdit}  >
+                <IconButton  aria-label="edit" onClick={handleEdit}  >
                     <EditIcon />
                 </IconButton>
                 <IconButton aria-label="delete" color="error" onClick={handleClickOpen} >

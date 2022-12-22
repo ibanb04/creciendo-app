@@ -24,9 +24,7 @@ export const useStudentColumns = () => {
     { field: "idNumber", headerName: "ID", width: 120 },
     { field: "idType", headerName: "TIPO ", width: 60 },
     { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
-    //{ field: "middleName", headerName: "SEGUNDO NOMBRE", width: 130 },
     { field: "firstLastName", headerName: "PRIMER APELLIDO", width: 130 },
-    //{ field: "secondLastName", headerName: "SEGUNDO APELLIDO", width: 130 },
     { field: "grade", headerName: "GRADO", width: 88 },
     {
       field: "studentApproval",

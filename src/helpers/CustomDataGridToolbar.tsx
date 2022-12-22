@@ -12,7 +12,7 @@ import {
     useGridApiContext,
 } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
-const CustomDataGridToolbar = (selectedRows: [], label: string) => {
+const CustomDataGridToolbar = (label: string) => {
     const apiRef = useGridApiContext();
     const [searchValue, setSearchValue] = useState("");
 
@@ -43,41 +43,22 @@ const CustomDataGridToolbar = (selectedRows: [], label: string) => {
                 spacing={2}
                 sx={{ p: 2 }}
             >
-
-                {selectedRows.length > 0 ? (
-
-                    <Typography variant="subtitle1"  >
-                        {selectedRows.length} seleccionados
-                    </Typography>
-                ) : (
-                    <>
-                        <GridToolbarContainer >
-                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                <TextField
-                                    value={searchValue}
-                                    variant="standard"
-                                    size="small"
-                                    color="secondary"
-                                    onChange={handleSearchValueChange}
-                                    label={label}
-                                />
-                            </Box>
-                        </GridToolbarContainer>
-                        <IconButton aria-label="refresh" onClick={handleRefresh} >
-                            <ReplayIcon />
-                        </IconButton>
-                    </>
-                )
-                }
-
-                {selectedRows.length > 0 ? (
-                    <IconButton aria-label="delete"  >
-                        <DeleteIcon />
-                    </IconButton>
-                ) : null
-                }
-
+                <GridToolbarContainer >
+                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                        <TextField
+                            value={searchValue}
+                            variant="standard"
+                            size="small"
+                            color="secondary"
+                            onChange={handleSearchValueChange}
+                            label={label}
+                        />
+                    </Box>
+                </GridToolbarContainer>
+                <IconButton aria-label="refresh" onClick={handleRefresh} >
+                    <ReplayIcon />
+                </IconButton>
             </Stack>
         </>
     );

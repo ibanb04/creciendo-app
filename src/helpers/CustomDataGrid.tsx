@@ -12,26 +12,20 @@ interface CustomDataGridProps {
 
 const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
     const [pageSize, setPageSize] = useState(5);
-    const [selectedRows, setSelectedRows] = useState<any>([]);
-    const [rowId, setRowId] = useState(null);
-
-
-    const handleSelectRows = (ids: any) => {
-        const selectedIDs = new Set(ids);
-        const selectedRows = data.filter((row) =>
-            selectedIDs.has(idType === "student" ? parseInt(row.idNumber) : parseInt(row.studentId))
-        );
-        setSelectedRows(selectedRows?.map((row: any) => idType === "student" ? parseInt(row.idNumber) : parseInt(row.studentId)));
-    };
 
     return (
-        <Paper 
-        style={{
-            boxShadow: "0 10px 24px 0 rgba(128,128,128, 0.5)",
-        }}
+        <Paper
+            style={{
+                boxShadow: "0 10px 24px 0 rgba(128,128,128, 0.5)",
+            }}
         >
             <div style={{ height: 470, width: "100%" }}>
                 <DataGrid
+                    sx={{
+                        border: 0,
+                        px: 2,
+
+                    }}
                     columns={columns}
                     rows={data}
                     getRowId={idType === "student" ? (row) => parseInt(row.idNumber) : (row) => parseInt(row.studentId)}
@@ -42,16 +36,14 @@ const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
                         BaseCheckbox(props) {
                             return <Checkbox {...props} color="secondary" />;
                         },
-                        Toolbar: () => CustomDataGridToolbar(selectedRows, "Buscar "),
+                        Toolbar: () => CustomDataGridToolbar("Buscar "),
                     }}
                     disableColumnFilter
                     disableColumnMenu
                     disableColumnSelector
                     disableDensitySelector
                     pagination
-                    checkboxSelection
-                    onRowClick={(params: any) => setRowId(params.id)}
-                    onSelectionModelChange={(ids) => handleSelectRows(ids)}
+                    disableSelectionOnClick
                 />
             </div>
         </Paper>
