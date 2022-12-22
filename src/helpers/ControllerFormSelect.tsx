@@ -1,4 +1,4 @@
-import { FC, useId, useState } from "react";
+import { FC, useId } from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -56,7 +56,8 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
       control={control}
       render={({ field }) => (
         <FormControl
-          variant="filled"
+          variant="outlined"
+          color="secondary"
           sx={{ mt: 2, width: { xs: "80%", sm: "90%" } }}
           size={size}
         >

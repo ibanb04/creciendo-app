@@ -89,7 +89,7 @@ const UserActions: FC<UserActionsProps> = ({ params, redirectRoute }) => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Cancelar</Button>
+                        <Button color='inherit' onClick={handleClose}>Cancelar</Button>
                         <Button onClick={handleDelete} color="error" autoFocus>
                             Confirmar
                         </Button>

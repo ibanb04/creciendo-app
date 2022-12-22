@@ -30,15 +30,15 @@ export const academicFormValues: AcademicFormValuesType[] = [
         name: "grade",
         id: "grade",
         menuItem: [
-            { label: "Párvulo", value: "párvulo", },
-            { label: "Prejardín", value: "prejardín", },
-            { label: "Jardín", value: "jardín", },
-            { label: "Transición", value: "transición", },
-            { label: "Primero", value: "primero", },
-            { label: "Segundo", value: "segundo", },
-            { label: "Tercero", value: "tercero", },
-            { label: "Cuarto", value: "cuarto", },
-            { label: "Quinto", value: "quinto", },
+            { label: "Párvulo", value: "PARVULO", },
+            { label: "Prejardín", value: "PREJARDIN", },
+            { label: "Jardín", value: "JARDIN", },
+            { label: "Transición", value: "TRANSICION", },
+            { label: "Primero", value: "PRIMERO", },
+            { label: "Segundo", value: "SEGUNDO", },
+            { label: "Tercero", value: "TERCERO", },
+            { label: "Cuarto", value: "CUARTO", },
+            { label: "Quinto", value: "QUINTO", },
         ]
     },
     {
@@ -47,15 +47,15 @@ export const academicFormValues: AcademicFormValuesType[] = [
         name: "lastGrade",
         id: "last-grade",
         menuItem: [
-            { label: "Párvulo", value: "párvulo", },
-            { label: "Prejardín", value: "prejardín", },
-            { label: "Jardín", value: "jardín", },
-            { label: "Transición", value: "transición", },
-            { label: "Primero", value: "primero", },
-            { label: "Segundo", value: "segundo", },
-            { label: "Tercero", value: "tercero", },
-            { label: "Cuarto", value: "cuarto", },
-            { label: "Quinto", value: "quinto", },
+            { label: "Párvulo", value: "PARVULO", },
+            { label: "Prejardín", value: "PREJARDIN", },
+            { label: "Jardín", value: "JARDIN", },
+            { label: "Transición", value: "TRANSICION", },
+            { label: "Primero", value: "PRIMERO", },
+            { label: "Segundo", value: "SEGUNDO", },
+            { label: "Tercero", value: "TERCERO", },
+            { label: "Cuarto", value: "CUARTO", },
+            { label: "Quinto", value: "QUINTO", },
         ]
     },
     {
@@ -82,19 +82,19 @@ export const academicFormValues: AcademicFormValuesType[] = [
         menuItem: [
             {
                 label: "Aprobado",
-                value: "aprobado",
+                value: "APROBADO",
             },
             {
                 label: "Reprobado",
-                value: "reprobado",
+                value: "REPROBADO",
             },
             {
                 label: "Desertó",
-                value: "desertó",
+                value: "DESERTO",
             },
             {
                 label: "Primera vez",
-                value: "primera vez",
+                value: "PRIMERA VEZ",
             },
         ],
     },
@@ -116,11 +116,11 @@ export const academicFormValues: AcademicFormValuesType[] = [
         menuItem: [
             {
                 label: "Educación Tradicional",
-                value: "educación tradicional",
+                value: "EDUCACION TRADICIONAL",
             },
             {
                 label: "Inclusión",
-                value: "inclusión",
+                value: "INCLUSION",
             },
         ],
     },
@@ -130,8 +130,8 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "enter-with-behaviour-record",
         label: "Ingresa con acta de compromiso",
         menuItem: [
-            { label: "Acta de nivelación académica", value: "Acta de nivelación académica ", },
-            { label: "Acta de convivencia escolar", value: "Acta de convivencia escolar", },
+            { label: "Acta de nivelación académica", value: "ACTA DE NIVELACION ACADEMICA", },
+            { label: "Acta de convivencia escolar", value: "ACTA DE CONVIVENCIA ESCOLAR", },
         ],
     },
     {
@@ -140,13 +140,14 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "student-disability-id",
         label: "Discapacidad",
         menuItem: [
-            { label: "Auditiva", value: "auditiva", },
-            { label: "Visual", value: "visual", },
-            { label: "Física", value: "física", },
-            { label: "Cognitiva", value: "cognitiva", },
-            { label: "Psicosocial", value: "psicosocial", },
-            { label: "Sensorial", value: "sensorial", },
-            { label: "Otra", value: "otra", },
+            { label: "Auditiva", value: "AUDITIVA", },
+            { label: "Visual", value: "VISUAL", },
+            { label: "Física", value: "FISICA", },
+            { label: "Cognitiva", value: "COGNITIVA", },
+            { label: "Psicosocial", value: "PSICOSOCIAL", },
+            { label: "Sensorial", value: "SENSORIAL", },
+            { label: "Otra", value: "OTRA", },
+            { label: "Ninguna", value: "NINGUNA", }
 
         ],
     },
@@ -175,44 +176,48 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "especially-id",
         label: "Especialidades Tratadas",
         menuItem: [
-            { label: "ninguna", value: "ninguna", },
+            { label: "ninguna", value: "NINGUNA", },
             {
                 label: "Psicologia",
-                value: "psicologia",
+                value: "PSICOLOGIA",
             },
             {
                 label: "Fonoaudiología",
-                value: "fonoaudiología",
+                value: "FONOAUDIOLOGIA",
             },
             {
                 label: "Terapia Ocupacional",
-                value: "terapia ocupacional",
+                value: "TERAPIA OCUPACIONAL",
             },
             {
                 label: "Fisioterapia",
-                value: "fisioterapia",
+                value: "FISIOTERAPIA",
             },
             {
                 label: "Psiquiatria",
-                value: "psiquiatria",
+                value: "PSIQUIATRIA",
             },
             {
                 label: "Neuropsicología",
-                value: "neuropsicología",
+                value: "NEUROPSICOLOGIA",
             },
 
             {
                 label: "Pediatria",
-                value: "pediatria",
+                value: "PEDIATRIA",
             },
             {
                 label: "Psicopedagogía",
-                value: "psicopedagogía",
+                value: "PSICOPEDAGOGIA",
             },
             {
                 label: "Otra",
-                value: "otra",
+                value: "OTRA",
             },
+            {
+                label: "Ninguna",
+                value: "NINGUNA",
+            }
         ],
     },
     {
@@ -221,38 +226,41 @@ export const academicFormValues: AcademicFormValuesType[] = [
         id: "therapy-id",
         label: "Asiste a terapias",
         menuItem: [
-            { label: "ninguna", value: "ninguna", },
             {
                 label: "Psicología",
-                value: "psicología",
+                value: "PSICOLOGIA",
             },
             {
                 label: "Fonoaudiología",
-                value: "fonoaudiología",
+                value: "FONOAUDIOLOGIA",
             },
             {
                 label: "Terapia ocupacional",
-                value: "terapia ocupacional",
+                value: "TERAPIA OCUPACIONAL",
             },
             {
                 label: "Fisioterapia",
-                value: "fisioterapia",
+                value: "FISIOTERAPIA",
             },
             {
                 label: "Psiquiatría",
-                value: "psiquiatría infantil",
+                value: "PSIQUIATRIA INFANTIL",
             },
             {
                 label: "Terapia cognitiva",
-                value: "terapia cognitiva",
+                value: "TERAPIA COGNITIVA",
             },
             {
                 label: "Terapia integral",
-                value: "terapia integral",
+                value: "TERAPIA INTEGRAL",
             },
             {
                 label: "Otra",
-                value: "otra",
+                value: "OTRA",
+            },
+            {
+                label: "Ninguna",
+                value: "NINGUNA",
             }
         ],
     }, {

@@ -21,7 +21,6 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
     id,
     size, }
 ) => {
-
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Controller
@@ -34,9 +33,9 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
                     <DatePicker
                         label={label}
                         value={value}
-                        inputFormat="dd-MMM-yyyy"
+                        inputFormat="dd/MM/yyyy"
                         onChange={(value) =>
-                            onChange(moment(value).format("YYYY-MM-DD 12:00:00"))
+                            onChange(moment(value).format("YYYY/MM/DD 12:00:00"))
                         }
                         inputRef={ref}
                         renderInput={(params) => (
@@ -44,7 +43,8 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
                                 <TextField
                                     {...params}
                                     onBlur={onBlur}
-                                    variant="filled"
+                                    variant="outlined"
+                                    color="secondary"
                                     label={label}
                                     size={size}
                                     name={name}

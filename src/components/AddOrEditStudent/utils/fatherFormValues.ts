@@ -11,6 +11,22 @@ export const fatherFormValues: GeneralFormValuesType[] = [
     },
     {
         component: "textField",
+        name: "fatherId",
+        id: "father-id",
+        type: "text",
+        label: "Cedula del padre",
+        placeholder: "Escriba aqui",
+    },
+    {
+        component: "textField",
+        name: "fatherIdExpeditionPlace",
+        id: "father-id-expedition-place",
+        type: "text",
+        label: "Lugar de expedicion",
+        placeholder: "Escriba aqui",
+    },
+    {
+        component: "textField",
         name: "fatherTel",
         id: "father-tel",
         type: "tel",

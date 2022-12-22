@@ -1,4 +1,4 @@
-import { Button, Chip, Container, Link, Stack } from "@mui/material";
+import { Button, Container, Link, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
@@ -14,9 +14,9 @@ export const RegisterStudent = () => {
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          mb={5}
+          mb={2}
         >
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" fontWeight={500} gutterBottom>
             Estudiantes
           </Typography>
           <Link

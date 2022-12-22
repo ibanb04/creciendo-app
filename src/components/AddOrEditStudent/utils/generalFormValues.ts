@@ -157,4 +157,10 @@ export const generalFormValues: GeneralFormValuesType[] = [
     label: "Celular",
     placeholder: "Celular aqui",
   },
+  {
+    component: "datePicker",
+    id: "admission-date",
+    name: "admissionDate",
+    label: "Fecha de Matricula",
+  }
 ];

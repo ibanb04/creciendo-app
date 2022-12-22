@@ -1,4 +1,3 @@
-import React from 'react'
 import { setInterview } from '../store/slices/interview/interview.slice';
 import { setStudent } from '../store/slices/student/student.slice';
 import { useAppDispatch } from '../store/useAppDispatch';

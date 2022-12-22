@@ -33,10 +33,11 @@ export const socialEconomicFormValues: object[] = [
         id: "sisben-level",
         label: "Nivel de Sisben",
         menuItem: [
-            { label: "Grupo A", value: "grupo A", },
-            { label: "Grupo B", value: "grupo B", },
-            { label: "Grupo C", value: "grupo C", },
-            { label: "Grupo D", value: "grupo D", },
+            { label: "Grupo A", value: "GRUPO A", },
+            { label: "Grupo B", value: "GRUPO B", },
+            { label: "Grupo C", value: "GRUPO C", },
+            { label: "Grupo D", value: "GRUPO D", },
+            { label: "No aplica", value: "NO APLICA", },
         ]
     },
     {
@@ -53,11 +54,11 @@ export const socialEconomicFormValues: object[] = [
         name: "beneficiaryPrograms",
         id: "beneficiary-programs",
         menuItem: [
-            { label: "Familias en Acción", value: "familias en acción", },
-            { label: "Beneficiario Veterano fuerza pública", value: "beneficiario veterano fuerza pública", },
-            { label: "Beneficiario hijo madre cabeza de familia", value: "beneficiario hijo madre cabeza de familia", },
-            { label: "Beneficiario Héroe de la nación", value: "beneficiario héroe de la nación", },
-            { label: "Ninguno", value: "ninguno", },
+            { label: "Familias en Acción", value: "FAMILIAS EN ACCION", },
+            { label: "Beneficiario Veterano fuerza pública", value: "BENEFICIARIO VETERANO FUERZA PUBLICA", },
+            { label: "Beneficiario hijo madre cabeza de familia", value: "BENEFICIARIO HIJO MADRE CABEZA DE FAMILIA", },
+            { label: "Beneficiario Héroe de la nación", value: "BENEFICIARIO HEROE DE LA NACION", },
+            { label: "No aplica", value: "NO APLICA", },
         ],
     },
     {
@@ -66,9 +67,9 @@ export const socialEconomicFormValues: object[] = [
         id: "ethnicity-id",
         label: "Etnia",
         menuItem: [
-            { label: "Indígena", value: "indígena", },
-            { label: "Comunidad Afro", value: "comunidad afro", },
-            { label: "No aplica", value: "no aplica", },
+            { label: "Indígena", value: "INDIGENA", },
+            { label: "Comunidad Afro", value: "COMUNIDAD AFRO", },
+            { label: "No aplica", value: "NO APLICA", },
         ]
     },
     {
@@ -77,8 +78,8 @@ export const socialEconomicFormValues: object[] = [
         id: "indigenous-shelter-id",
         label: "Resguardo",
         menuItem: [
-            { label: "Resguardo Indígena", value: "resguardo indígena", },
-            { label: "No aplica", value: "no aplica", },
+            { label: "Resguardo Indígena", value: "RESGUARDO INDIGENA", },
+            { label: "No aplica", value: "NO APLICA", },
         ]
     },
     {
@@ -87,10 +88,10 @@ export const socialEconomicFormValues: object[] = [
         name: "conflictVictim",
         id: "conflict-victim",
         menuItem: [
-            { label: "Hijo desplazado", value: "desplazado", },
-            { label: "Hijo desmovilizado", value: "desmovilizado", },
-            { label: "Victimas minas", value: "victimaMinas", },
-            { label: "Ninguno", value: "ninguno", },
+            { label: "Hijo desplazado", value: "DESPLAZADO", },
+            { label: "Hijo desmovilizado", value: "DESMOVILIZADO", },
+            { label: "Victimas minas", value: "VICTIMA MINAS", },
+            { label: "No aplica", value: "NO APLICA", },
         ],
     },
     {

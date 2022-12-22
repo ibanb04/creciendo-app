@@ -19,7 +19,6 @@ import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
 import { setStudent } from '../../store/slices/student/student.slice';
 import { setInterview } from '../../store/slices/interview/interview.slice';
 import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
-import wave_bg from '../../assets/wave_bg.svg'
 
 
 

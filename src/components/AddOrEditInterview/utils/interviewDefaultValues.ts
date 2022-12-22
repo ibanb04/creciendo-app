@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export interface interviewDefaultValuesProps {
   accidents: string;
   accidentsDescription: string;
@@ -13,6 +15,7 @@ export interface interviewDefaultValuesProps {
   bothParents: string;
   congenitalDiseases: string;
   crawl: string;
+  cuidador: string;
   dayDreamDuration: string;
   diseaseDiagnosis: string;
   dorsalControl: string;
@@ -82,11 +85,14 @@ export interface interviewDefaultValuesProps {
   walk: string;
   withdrawalReason1: string;
   withdrawalReason2: string;
+  interviewDate: string;
 }
 
+const date = moment();
+const currentDate = date.format("YYYY/MM/DD 12:00:00");
+
 export const interviewDefaultValues: interviewDefaultValuesProps = {
-
-
+  interviewDate: currentDate,
   accidents: "",
   accidentsDescription: "",
   languageAcquisition: "",
@@ -99,6 +105,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   behaviorWithAdults: "",
   behaviorWithOtherChildren: "",
   birthDate: "",
+  cuidador:"",
   congenitalDiseases: "",
   crawl: "",
   dayDreamDuration: "",

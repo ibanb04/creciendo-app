@@ -42,8 +42,6 @@ export const AddOrEditStudent: FC<AddOrEditStudentProps> = ({ action }) => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const navigate = useNavigate();
 
-
-
   return (
     <>
       {

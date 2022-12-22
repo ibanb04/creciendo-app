@@ -56,9 +56,9 @@ export const earlyChildhoodFormValues: GeneralFormValuesType[] = [
         id: "sphincter-control",
         label: "Control de esfínteres",
         menuItem: [
-            { label: "No", value: "no", },
-            { label: "Si", value: "si", },
-            { label: "En proceso", value: "en proceso", },
+            { label: "No", value: "NO", },
+            { label: "Si", value: "SI", },
+            { label: "En proceso", value: "EN PROCESO", },
         ]
     }, {
         component: "textField",

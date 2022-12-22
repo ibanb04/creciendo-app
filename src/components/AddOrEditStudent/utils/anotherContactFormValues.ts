@@ -23,5 +23,12 @@ export const anotherContactFormValues: GeneralFormValuesType[] = [
         label: "Parentesco",
         placeholder: "Escriba aqui",
     },
+    {
+        component: "checkbox",
+        name: "anotherContactlivesWithStudent",
+        id: "another-contact-lives-with-student",
+        label: "Vive con el estudiante",
+        
+    }
 ]
 

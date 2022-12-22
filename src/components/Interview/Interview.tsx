@@ -1,15 +1,11 @@
-import { Button, Grid, Link, Container, Stack, Skeleton, Paper } from '@mui/material';
+import { Button, Link, Container, Stack } from '@mui/material';
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import { Link as RouterLink } from "react-router-dom";
 import { ListInterviews } from '../ListInterviews';
-import { useAppDispatch } from '../../store/useAppDispatch';
-import { setInterview } from '../../store/slices/interview/interview.slice';
 import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAndInterviewState';
 
 export const Interview = () => {
-
-
   return (
     <>
       <Container>
@@ -17,9 +13,9 @@ export const Interview = () => {
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          mb={5}
+          mb={2}
         >
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" fontWeight={500} gutterBottom>
             Entrevistas
           </Typography>
           <Link
