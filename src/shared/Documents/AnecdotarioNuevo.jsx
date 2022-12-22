@@ -179,7 +179,7 @@ const AnecdotarioNuevo = () => {
           <table
             cellPadding={0}
             cellSpacing={0}
-            style={{ width: "100%", borderCollapse: "collapse" }}
+            style={{ width: "100%", borderCollapse: "collapse", marginBottom: 10 }}
           >
             <tbody>
               <tr>
@@ -822,12 +822,12 @@ const AnecdotarioNuevo = () => {
                 </td>
               </tr>
             </tbody>
-            <br />
+           
           </table>
           <table
             cellPadding={0}
             cellSpacing={0}
-            style={{ width: "100%", borderCollapse: "collapse" }}
+            style={{ width: "100%", borderCollapse: "collapse", marginBottom: 10 }}
           >
             <tbody>
               <tr>
@@ -1202,26 +1202,7 @@ const AnecdotarioNuevo = () => {
                   </h2>
                 </td>
               </tr>
-              <tr style={{ height: "0pt" }}>
-                <td style={{ width: "134.35pt" }}>
-                  <br />
-                </td>
-                <td style={{ width: "68pt" }}>
-                  <br />
-                </td>
-                <td style={{ width: "93.55pt" }}>
-                  <br />
-                </td>
-                <td style={{ width: "56.3pt" }}>
-                  <br />
-                </td>
-                <td style={{ width: "56pt" }}>
-                  <br />
-                </td>
-                <td style={{ width: "131.3pt" }}>
-                  <br />
-                </td>
-              </tr>
+            
             </tbody>
           </table>
           <table
@@ -1231,6 +1212,7 @@ const AnecdotarioNuevo = () => {
               width: "100%",
               border: "0.75pt solid #262626",
               borderCollapse: "collapse",
+              marginBottom: 10,
             }}
           >
             <tbody>
@@ -1492,7 +1474,7 @@ const AnecdotarioNuevo = () => {
               </tr>
             </tbody>
           </table>
-          <br />
+          
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -1500,6 +1482,7 @@ const AnecdotarioNuevo = () => {
               width: "100%",
               border: "0.75pt solid #262626",
               borderCollapse: "collapse",
+              marginBottom: 10,
             }}
           >
             <tbody>
@@ -1842,8 +1825,7 @@ const AnecdotarioNuevo = () => {
               </tr>
             </tbody>
           </table>
-          <br />
-
+      
           <span style={{ fontFamily: "Arial", fontWeight: "bold" }}>
             2. ENTREVISTA INICIAL
           </span>
