@@ -10,14 +10,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import svg from "../../assets/img/EscudoCreciendo.png";
+import logo from "../../assets/img/logo.png";
 import { Grid, Link } from "@mui/material";
 import { Box } from "@mui/system";
 import FaceIcon from '@mui/icons-material/Face';
 import { Link as RouterLink } from "react-router-dom";
 import BadgeIcon from '@mui/icons-material/Badge';
 import HiveIcon from '@mui/icons-material/Hive';
-import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
+import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form3.svg';
 
 export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -125,10 +125,12 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
                 width: 100,
                 maxHeight: { xs: 167, md: 167 },
                 maxWidth: { xs: 167, md: 167 },
-                boxShadow: 3,
+                boxShadow: "0 5px 14px 0 rgba(128,128,128, 0.5)",
+                borderRadius: "50%",
+                border: "none",
               }}
               alt="Colegio Creciendo"
-              src={svg}
+              src={logo}
             />
           </RouterLink>
         </Grid>

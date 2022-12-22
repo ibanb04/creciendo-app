@@ -56,9 +56,9 @@ const CustomDataGridToolbar = (selectedRows: [], label: string) => {
                                 <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                                 <TextField
                                     value={searchValue}
-                                    size="small"
                                     variant="standard"
-
+                                    size="small"
+                                    color="secondary"
                                     onChange={handleSearchValueChange}
                                     label={label}
                                 />

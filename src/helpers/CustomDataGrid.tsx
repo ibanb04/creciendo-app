@@ -25,7 +25,11 @@ const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
     };
 
     return (
-        <Paper elevation={4}>
+        <Paper 
+        style={{
+            boxShadow: "0 10px 24px 0 rgba(128,128,128, 0.5)",
+        }}
+        >
             <div style={{ height: 470, width: "100%" }}>
                 <DataGrid
                     columns={columns}

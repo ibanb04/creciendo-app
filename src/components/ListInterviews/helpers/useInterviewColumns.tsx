@@ -11,11 +11,10 @@ export const useInterviewColumns = () => {
         { field: "firstName", headerName: "PRIMER NOMBRE", width: 130 },
         { field: "firstLastName", headerName: "PRIMER APELLIDO", width: 130 },
         { field: "gradeToApply", headerName: "GRADO A APLICAR", width: 88 },
-        { field: "guardianName", headerName: "ACUDIENTE", width: 108 },
         {
             field: "download",
             headerName: "DOCUMENTO",
-            width: 130,
+            width: 50,
             type: "actions",
             renderCell: RenderDownloadInterview,
         },
@@ -26,7 +25,8 @@ export const useInterviewColumns = () => {
             type: "actions",
             renderCell: RenderUserActions,
         },
-        { field: "guardiantTel", headerName: "CONTACTO", width: 102 },
+        { field: "guardianName", headerName: "ACUDIENTE", width: 108 },
+        { field: "guardiantPhone", headerName: "CONTACTO", width: 102 },
     ], []);
     return columns;
 }

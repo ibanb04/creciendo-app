@@ -86,7 +86,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                     backgroundSize: 'cover',
                     minWidth: { xs: 'none', md: '100%' },
                     maxWidth: "100%",
-                    boxShadow: 5,
+                    boxShadow: "0 20px 29px 0 rgba(128,128,128, 0.5)",
                     pl: 4, pr: 2, py: 4, borderRadius: 4, mb: 3, mr: { xs: 3, md: 0 }
                 }} >
                     <Grid item xs={12} sx={{ mb: 3 }} >
@@ -110,13 +110,21 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                                 <StepContent>
                                     <FormProvider {...methods}>
                                         <form onSubmit={methods.handleSubmit(handleNext)}>
+
                                             <Grid
                                                 container
                                                 direction="row"
                                                 columnSpacing={1}
                                                 spacing={2.5}
-                                                mb={2}
-                                                py={1}
+                                                my={1}
+                                                pb={1}
+                                                px={2}
+                                                sx={{
+                                                    backgroundColor: "rgba( 255, 255, 255, 0.25 )",
+                                                    backdropFilter: "blur( 8.5px )",
+                                                    WebkitBackdropFilter: "blur( 8.5px )",
+                                                    borderRadius: "10px",
+                                                }}
                                             >
                                                 {getStepContent(activeStep)}
                                             </Grid>

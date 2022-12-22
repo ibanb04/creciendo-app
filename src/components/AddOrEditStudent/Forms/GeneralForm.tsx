@@ -1,8 +1,9 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { FC, SetStateAction, useId } from "react";
 import { useFormContext } from "react-hook-form";
 import { generalFormValues } from "../utils/generalFormValues";
 import getFormContent from '../../../shared/getFormContent';
+import Paper from "@mui/material/Paper/Paper";
 
 interface GeneralFormInputs {
   firstName: string;
@@ -27,11 +28,12 @@ export const GeneralForm: FC = () => {
   const key = useId();
   return (
     <>
-      {generalFormValues.map((item, index) => (
-        <Grid key={key + index} item xs={12} sm={3}>
-          {getFormContent(item, control)}
-        </Grid>
-      ))}
+
+        {generalFormValues.map((item, index) => (
+          <Grid key={key + index} item xs={12} sm={3}>
+            {getFormContent(item, control)}
+          </Grid>
+        ))}
     </>
   );
 };
