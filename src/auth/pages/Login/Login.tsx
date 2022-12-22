@@ -5,13 +5,11 @@ import {
   Collapse,
   Grid,
   IconButton,
-  Link,
   TextField,
-  Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { FC } from 'react'
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { AuthLayout } from "../../layout/AuthLayout";
 import { useAppDispatch, useAppSelector } from "../../../store/useAppDispatch";
 import { Controller, useForm } from "react-hook-form";
@@ -71,6 +69,7 @@ export const Login: FC = () => {
                 <TextField
                   label="Correo"
                   type="email"
+                  color="secondary"
                   placeholder="correo@google.com"
                   fullWidth
                   helperText={errors.email?.message}
@@ -101,6 +100,7 @@ export const Login: FC = () => {
                   // {...field}
                   label="Contraseña"
                   type="password"
+                  color="secondary"
                   placeholder="Contraseña"
                   fullWidth
                   helperText={
@@ -149,7 +149,6 @@ export const Login: FC = () => {
                 Login
               </Button>
             </Grid>
-
           </Grid>
 
           <Grid
@@ -159,9 +158,7 @@ export const Login: FC = () => {
             sx={{ cursor: "pointer", textDecoration: 'underline' }}
             onClick={handleClick}
           >
-
             Crear una cuenta
-
           </Grid>
         </Grid>
       </form>

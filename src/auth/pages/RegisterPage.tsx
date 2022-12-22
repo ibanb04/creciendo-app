@@ -81,6 +81,7 @@ export const RegisterPage = () => {
               render={({ field }) => (
                 <TextField
                   label="Nombre completo"
+                  color="secondary"
                   type="text"
                   placeholder="Nombre completo"
                   fullWidth
@@ -108,6 +109,7 @@ export const RegisterPage = () => {
               render={({ field }) => (
                 <TextField
                   label="Correo"
+                  color="secondary"
                   type="email"
                   placeholder="correo@google.com"
                   fullWidth
@@ -137,6 +139,7 @@ export const RegisterPage = () => {
                 <TextField
                   // {...field}
                   label="Contraseña"
+                  color="secondary"
                   type="password"
                   placeholder="Contraseña"
                   fullWidth
@@ -162,9 +165,10 @@ export const RegisterPage = () => {
               }}
               render={({ field }) => (
                 <FormControl fullWidth>
-                  <InputLabel id="user-type">Tipo de Usuario</InputLabel>
+                  <InputLabel color="secondary" id="user-type">Tipo de Usuario</InputLabel>
                   <Select
                     labelId="user-type"
+                    color="secondary"
                     id="demo-simple-select"
                     label="user-type"
                     value={field.value || ""}

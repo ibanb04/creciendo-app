@@ -76,7 +76,7 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Colegio Creciendo
+            COLEGIO CRECIENDO
           </Typography>
           {auth && (
             <PopupState variant="popover" popupId="demo-popup-menu">

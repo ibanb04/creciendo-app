@@ -50,7 +50,6 @@ export const DashboardRoutes = () => {
               <Route path="/entrevistas" element={<Interview />} />
               <Route path="/entrevistas/nuevo" element={<AddOrEditInterview action="add" />} />
               <Route path="/entrevistas/editar" element={<AddOrEditInterview action="edit" />} />
-              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </Grid>
         </Main>
