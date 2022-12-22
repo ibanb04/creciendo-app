@@ -22,7 +22,15 @@ export const psychoAffectivityFormValues: GeneralFormValuesType[] = [
         type: "text",
         label: "Tutor legal",
         placeholder: "Escriba aqui",
-    }, {
+    },{
+        component: "textField",
+        name: "cuidador",
+        id: "cuidador",
+        type: "text",
+        label: "Cuidador",
+        placeholder: "Escriba aqui",
+    },
+    {
         component: "textField",
         name: "numberOfSiblings",
         id: "number-of-siblings",
@@ -35,10 +43,10 @@ export const psychoAffectivityFormValues: GeneralFormValuesType[] = [
         id: "siblings-position",
         label: "Posición entre los hermanos",
         menuItem: [
-            { label: "Menor", value: "menor", },
-            { label: "Intermedio", value: "intermedio", },
-            { label: "Mayor", value: "mayor", },
-            { label: "Único", value: "único", },
+            { label: "Menor", value: "MENOR", },
+            { label: "Intermedio", value: "INTERMEDIO", },
+            { label: "Mayor", value: "MAYOR", },
+            { label: "Único", value: "UNICO", },
         ]
     }, {
         component: "textField",

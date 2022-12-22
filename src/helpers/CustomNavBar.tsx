@@ -2,12 +2,10 @@ import ScrollTop from './ScrollTop';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import CssBaseline from '@mui/material/CssBaseline';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import IconButton from '@mui/material/IconButton';
 import PrintIcon from '@mui/icons-material/Print';
-import DownloadIcon from '@mui/icons-material/Download';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 interface Props {
@@ -23,7 +21,7 @@ interface Props {
 }
 
 export const CustomNavBar = (props: Props) => {
-    const { handlePrint, handleDownload, title } = props;
+    const { handlePrint, title } = props;
 
     return (
         <>
@@ -40,7 +38,7 @@ export const CustomNavBar = (props: Props) => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         {title}
                     </Typography>
-                    
+
                     <IconButton
                         size="large"
                         color="inherit"

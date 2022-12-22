@@ -15,6 +15,7 @@ export interface interviewDefaultValuesProps {
   bothParents: string;
   congenitalDiseases: string;
   crawl: string;
+  cuidador: string;
   dayDreamDuration: string;
   diseaseDiagnosis: string;
   dorsalControl: string;
@@ -104,6 +105,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   behaviorWithAdults: "",
   behaviorWithOtherChildren: "",
   birthDate: "",
+  cuidador:"",
   congenitalDiseases: "",
   crawl: "",
   dayDreamDuration: "",

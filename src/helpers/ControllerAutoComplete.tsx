@@ -1,12 +1,10 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { FC } from "react";
 import { Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { setDepartment } from "../store/slices/department/department.slice";
 import { setEjectorDepartment } from "../store/slices/department/ejectorDepartment.slice";
 import {
   resetDepartmentValue,
-  setStudent,
 } from "../store/slices/student/student.slice";
 import { useAppDispatch, useAppSelector } from "../store/useAppDispatch";
 

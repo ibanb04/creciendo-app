@@ -1,19 +1,16 @@
 import { getStudents } from "../../firebase/providers";
 import { useEffect, useState } from "react";
-import { DataGrid, } from "@mui/x-data-grid";
 import { DocumentData } from "firebase/firestore/lite";
 import { useQuery } from "react-query";
-import { Paper, Stack, Skeleton, Container } from '@mui/material';
-import CustomDataGridToolbar from "../../helpers/CustomDataGridToolbar";
-import Checkbox from '@mui/material/Checkbox';
+import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useEnrollmentColumns } from './helpers/useEnrollmentColumns';
 import CustomDataGrid from "../../helpers/CustomDataGrid";
 import CustomDataGridSkeleton from '../../helpers/CustomDataGridSkeleton';
+import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAndInterviewState';
 
 export const Enrollment = () => {
-
-
+  const resetStudentAndInterviewSelected = useResetStudentAndInterviewState();
   const [students, setstudents] = useState<DocumentData[]>([]);
   const columns = useEnrollmentColumns();
 
@@ -22,6 +19,7 @@ export const Enrollment = () => {
   );
 
   useEffect(() => {
+    resetStudentAndInterviewSelected();
     if (data) setstudents(data);
   }, [isFetching]);
 

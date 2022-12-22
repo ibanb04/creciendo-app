@@ -21,8 +21,6 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
     id,
     size, }
 ) => {
-    const date = moment();
-    const currentDate = date.format("D/MM/YYYY");
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Controller

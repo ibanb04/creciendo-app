@@ -10,19 +10,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
 import svg from "../../assets/img/EscudoCreciendo.png";
 import { Grid, Link } from "@mui/material";
 import { Box } from "@mui/system";
 import FaceIcon from '@mui/icons-material/Face';
-import FeedIcon from "@mui/icons-material/Feed";
 import { Link as RouterLink } from "react-router-dom";
-import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic';
 import BadgeIcon from '@mui/icons-material/Badge';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import PixIcon from '@mui/icons-material/Pix';
 import HiveIcon from '@mui/icons-material/Hive';
-import SafetyDividerIcon from '@mui/icons-material/SafetyDivider';
 import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
 
 export const DrawerHeader = styled("div")(({ theme }) => ({

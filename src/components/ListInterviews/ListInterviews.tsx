@@ -3,10 +3,10 @@ import { getInterviews } from '../../firebase/providers';
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { DocumentData } from 'firebase/firestore/lite';
-import Stack from '@mui/material/Stack';
 import { useInterviewColumns } from './helpers/useInterviewColumns';
 import CustomDataGrid from '../../helpers/CustomDataGrid';
 import CustomDataGridSkeleton from '../../helpers/CustomDataGridSkeleton';
+import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAndInterviewState';
 
 export const ListInterviews = () => {
 
@@ -14,10 +14,11 @@ export const ListInterviews = () => {
   const { data, isLoading, isFetching } = useQuery(["interviews"], () =>
     getInterviews()
   );
-
+  const resetStudentAndInterviewState = useResetStudentAndInterviewState();
   const columns = useInterviewColumns();
 
   useEffect(() => {
+    resetStudentAndInterviewState();
     if (data) setInterviews(data);
   }, [isFetching]);
 

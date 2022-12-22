@@ -14,10 +14,10 @@ export const prenatalHistoryFormValues: GeneralFormValuesType[] = [
         id: "type-of-birth",
         label: "Tipo de Nacimiento",
         menuItem: [
-            { label: "Parto natural", value: "parto natural", },
-            { label: "Cesárea", value: "cesárea", },
-            { label: "A término", value: "a término", },
-            { label: "Prematuro", value: "prematuro", },
+            { label: "Parto natural", value: "PARTO NATURAL", },
+            { label: "Cesárea", value: "CESAREA", },
+            { label: "A término", value: "A TERMINO", },
+            { label: "Prematuro", value: "PREMATURO", },
         ]
     }, {
         component: "checkbox",

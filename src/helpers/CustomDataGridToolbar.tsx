@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { debounce } from "@mui/material/utils";
-import { TextField, InputAdornment } from '@mui/material';
+import { TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';

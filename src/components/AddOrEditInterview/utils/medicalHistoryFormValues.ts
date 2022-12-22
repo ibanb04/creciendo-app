@@ -14,8 +14,8 @@ export const medicalHistoryFormValues: GeneralFormValuesType[] = [
         id: "allergies",
         label: "Alergias",
         menuItem: [
-            { label: "Si", value: "si", },
-            { label: "No", value: "no", },
+            { label: "Si", value: "SI", },
+            { label: "No", value: "NO", },
         ]
     }, {
         component: "textField",
@@ -31,8 +31,8 @@ export const medicalHistoryFormValues: GeneralFormValuesType[] = [
         id: "accidents",
         label: "Accidentes",
         menuItem: [
-            { label: "Si", value: "si", },
-            { label: "No", value: "no", },
+            { label: "Si", value: "SI", },
+            { label: "No", value: "NO", },
         ]
     }, {
         component: "textField",     
@@ -47,8 +47,8 @@ export const medicalHistoryFormValues: GeneralFormValuesType[] = [
         id: "surgery",
         label: "Cirugías",
         menuItem: [
-            { label: "Si", value: "si", },
-            { label: "No", value: "no", },
+            { label: "Si", value: "SI", },
+            { label: "No", value: "NO", },
         ]
     }, {
         component: "textField",

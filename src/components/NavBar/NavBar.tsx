@@ -7,7 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { FC, Fragment, useContext, useState } from "react";
+import { FC, Fragment, useState } from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { useAppDispatch } from "../../store/useAppDispatch";

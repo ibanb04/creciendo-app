@@ -8,7 +8,6 @@ import { Enrollment } from "../components/Enrollment";
 import { Interview } from "../components/Interview";
 import { AddOrEditStudent } from '../components/AddOrEditStudent/AddOrEditStudent';
 import { AddOrEditInterview } from "../components/AddOrEditInterview";
-import Contrato from "../shared/Documents/Contrato";
 
 const drawerWidth = 250;
 

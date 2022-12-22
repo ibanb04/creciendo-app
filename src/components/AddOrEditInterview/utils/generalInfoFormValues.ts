@@ -76,15 +76,15 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         id: "grade-to-apply",
         label: "Grado a cursar",
         menuItem: [
-            { label: "Párvulo", value: "párvulo", },
-            { label: "Prejardín", value: "prejardín", },
-            { label: "Jardín", value: "jardín", },
-            { label: "Transición", value: "transición", },
-            { label: "Primero", value: "primero", },
-            { label: "Segundo", value: "segundo", },
-            { label: "Tercero", value: "tercero", },
-            { label: "Cuarto", value: "cuarto", },
-            { label: "Quinto", value: "quinto", },
+            { label: "Párvulo", value: "PARVULO", },
+            { label: "Prejardín", value: "PREJARDIN", },
+            { label: "Jardín", value: "JARDIN", },
+            { label: "Transición", value: "TRANSICION", },
+            { label: "Primero", value: "PRIMERO", },
+            { label: "Segundo", value: "SEGUNDO", },
+            { label: "Tercero", value: "TERCERO", },
+            { label: "Cuarto", value: "CUARTO", },
+            { label: "Quinto", value: "QUINTO", },
         ]
     }
 ]

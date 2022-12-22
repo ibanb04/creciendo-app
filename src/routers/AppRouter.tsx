@@ -7,6 +7,7 @@ import Contrato from "../shared/Documents/Contrato";
 import AnecdotarioNuevo from "../shared/Documents/AnecdotarioNuevo";
 import AnecdotarioAntiguo from "../shared/Documents/AnecdotarioAntiguo";
 import Autorizacion from "../shared/Documents/Autorizacion";
+import InterviewDocument from "../shared/Documents/InterviewDocument";
 
 export const AppRouter = () => {
   const status = useCheckAuth();
@@ -20,6 +21,7 @@ export const AppRouter = () => {
             <Route path="/anecdotario-nuevo" element={<AnecdotarioNuevo />} />
             <Route path="/anecdotario-antiguo" element={<AnecdotarioAntiguo />} />
             <Route path="/autorizacion" element={<Autorizacion />} />
+            <Route path="/documento-entrevista" element={<InterviewDocument />} />
             <Route path="/*" element={<DashboardRoutes />} />
           </>
         ) : (
