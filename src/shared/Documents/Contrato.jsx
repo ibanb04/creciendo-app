@@ -6,9 +6,10 @@ import { CustomNavBar } from "../../helpers/CustomNavBar";
 import finger_box from "../../assets/finger_box.png";
 import logo from "../../assets/img/EscudoCreciendo.png";
 import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
+import { useLectiveYear } from "../../hooks/useLectiveYear";
 const Contrato = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
-  const añoLectivo = new Date().getFullYear() + 1;
+  const lectiveYear = useLectiveYear();
   const componentRef = useRef();
   const date = moment();
   const currentDate = date.format("D/MM/YYYY");
@@ -62,7 +63,7 @@ const Contrato = () => {
           >
             <strong>
               <span style={{ fontFamily: "Arial" }}>
-                PERIODO ACADEMICO {añoLectivo}
+                PERIODO ACADEMICO {lectiveYear}
               </span>
             </strong>
           </p>
@@ -3202,7 +3203,7 @@ const Contrato = () => {
                           En calidad de acudiente o representante legal del
                           estudiante, entiende que la modalidad de estudio para
                           el &nbsp;
-                          {añoLectivo} es presencial y acepta estar de acuerdo
+                          {lectiveYear} es presencial y acepta estar de acuerdo
                           con que su acudido(a) asista de manera presencial a
                           las clases para desarrollar el proceso de educación en
                           la modalidad presencial.
@@ -3251,7 +3252,7 @@ const Contrato = () => {
             <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;&nbsp;</span>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
               Conozco y acepto que el modelo educativo ofrecido por la
-              institución para el periodo lectivo {añoLectivo} es el modelo
+              institución para el periodo lectivo {lectiveYear} es el modelo
               presencial. Me comprometo, además, a cumplir con las obligaciones
               financieras adquiridas con la institución cancelando los costos
               correspondientes a: matrícula (una sola vez al iniciar el período
@@ -3440,7 +3441,7 @@ const Contrato = () => {
           >
             <strong>
               <span style={{ fontFamily: '"Arial Narrow"' }}>
-                CONTRATO DE SERVICIOS EDUCATIVOS AÑO ESCOLAR {añoLectivo}
+                CONTRATO DE SERVICIOS EDUCATIVOS AÑO ESCOLAR {lectiveYear}
               </span>
             </strong>
             <br />
@@ -3977,7 +3978,7 @@ const Contrato = () => {
               ($195.000) en la primaria, las cuales serán pagadas dentro de los
               cinco (5) primeros días del mes o período al cual correspondan, a
               partir del mes de febrero hasta el mes de noviembre del año &nbsp;
-              {añoLectivo}.&nbsp;
+              {lectiveYear}.&nbsp;
             </span>
           </p>
           <p
@@ -4394,7 +4395,7 @@ const Contrato = () => {
               expresa y conscientemente que su hijo(a) o acudido(a) así sea
               formado(a) (ART. 68 C.N.). De igual manera acepta que el modelo
               educativo ofrecido por la institución para el periodo lectivo{" "}
-              {añoLectivo} es el modelo de educación presencial.&nbsp;
+              {lectiveYear} es el modelo de educación presencial.&nbsp;
             </span>
           </p>
           <p
@@ -4412,8 +4413,8 @@ const Contrato = () => {
             </strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
               El presente contrato tiene vigencia de un año lectivo contando a
-              partir del 1 de febrero de {añoLectivo} hasta el 30 de noviembre
-              de {añoLectivo}. Su ejecución será sucesiva por periodos
+              partir del 1 de febrero de {lectiveYear} hasta el 30 de noviembre
+              de {lectiveYear}. Su ejecución será sucesiva por periodos
               mensuales. Para el presente contrato NO operará prórroga
               automática del mismo, es independiente para cada año lectivo y
               programa curricular la celebración de un nuevo contrato y el
@@ -4726,7 +4727,7 @@ const Contrato = () => {
           >
             <strong>
               <span style={{ fontFamily: '"Arial Narrow"' }}>
-                CONTRATO DE SERVICIOS EDUCATIVOS AÑO ESCOLAR {añoLectivo}
+                CONTRATO DE SERVICIOS EDUCATIVOS AÑO ESCOLAR {lectiveYear}
               </span>
             </strong>
             <br />
@@ -5263,7 +5264,7 @@ const Contrato = () => {
               ($195.000) en la primaria, las cuales serán pagadas dentro de los
               cinco (5) primeros días del mes o período al cual correspondan, a
               partir del mes de febrero hasta el mes de noviembre del año &nbsp;
-              {añoLectivo}.&nbsp;
+              {lectiveYear}.&nbsp;
             </span>
           </p>
           <p
@@ -5680,7 +5681,7 @@ const Contrato = () => {
               expresa y conscientemente que su hijo(a) o acudido(a) así sea
               formado(a) (ART. 68 C.N.). De igual manera acepta que el modelo
               educativo ofrecido por la institución para el periodo lectivo{" "}
-              {añoLectivo} es el modelo de educación presencial.&nbsp;
+              {lectiveYear} es el modelo de educación presencial.&nbsp;
             </span>
           </p>
           <p
@@ -5698,8 +5699,8 @@ const Contrato = () => {
             </strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
               El presente contrato tiene vigencia de un año lectivo contando a
-              partir del 1 de febrero de {añoLectivo} hasta el 30 de noviembre
-              de {añoLectivo}. Su ejecución será sucesiva por periodos
+              partir del 1 de febrero de {lectiveYear} hasta el 30 de noviembre
+              de {lectiveYear}. Su ejecución será sucesiva por periodos
               mensuales. Para el presente contrato NO operará prórroga
               automática del mismo, es independiente para cada año lectivo y
               programa curricular la celebración de un nuevo contrato y el

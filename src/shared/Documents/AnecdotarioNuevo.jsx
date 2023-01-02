@@ -4,10 +4,11 @@ import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
 import { getInterviewById } from "../../firebase/providers";
 import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
+import { useLectiveYear } from "../../hooks/useLectiveYear";
 
 const AnecdotarioNuevo = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
-  const añoLectivo = new Date().getFullYear() + 1;
+  const lectiveYear = useLectiveYear();
   const componentRef = useRef();
   const [interviewDate, setInterviewDate] = useState("");
 
@@ -106,7 +107,7 @@ const AnecdotarioNuevo = () => {
             }}
           >
             <span style={{ fontFamily: '"Franklin Gothic Demi Cond"' }}>
-              PERIODO LECTIVO {añoLectivo}
+              PERIODO LECTIVO {lectiveYear}
             </span>
           </p>
           <table

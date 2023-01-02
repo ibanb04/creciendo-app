@@ -2,27 +2,24 @@ import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
-import moment from "moment";
 import logo from "../../assets/img/EscudoCreciendo.png";
+import { useLectiveYear } from "../../hooks/useLectiveYear";
 
 const InterviewDocument = () => {
   const { selectedInterview } = useAppSelector((state) => state.interview);
-  const añoLectivo = new Date().getFullYear() + 1;
-  const date = moment();
-  const currentDate = date.format("DD/MM/YYYY");
+  const lectiveYear = useLectiveYear();
   const componentRef = useRef();
-
+  
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  console.log(selectedInterview);
   return (
     <>
       <CustomNavBar title="Documento De Entrevista" handlePrint={handlePrint} />
       <div
         ref={componentRef}
         style={{
-         margin: "5% 5% 0 5%",
+          margin: "5% 5% 0 5%",
         }}
       >
         <div
@@ -156,7 +153,7 @@ const InterviewDocument = () => {
             <strong>
               <span style={{ fontFamily: "Arial" }}>
                 HISTORIA GENERAL (ENTREVISTA A PADRES Y/O ACUDIENTES) PARA
-                INGRESO - {añoLectivo}
+                INGRESO - {lectiveYear}
               </span>
             </strong>
           </p>
@@ -2853,7 +2850,7 @@ const InterviewDocument = () => {
         <div
           className="pag2"
           style={{
-            height: "12.5in",
+            height: "12in",
           }}
         >
           <p
@@ -2981,7 +2978,7 @@ const InterviewDocument = () => {
             <strong>
               <span style={{ fontFamily: "Arial" }}>
                 HISTORIA GENERAL (ENTREVISTA A PADRES Y/O ACUDIENTES) PARA
-                INGRESO - {añoLectivo}
+                INGRESO - {lectiveYear}
               </span>
             </strong>
           </p>
@@ -4796,7 +4793,7 @@ const InterviewDocument = () => {
                       fontFamily: '"Times New Roman",serif',
                       textAlign: "justify",
                       lineHeight: "100%",
-                      paddingTop: 10
+                      paddingTop: 10,
                     }}
                   >
                     <span style={{ fontFamily: '"Arial",sans-serif' }}>

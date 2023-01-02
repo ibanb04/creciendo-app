@@ -4,10 +4,11 @@ import { useReactToPrint } from "react-to-print";
 import { CustomNavBar } from "../../helpers/CustomNavBar";
 import moment from "moment";
 import logo from "../../assets/img/EscudoCreciendo.png";
+import { useLectiveYear } from "../../hooks/useLectiveYear";
 
 const Autorizacion = () => {
   const { selectetStudent } = useAppSelector((state) => state.student);
-  const añoLectivo = new Date().getFullYear() + 1;
+  const lectiveYear = useLectiveYear();
   const date = moment();
   const currentDate = date.format("DD/MM/YYYY");
   const componentRef = useRef();
@@ -200,7 +201,7 @@ const Autorizacion = () => {
             }}
           >
             Autorización para la tenencia, administración y uso de los útiles y
-            textos escolares año {añoLectivo}.
+            textos escolares año {lectiveYear}.
           </li>
         </ol>
         <p
@@ -214,7 +215,7 @@ const Autorizacion = () => {
             Acepto que he sido informado de los requerimientos de textos y
             útiles escolares necesarios para el desarrollo de las actividades
             pedagógicas y que se me ha orientado sobre el uso que se le dará a
-            los mismos, durante el periodo escolar {añoLectivo}. En el caso de
+            los mismos, durante el periodo escolar {lectiveYear}. En el caso de
             la primaria algunos materiales de la lista serán de uso
             completamente personal y su uso, cuidado, desinfección y transporte
             serán enteramente responsabilidad del estudiante y su acudiente y
@@ -277,7 +278,7 @@ const Autorizacion = () => {
         >
           <span style={{ fontFamily: '"Arial Narrow"' }}>
             Comprendo que la modalidad educativa del colegio para el año{" "}
-            {añoLectivo} es presencial por lo que
+            {lectiveYear} es presencial por lo que
           </span>
           <span style={{ fontFamily: '"Arial Narrow"' }}>
             &nbsp;&nbsp;&nbsp;
