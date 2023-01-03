@@ -6,6 +6,8 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@faker-js/faker": "^7.6.0",
+    "@fontsource/didact-gothic": "^4.5.10",
+    "@fontsource/pt-serif-caption": "^4.5.11",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.5",
     "@mui/x-data-grid": "^5.17.12",

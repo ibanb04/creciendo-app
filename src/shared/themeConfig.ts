@@ -1,7 +1,15 @@
 import { createTheme } from "@mui/material/styles";
-
+import "@fontsource/pt-serif-caption";
 export const theme = createTheme({
-
+  typography: {
+    h3: { fontFamily: "Didact Gothic" },
+    h4: { fontFamily: "Didact Gothic", fontWeight: 500 },
+    h5: { fontFamily: "Work Sans", fontWeight: 500 },
+    h6: { fontFamily: "Work Sans", fontWeight: 500 },
+    body1: { fontFamily: "hind" },
+    body2: { fontFamily: "hind" },
+    button: { fontFamily: "hind", fontWeight: 500 },
+  },
   palette: {
     primary: {
       main: "rgba(229, 128, 255, 0.45)",

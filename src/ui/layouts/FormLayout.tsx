@@ -77,7 +77,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
     return (
         <>
 
-            <Grid item xs={12} >
+            <Grid item xs={12} pr={{ md: 5,  }} >
                 <Box sx={{
                     minHeight: "100vh",
                     backgroundImage: `url(${bg_blurry_gradient_form})`,
@@ -90,7 +90,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                     pl: 4, pr: 2, py: 4, borderRadius: 4, mb: 3, mr: { xs: 3, md: 0 }
                 }} >
                     <Grid item xs={12} sx={{ mb: 3 }} >
-                        <Typography color="secondary.main" variant="h5" sx={{ fontWeight: 600 }}>
+                        <Typography color="inherit" variant="h4" >
                             {title}
                         </Typography>
                         <Divider />

@@ -61,10 +61,6 @@ export const RegisterPage = () => {
     dispatch(resetErrorMessage());
     navigate('/auth/login');
   };
-  /*
-  useEffect(() => {
-    dispatch(resetErrorMessage());
-  }, []); */
   return (
     <AuthLayout title="Crear cuenta">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +72,6 @@ export const RegisterPage = () => {
               defaultValue=""
               rules={{
                 required: true,
-                pattern: { value: /^[A-Za-z]+$/i, message: " solo letras" },
               }}
               render={({ field }) => (
                 <TextField

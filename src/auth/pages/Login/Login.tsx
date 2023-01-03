@@ -45,10 +45,7 @@ export const Login: FC = () => {
     dispatch(resetErrorMessage());
     navigate('/auth/register');
   };
-  /*
-    useEffect(() => {
-      dispatch(resetErrorMessage());
-    }, []);*/
+
   return (
     <AuthLayout title="Iniciar Sesión">
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -8,6 +8,7 @@ import { Enrollment } from "../components/Enrollment";
 import { Interview } from "../components/Interview";
 import { AddOrEditStudent } from '../components/AddOrEditStudent/AddOrEditStudent';
 import { AddOrEditInterview } from "../components/AddOrEditInterview";
+import Home from "../components/home/Home";
 
 const drawerWidth = 250;
 
@@ -41,7 +42,7 @@ export const DashboardRoutes = () => {
         <Toolbar />
         <Main open={open}>
           <DrawerHeader />
-          <Grid container direction="row" pr={{ md: 11 }}>
+          <Grid container direction="row" pr={{ md: 5,  }}>
             <Routes>
               <Route path="/estudiantes" element={<RegisterStudent />} />
               <Route path="/estudiantes/nuevo" element={<AddOrEditStudent action="add" />} />
@@ -50,6 +51,7 @@ export const DashboardRoutes = () => {
               <Route path="/entrevistas" element={<Interview />} />
               <Route path="/entrevistas/nuevo" element={<AddOrEditInterview action="add" />} />
               <Route path="/entrevistas/editar" element={<AddOrEditInterview action="edit" />} />
+              <Route path="/*" element={<Home />} />
             </Routes>
           </Grid>
         </Main>
