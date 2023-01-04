@@ -50,7 +50,7 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
 
     return (
         <>
-            <Tooltip title="Account settings">
+            <Tooltip title="Generar documentos">
                 <IconButton
                     onClick={handleClick}
                     size="small"

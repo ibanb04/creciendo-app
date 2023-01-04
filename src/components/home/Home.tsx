@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <Grid container spacing={2}  >
       <Grid item xs={12}>
-        <Typography variant="h4">SISTEMA DE MATRÍCULAS - PERÍODO {lectiveYear} </Typography>
+        <Typography variant="h4">SISTEMA DE GESTIÓN DE MATRÍCULAS</Typography>
       </Grid>
       {
         items.map((item: ItemsTypes, i) => (

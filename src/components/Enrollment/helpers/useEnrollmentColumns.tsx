@@ -13,6 +13,7 @@ export const useEnrollmentColumns = () => {
         { field: "grade", headerName: "GRADO", width: 88 },
         { field: "guardiantTel", headerName: "CONTACTO", width: 102 },
         { field: "guardianName", headerName: "ACUDIENTE", width: 108 },
+        { field: "age", headerName: "Edad", width: 55 },
         {
             field: "actions",
             headerName: "OPCIONES",
@@ -20,6 +21,7 @@ export const useEnrollmentColumns = () => {
             type: "actions",
             renderCell: RenderUserActions,
         },
+
     ], []);
     return columns;
 }
