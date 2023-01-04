@@ -9,19 +9,22 @@ export const guardianFormValues: GeneralFormValuesType[] = [
         type: "text",
         label: "Entrevistado",
         placeholder: "Escriba aqui",
+        isRequired: true
     }, {
         component: "textField",
         name: "guardiantId",
         id: "guardiant-id",
-        type: "text",
+        type: "number",
         label: "Cedula",
         placeholder: "Escriba aqui",
+        isRequired: true
     }, {
         component: "textField",
         name: "guardiantRelationship",
         id: "guardiant-relationship",
         type: "text",
         label: "Parentesco",
+        isRequired: true,
         placeholder: "Escriba aqui",
     }, {
         component: "textField",
@@ -38,6 +41,7 @@ export const guardianFormValues: GeneralFormValuesType[] = [
         id: "interviewer-name",
         type: "text",
         label: "Entrevistador",
+        isRequired: true,
         placeholder: "Escriba aqui",
     },
     {

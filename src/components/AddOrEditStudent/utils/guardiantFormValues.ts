@@ -13,7 +13,7 @@ export const guardianFormValues: GeneralFormValuesType[] = [
     component: "textField",
     name: "guardiantTel",
     id: "guardiant-tel",
-    type: "tel",
+    type: "number",
     label: "Celular",
     placeholder: "Celular aqui",
   },

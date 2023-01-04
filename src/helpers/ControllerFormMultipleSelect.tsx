@@ -14,6 +14,8 @@ interface ControllerFormMultipleSelectProps {
   size: "medium" | "small" | undefined;
   menuItem: string[];
   margin?: "dense" | "none" | "normal";
+  errors?: string;
+  isRequired?: boolean;
 }
 
 export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps> = ({
@@ -23,6 +25,8 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
   label,
   margin = "normal",
   menuItem,
+  errors,
+  isRequired,
   id,
 }) => {
   const key = useId();

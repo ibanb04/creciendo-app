@@ -9,6 +9,7 @@ export type GeneralFormValuesType = {
   placeholder?: string;
   menuItem?: menuItem[] | string[];
   rows?: number;
+  isRequired?: boolean;
 };
 
 type menuItem = {
@@ -25,6 +26,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     type: "text",
     label: "Primer Nombre",
     placeholder: "Primer Nombre aqui",
+    isRequired: true,
   },
   {
     component: "textField",
@@ -40,6 +42,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "first-last-name",
     type: "text",
     label: "Primer Apellido",
+    isRequired: true,
     placeholder: "Primer Apellido aqui",
   },
   {
@@ -55,6 +58,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     label: "Tipo de Documento",
     name: "idType",
     id: "id-type",
+    isRequired: true,
     menuItem: [
       {
         label: "Tarjeta de identidad",
@@ -76,6 +80,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "id-number",
     type: "number",
     label: "Numero de Documento",
+    isRequired: true,
     placeholder: "Escriba aquí",
   },
 
@@ -83,6 +88,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     component: "select",
     label: "Genero",
     name: "gender",
+    isRequired: true,
     id: "id-gender",
     menuItem: [
       {
@@ -102,6 +108,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     type: "number",
     label: "Edad",
     placeholder: "Escriba aquí",
+    isRequired: true,
   },
   {
     component: "autocomplete",
@@ -110,6 +117,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "birth-department",
     placeholder: "Departamento de Nacimiento aqui",
     menuItem: Departamentos,
+    isRequired: true,
   },
   {
     component: "select",
@@ -117,13 +125,14 @@ export const generalFormValues: GeneralFormValuesType[] = [
     id: "city-of-birth",
     type: "text",
     label: "Ciudad de Nacimiento",
+    isRequired: true,
   },
   {
     component: "datePicker",
     id: "birth-date",
     name: "birthDate",
     label: "Fecha de Nacimiento",
-
+    isRequired: true,
   },
   {
     component: "textField",
@@ -153,7 +162,7 @@ export const generalFormValues: GeneralFormValuesType[] = [
     component: "textField",
     name: "studentPhoneNumber",
     id: "studentPhoneNumber",
-    type: "tel",
+    type: "number",
     label: "Celular",
     placeholder: "Celular aqui",
   },

@@ -5,7 +5,7 @@ import { anotherContactFormValues } from '../utils/anotherContactFormValues';
 import getFormContent from '../../../shared/getFormContent';
 
 const AnotherContactForm: FC = () => {
-    const { control } = useFormContext();
+    const { control, formState: { errors }, } = useFormContext();
     const key = useId();
 
     return (
@@ -13,7 +13,7 @@ const AnotherContactForm: FC = () => {
             {
                 anotherContactFormValues.map((item, index) => (
                     <Grid key={key + index} item xs={12} sm={3}>
-                        {getFormContent(item, control)}
+                        {getFormContent(item, control, errors)}
                     </Grid>
                 ))
             }

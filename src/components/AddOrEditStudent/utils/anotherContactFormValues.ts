@@ -12,7 +12,7 @@ export const anotherContactFormValues: GeneralFormValuesType[] = [
         component: "textField",
         name: "anotherContactTel",
         id: "another-contact-tel",
-        type: "tel",
+        type: "number",
         label: "Celular",
         placeholder: "Celular aqui",
     }, {
@@ -28,7 +28,6 @@ export const anotherContactFormValues: GeneralFormValuesType[] = [
         name: "anotherContactlivesWithStudent",
         id: "another-contact-lives-with-student",
         label: "Vive con el estudiante",
-        
     }
 ]
 

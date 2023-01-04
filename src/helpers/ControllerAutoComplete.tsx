@@ -1,6 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { FC } from "react";
 import { Controller } from "react-hook-form";
+import { errorMessage } from "../hooks/useErrorMessage";
 import { setDepartment } from "../store/slices/department/department.slice";
 import { setEjectorDepartment } from "../store/slices/department/ejectorDepartment.slice";
 import {
@@ -16,6 +17,8 @@ interface ControllerAutoCompleteProps {
   menuItem: string[];
   id: string;
   placeholder: string;
+  errors?: any;
+  isRequired?: boolean;
 }
 export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
   name,
@@ -25,12 +28,15 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
   label,
   id,
   placeholder,
+  errors,
+  isRequired = false
 }) => {
   const dispatch = useAppDispatch();
   const { selectetStudent } = useAppSelector((state) => state.student);
   return (
     <Controller
       name={name}
+      rules={{ required: isRequired }}
       control={control}
       render={({ field: { onChange, value } }) => (
         <Autocomplete
@@ -49,7 +55,14 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
             return data;
           }}
           renderInput={(params) => (
-            <TextField {...params} variant="outlined" color="secondary" label={label} placeholder={placeholder} />
+            <TextField {...params}
+              variant="outlined"
+              color="secondary"
+              label={label}
+              placeholder={placeholder}
+              helperText={errorMessage(value, errors, name, isRequired) || errors[name]?.message}
+              error={!!errors[name]}
+            />
           )}
         />
       )}

@@ -24,14 +24,14 @@ interface GeneralFormInputs {
 }
 
 export const GeneralForm: FC = () => {
-  const { control } = useFormContext<GeneralFormInputs>();
+  const { control, formState: { errors }, } = useFormContext();
   const key = useId();
   return (
     <>
 
         {generalFormValues.map((item, index) => (
           <Grid key={key + index} item xs={12} sm={3}>
-            {getFormContent(item, control)}
+            {getFormContent(item, control, errors)}
           </Grid>
         ))}
     </>

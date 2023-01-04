@@ -7,6 +7,7 @@ type AcademicFormValuesType = {
     placeholder?: string;
     maxRows?: number;
     rows?: number;
+    isRequired?: boolean;
     menuItem?: menuItem[] | string[];
 };
 type menuItem = {
@@ -21,8 +22,8 @@ export const academicFormValues: AcademicFormValuesType[] = [
         name: "studentEmail",
         type: "email",
         label: "Correo electrónico",
+        isRequired: true,
         placeholder: "Correo electrónico",
-
     },
     {
         component: "select",

@@ -29,7 +29,7 @@ export const fatherFormValues: GeneralFormValuesType[] = [
         component: "textField",
         name: "fatherTel",
         id: "father-tel",
-        type: "tel",
+        type: "number",
         label: "Celular",
         placeholder: "Celular aqui",
     }, {

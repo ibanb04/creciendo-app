@@ -5,7 +5,7 @@ import getFormContent from "../../../shared/getFormContent";
 import { socialEconomicFormValues } from "../utils/socialEconomicFormValues";
 
 export const SocialEconomicForm: FC = () => {
-  const { control } = useFormContext();
+  const { control, formState: { errors }, } = useFormContext();
   const key = useId();
 
   return (
@@ -13,7 +13,7 @@ export const SocialEconomicForm: FC = () => {
       {
         socialEconomicFormValues.map((item, index) => (
           <Grid key={key + index} item xs={12} sm={3}>
-            {getFormContent(item, control)}
+            {getFormContent(item, control, errors)}
           </Grid>
         ))}
     </>

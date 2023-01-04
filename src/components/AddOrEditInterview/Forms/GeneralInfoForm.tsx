@@ -4,13 +4,13 @@ import { generalInfoFormValues } from '../utils/generalInfoFormValues';
 import { Grid } from '@mui/material';
 import getFormContent from '../../../shared/getFormContent';
 const GeneralInfoForm = () => {
-  const { control } = useFormContext();
+  const { control, formState: { errors }, } = useFormContext();
   const key = useId();
   return (
     <>
       {generalInfoFormValues.map((item, index) => (
         <Grid key={key + index} item xs={12} sm={3}>
-          {getFormContent(item, control)}
+          {getFormContent(item, control, errors)}
         </Grid>
       ))}
     </>

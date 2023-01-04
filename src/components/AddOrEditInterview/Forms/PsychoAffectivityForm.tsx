@@ -6,7 +6,7 @@ import { Grid } from '@mui/material';
 import getFormContent from '../../../shared/getFormContent';
 
 const PsychoAffectivityForm = () => {
-  const { control } = useFormContext();
+  const { control, formState: { errors }, } = useFormContext();
   const key = useId();
 
   return (
@@ -14,7 +14,7 @@ const PsychoAffectivityForm = () => {
       {
         psychoAffectivityFormValues.map((item, index) => (
           <Grid key={key + index} item xs={12} sm={4}>
-            {getFormContent(item, control)}
+            {getFormContent(item, control, errors)}
           </Grid>
         ))
 

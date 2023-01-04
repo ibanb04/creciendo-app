@@ -6,7 +6,7 @@ import { academicFormValues } from "../utils/academicFormValues";
 
 
 export const AcademicForm: FC = () => {
-  const { control } = useFormContext();
+  const { control, formState: { errors }, } = useFormContext();
 
   const key = useId();
   return (
@@ -14,7 +14,7 @@ export const AcademicForm: FC = () => {
       {
         academicFormValues.map((item, index) => (
           <Grid key={key + index} item xs={12} sm={3}>
-            {getFormContent (item, control)}
+            {getFormContent (item, control, errors)}
           </Grid>
         ))}
 

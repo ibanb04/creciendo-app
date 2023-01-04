@@ -5,14 +5,14 @@ import { Grid } from '@mui/material';
 import getFormContent from '../../../shared/getFormContent';
 
 const PrenatalHistoryForm = () => {
-  const { control } = useFormContext();
+  const { control, formState: { errors }, } = useFormContext();
   const key = React.useId();
   return (
     <>
       {
         prenatalHistoryFormValues.map((item, index) => (
           <Grid key={key + index} item xs={12} sm={4}>
-            {getFormContent (item, control)}
+            {getFormContent (item, control, errors)}
           </Grid>
         ))
 
