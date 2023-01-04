@@ -2,6 +2,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { FC } from "react"
 import { Controller } from 'react-hook-form';
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import {es} from 'date-fns/locale';
 import { TextField } from "@mui/material";
 import moment from "moment";
 import { errorMessage } from "../hooks/useErrorMessage";
@@ -28,7 +29,7 @@ export const ControllerDatePicker: FC<ControllerDatePickerProps> = ({
 }
 ) => {
     return (
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <LocalizationProvider locale={es} dateAdapter={AdapterDateFns}>
             <Controller
                 name={name}
                 control={control}
