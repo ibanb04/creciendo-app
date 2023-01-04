@@ -18,6 +18,7 @@ export interface studentDefaultValuesProps {
   neighborhood: string;
   studentPhoneNumber: string;
   grade: string;
+  educationalModality: string;
   lastGrade: string;
   school: string;
   schoolCity: string;
@@ -32,6 +33,10 @@ export interface studentDefaultValuesProps {
   fatherProfession: string;
   fatherCompanyName: string;
   fatherJobTitle: string;
+  studentDisability: string[];
+  especiallys: string[];
+  enterWithBehaviourRecord: string[];
+  therapys: string[];
   fatherId: string;
   fatherIdExpeditionPlace: string;
   fatherEmail: string;
@@ -113,6 +118,7 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   fatherJobTitle: "",
   fatherEmail: "",
   fatherlivesWithStudent: "",
+  enterWithBehaviourRecord: [],
   motherName: "",
   motherId: "",
   motherIdExpeditionPlace: "",
@@ -135,6 +141,8 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   ejectorMunicipality: "",
   ejectionDate: "",
   ejectionCertificate: "",
+  especiallys: [],
+  therapys: [],
   guardianName: "",
   guardiantTel: "",
   guardiantId: "",
@@ -144,6 +152,8 @@ export const studentDefaultValues: studentDefaultValuesProps = {
   guardiantlivesWithStudent: "",
   anotherContactName: "",
   anotherContactTel: "",
+  educationalModality: "",
+  studentDisability: [],
   anotherContactRelationship: "",
   studentApproval: "MATRICULADO",
   faceToFaceAuthorization: true,

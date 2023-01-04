@@ -54,7 +54,6 @@ export const ControllerFormSelect: FC<ControllerFormSelectProps> = ({
       refetchOnWindowFocus: false,
     }
   );
-  console.log("esta monda esta", isRequired)
 
   const cities = data?.map((city: any) => city.municipio);
   const ejectorCities = ejectorDepartmentData?.map((city: any) => city.municipio);

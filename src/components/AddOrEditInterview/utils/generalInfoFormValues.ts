@@ -8,6 +8,7 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         type: "text",
         label: "Primer Nombre",
         placeholder: "Escriba aqui",
+        isRequired: true
     }, {
         component: "textField",
         name: "secondName",
@@ -22,6 +23,7 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         type: "text",
         label: "Primer Apellido",
         placeholder: "Escriba aqui",
+        isRequired: true
     }, {
         component: "textField",
         name: "secondLastName",
@@ -35,6 +37,7 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         label: "Tipo de Documento",
         name: "studentIdType",
         id: "student-id-type",
+        isRequired: true,
         menuItem: [
             {
                 label: "Tarjeta de identidad",
@@ -53,7 +56,7 @@ export const generalInfoFormValues: GeneralFormValuesType[] = [
         type: "number",
         label: "Numero de identificacion",
         placeholder: "Escriba aqui",
-
+        isRequired: true
     },
 
 

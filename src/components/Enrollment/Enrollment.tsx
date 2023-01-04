@@ -29,7 +29,7 @@ export const Enrollment = () => {
     <>
       <Container>
         <Typography variant="h4" mb={4} fontWeight={500} >
-          Gestión de Matriculas
+          Gestión de Matrículas
         </Typography>
         {!isLoading ? (
           <CustomDataGrid columns={columns} data={students} idType="student" />

@@ -29,7 +29,7 @@ const items: ItemsTypes[] = [
   {
     title: "Gestión de Matrículas",
     img: asset2,
-    description: "Aquí podras gestionar todos los documentos del proceso de matriculas",
+    description: "Aquí podras gestionar todos los documentos del proceso de matrículas",
     path: "/matriculas"
   },
   {
