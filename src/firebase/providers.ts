@@ -5,17 +5,16 @@ import {
 } from "firebase/auth";
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
   setDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 import { FirebaseAuth, FirebaseDB } from "./config";
-import { studentDefaultValuesProps } from "../components/NewStudent/utils/studentDefaultValues";
-import { interviewDefaultValuesProps } from "../components/NewInterview/utils/interviewDefaultValues";
-import { useAppDispatch } from "../store/useAppDispatch";
-import { setFetching } from "../store/slices/student/student.slice";
-import { Dispatch } from "../store/slices/auth/thunks";
+import { studentDefaultValuesProps } from "../components/AddOrEditStudent/utils/studentDefaultValues";
+import { interviewDefaultValuesProps } from "../components/AddOrEditInterview/utils/interviewDefaultValues";
 
 export const registerUserWithEmailAndPassword = async (
   email: string,
@@ -90,6 +89,43 @@ export const startStudenRegister = async (
   }
 };
 
+export const updateStudent = async (data: any) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
+    updateDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateInterview = async (data: any) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
+    updateDoc(docuRef, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteStudent = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);
+    deleteDoc(docuRef);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteInterview = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${id}`);
+    deleteDoc(docuRef);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export const registerInterview = async (
   data: studentDefaultValuesProps | interviewDefaultValuesProps
 ) => {
@@ -101,8 +137,44 @@ export const registerInterview = async (
   }
 };
 
-export const getStudents = async() => {
+export const getStudentById = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);
+    const docSnap = await getDoc(docuRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getInterviewById = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${id}`);
+    const docSnap = await getDoc(docuRef);
+    if (docSnap.exists()) {
+      return await docSnap.data();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+export const getStudents = async () => {
   const querySnapshot = await getDocs(collection(FirebaseDB, "estudiantes/"));
   const students = await querySnapshot.docs.map((doc) => doc.data());
   return students;
+};
+
+
+export const getInterviews = async () => {
+  const querySnapshot = await getDocs(collection(FirebaseDB, "entrevistas/"));
+  const interviews = await querySnapshot.docs.map((doc) => doc.data());
+  return interviews;
 };

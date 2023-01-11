@@ -1,10 +1,13 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { RegisterPage } from "../auth/pages/RegisterPage";
-import { Login } from "../components";
 import { DashboardRoutes } from "./DashboardRoutes";
 import { useCheckAuth } from '../hooks/useCheckAuth';
 import CheckingAuth from "../ui/CheckingAuth";
 import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import Contrato from "../shared/Documents/Contrato";
+import AnecdotarioNuevo from "../shared/Documents/AnecdotarioNuevo";
+import AnecdotarioAntiguo from "../shared/Documents/AnecdotarioAntiguo";
+import Autorizacion from "../shared/Documents/Autorizacion";
+import InterviewDocument from "../shared/Documents/InterviewDocument";
 
 export const AppRouter = () => {
   const status = useCheckAuth();
@@ -13,12 +16,19 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         {status === 'authenticated' ? (
-          <Route path="/*" element={<DashboardRoutes />} />
-        ): (
+          <>
+            <Route path="/contrato-matricula" element={<Contrato />} />
+            <Route path="/anecdotario-nuevo" element={<AnecdotarioNuevo />} />
+            <Route path="/anecdotario-antiguo" element={<AnecdotarioAntiguo />} />
+            <Route path="/autorizacion" element={<Autorizacion />} />
+            <Route path="/documento-entrevista" element={<InterviewDocument />} />
+            <Route path="/*" element={<DashboardRoutes />} />
+          </>
+        ) : (
           <Route path="/auth/*" element={<AuthRoutes />} />
         )}
 
-      <Route path="/*" element={<Navigate to="/auth/login" />} />
+        <Route path="/*" element={<Navigate to="/auth/login" />} />
       </Routes>
     </BrowserRouter>
   );

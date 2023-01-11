@@ -1,19 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    isFetching: false,
+const initialState: any = {
+    selectetStudent: null,
+    birtDate: null,
 }
 
 const studentSlice = createSlice({
-  name: 'student',
-  initialState,
-  reducers: {
-    setFetching: (state, { payload }) => {
-        state.isFetching = payload
+    name: 'student',
+    initialState,
+    reducers: {
+        setStudent(state, { payload }) {
+            state.selectetStudent = payload;
+        },
+        resetDepartmentValue(state) {
+            state.selectetStudent.birthDepartment = null;
+
+        }
     }
-  }
 });
 
-export const {setFetching} = studentSlice.actions;
+export const { setStudent, resetDepartmentValue } = studentSlice.actions
 
 export default studentSlice.reducer

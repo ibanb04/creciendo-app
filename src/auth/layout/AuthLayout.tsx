@@ -3,7 +3,7 @@ import { FC } from 'react'
 import wave_bg from '../../assets/wave_bg.svg'
 import { Link as RouterLink } from "react-router-dom";
 import Box from '@mui/material/Box';
-import logo from '../../assets/img/EscudoCreciendo.png'
+import logo from '../../assets/img/logo.png'
 import { keyframes } from '@emotion/react'
 
 
@@ -59,6 +59,8 @@ export const AuthLayout: FC<Props> = ({ title = "", children }) => {
                                 width: 100,
                                 maxHeight: { xs: 167, md: 167 },
                                 maxWidth: { xs: 167, md: 167 },
+                                boxShadow: "0 5px 14px 0 rgba(128,128,128, 0.5)",
+                                borderRadius: "50%",
                             }}
                             alt="Colegio Creciendo"
                             src={logo}

@@ -14,6 +14,8 @@ interface ControllerFormMultipleSelectProps {
   size: "medium" | "small" | undefined;
   menuItem: string[];
   margin?: "dense" | "none" | "normal";
+  errors?: string;
+  isRequired?: boolean;
 }
 
 export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps> = ({
@@ -23,6 +25,8 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
   label,
   margin = "normal",
   menuItem,
+  errors,
+  isRequired,
   id,
 }) => {
   const key = useId();
@@ -40,9 +44,9 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
             id={id}
             variant="outlined"
             label={label}
+            color="secondary"
             size={size}
             margin={margin}
-
             sx={{ width: { xs: "80%", sm: "90%" } }}
             SelectProps={{
               defaultValue: [],
@@ -54,10 +58,11 @@ export const ControllerFormMultipleSelect: FC<ControllerFormMultipleSelectProps>
           >
             {menuItem.map((item: any, index: number) => (
               <MenuItem key={index + key} value={item.value}>
-                <Checkbox checked={value.includes(item.value)} />
+                <Checkbox color="secondary" checked={value?.includes(item.value)} />
                 <ListItemText primary={item.value} />
               </MenuItem>
             ))}
+
           </TextField>
         );
       }}

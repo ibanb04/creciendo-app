@@ -7,11 +7,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { FC, Fragment, useContext, useState } from "react";
+import { FC, Fragment, useState } from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { useAppDispatch } from "../../store/useAppDispatch";
+import { useAppDispatch, useAppSelector } from "../../store/useAppDispatch";
 import { startLogout } from '../../store/slices/auth/thunks';
+import Divider from "@mui/material/Divider/Divider";
+import SettingsIcon from '@mui/icons-material/Settings';
+import { Avatar, ListItemIcon } from "@mui/material";
+import Logout from '@mui/icons-material/Logout';
 
 interface NavBarProps {
   open?: boolean;
@@ -21,6 +25,7 @@ interface NavBarProps {
 
 export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
   const [auth, setAuth] = useState(true);
+  const { displayName, photoURL } = useAppSelector(state => state.auth);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
@@ -60,8 +65,8 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
         color="transparent"
         sx={{
           backdropFilter: "blur(20px)",
-          backgroundImage:
-            " linear-gradient(305deg, rgba(251,250,205,1) 35%, rgba(230,130,255,1) 100%)",
+          backgroundColor: "rgba(229, 128, 255, 0.26)",
+          //boxShadow: "none",
         }}
       >
         <Toolbar>
@@ -75,13 +80,16 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Colegio Creciendo
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontFamily: "Didact Gothic", fontWeight: 600 }}>
+            COLEGIO CRECIENDO
           </Typography>
           {auth && (
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <Fragment>
+                  <Typography variant="body1" >
+                    {displayName}
+                  </Typography>
                   <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -93,9 +101,25 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
                     <AccountCircle />
                   </IconButton>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Profile</MenuItem>
-                    <MenuItem onClick={popupState.close}>My account</MenuItem>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    <MenuItem onClick={popupState.close}>
+                      <ListItemIcon>
+                        <Avatar sx={{ width: 30, height: 30 }} />
+                      </ListItemIcon>
+                      {displayName}
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={popupState.close}>
+                      <ListItemIcon>
+                        <SettingsIcon />
+                      </ListItemIcon>
+                      Ajustes
+                    </MenuItem>
+                    <MenuItem onClick={handleLogout}>
+                      <ListItemIcon>
+                        <Logout />
+                      </ListItemIcon>
+                      Cerrar sesión
+                    </MenuItem>
                   </Menu>
                 </Fragment>
               )}

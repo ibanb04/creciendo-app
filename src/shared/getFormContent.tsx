@@ -5,7 +5,7 @@ import { ControllerFormMultipleSelect } from "../helpers/ControllerFormMultipleS
 import { ControllerFormSelect } from "../helpers/ControllerFormSelect";
 import { ControllerFormTextField } from "../helpers/ControllerFormTextField";
 
-const getFormContent = (item: any, control: any) => {
+const getFormContent = (item: any, control: any, errors: any) => {
     switch (item.component) {
         case "textField":
             return (
@@ -21,6 +21,8 @@ const getFormContent = (item: any, control: any) => {
                     variant={"outlined"}
                     rows={item.rows}
                     maxRows={item.maxRows}
+                    errors={errors}
+                    isRequired={item.isRequired}
                 />
             );
         case "select":
@@ -31,7 +33,9 @@ const getFormContent = (item: any, control: any) => {
                     size="small"
                     label={item.label}
                     menuItem={item.menuItem}
+                    isRequired={item.isRequired}
                     id={item.id}
+                    errors={errors}
                 />
             );
         case "autocomplete":
@@ -44,6 +48,8 @@ const getFormContent = (item: any, control: any) => {
                     label={item.label}
                     placeholder={item.placeholder}
                     menuItem={item.menuItem}
+                    isRequired={item.isRequired}
+                    errors={errors}
                 />
             );
         case "datePicker":
@@ -53,6 +59,9 @@ const getFormContent = (item: any, control: any) => {
                     name={item.name}
                     label={item.label}
                     size="small"
+                    id={item.id}
+                    isRequired={item.isRequired}
+                    errors={errors}
                 />
             );
         case "multipleSelect":
@@ -63,7 +72,9 @@ const getFormContent = (item: any, control: any) => {
                     id={item.id}
                     label={item.label}
                     size="small"
+                    isRequired={item.isRequired}
                     menuItem={item.menuItem}
+                    errors={errors}
                 />
             );
         case "checkbox":
