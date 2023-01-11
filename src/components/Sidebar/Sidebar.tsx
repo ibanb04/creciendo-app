@@ -41,7 +41,9 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
-  const [withScreen, setWithScreen] = useState(1420);
+  const [withScreen, setWithScreen] = useState(
+    window.innerWidth || document.documentElement.clientWidth
+  );
 
   const reportWindowSize = () => {
     setWithScreen(window.innerWidth);
@@ -52,10 +54,11 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
   const id = useId();
   const handleDrawerClose = () => setOpen(false);
   const handleDrawerCloseMobil = () => {
-    withScreen < 1420 && setOpen(false);
+    withScreen < 1300 && setOpen(false);
   };
   useEffect(() => {
-    if (withScreen < 1420) {
+    console.log(withScreen);
+    if (withScreen < 1300) {
       setOpen(false);
     } else {
       setOpen(true);
@@ -107,7 +110,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerCloseMobil}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
@@ -126,6 +129,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
         >
           <RouterLink to="/">
             <Box
+              onClick={handleDrawerCloseMobil}
               component="img"
               sx={{
                 height: 100,
