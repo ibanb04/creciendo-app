@@ -18,6 +18,7 @@ import { Link as RouterLink } from "react-router-dom";
 import BadgeIcon from '@mui/icons-material/Badge';
 import HiveIcon from '@mui/icons-material/Hive';
 import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form3.svg';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -61,6 +62,12 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
     }
   }, [withScreen, setOpen]);
   const listSidebar: ListSidebar[] = [
+    {
+      title: "Home",
+      path: "/",
+      icon: HomeIcon,
+    },
+
     {
       title: "   Estudiantes",
       path: "/estudiantes",
