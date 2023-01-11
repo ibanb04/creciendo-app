@@ -27,7 +27,7 @@ export const Enrollment = () => {
 
   return (
     <>
-      <Container>
+      <Container sx={{ paddingLeft: 0 }}>
         <Typography variant="h4" mb={4} fontWeight={500} >
           Gestión de Matrículas
         </Typography>

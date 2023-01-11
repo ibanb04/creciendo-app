@@ -57,7 +57,6 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
     withScreen < 1300 && setOpen(false);
   };
   useEffect(() => {
-    console.log(withScreen);
     if (withScreen < 1300) {
       setOpen(false);
     } else {
@@ -110,7 +109,7 @@ export const Sidebar: FC<SidebarProps> = ({ open, setOpen, drawerWidth }) => {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerCloseMobil}>
+          <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (

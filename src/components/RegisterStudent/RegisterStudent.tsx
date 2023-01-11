@@ -9,7 +9,7 @@ export const RegisterStudent = () => {
 
   return (
     <>
-      <Container>
+      <Container sx={{ paddingLeft: 0 }}>
         <Stack
           direction="row"
           alignItems="center"
