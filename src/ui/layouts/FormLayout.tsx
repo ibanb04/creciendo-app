@@ -19,7 +19,9 @@ import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
 import { setStudent } from '../../store/slices/student/student.slice';
 import { setInterview } from '../../store/slices/interview/interview.slice';
 import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
-
+import IconButton from '@mui/material/IconButton';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Stack } from '@mui/system';
 
 
 interface FormLayoutProps {
@@ -77,7 +79,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
     return (
         <>
 
-            <Grid item xs={12} pr={{ md: 5,  }} >
+            <Grid item xs={12} pr={{ md: 5, }} >
                 <Box sx={{
                     minHeight: "100vh",
                     backgroundImage: `url(${bg_blurry_gradient_form})`,
@@ -90,9 +92,20 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                     pl: 4, pr: 2, py: 4, borderRadius: 4, mb: 3, mr: { xs: 3, md: 0 }
                 }} >
                     <Grid item xs={12} sx={{ mb: 3 }} >
-                        <Typography color="inherit" variant="h4" >
-                            {title}
-                        </Typography>
+                        <Stack
+                            direction="row" alignItems="center"
+                        >
+                            <IconButton
+                                aria-label="Atrás"
+                                color="inherit"
+                                onClick={() => navigate(-1)}
+                            >
+                                <ArrowBackIcon />
+                            </IconButton>
+                            <Typography color="inherit" variant="h4"  sx={{fontSize:30}} >
+                                {title}
+                            </Typography>
+                        </Stack>
                         <Divider />
                     </Grid>
                     <Stepper activeStep={activeStep} orientation="vertical">
@@ -176,7 +189,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                         </Paper>
                     )}
                 </Box>
-            </Grid>
+            </Grid >
         </>
     );
 };

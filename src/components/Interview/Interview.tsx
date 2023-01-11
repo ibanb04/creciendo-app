@@ -8,7 +8,7 @@ import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAnd
 export const Interview = () => {
   return (
     <>
-      <Container>
+      <Container sx={{ paddingLeft: 0 }}>
         <Stack
           direction="row"
           alignItems="center"
