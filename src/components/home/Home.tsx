@@ -44,14 +44,14 @@ const Home = () => {
   const navigate = useNavigate();
   const lectiveYear = useLectiveYear();
   return (
-    <Grid container spacing={2}  >
+    <Grid container spacing={2} mr={{ xs: 4, md: 0 }} mb={5} >
       <Grid item xs={12}>
         <Typography variant="h4">SISTEMA DE GESTIÓN DE MATRÍCULAS</Typography>
       </Grid>
       {
         items.map((item: ItemsTypes, i) => (
-          <Grid key={i} item xs={4}  >
-            <Card sx={{ maxWidth: 345 }} onClick={() => navigate(item.path)}>
+          <Grid key={i} item xs={12} md={4}  >
+            <Card onClick={() => navigate(item.path)}>
               <CardActionArea>
                 <CardMedia
                   component="img"

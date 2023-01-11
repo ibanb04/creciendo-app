@@ -87,7 +87,7 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <Fragment>
-                  <Typography variant="body1" >
+                  <Typography variant="body1" display={{ xs: "none", md: "block" }} >
                     {displayName}
                   </Typography>
                   <IconButton
