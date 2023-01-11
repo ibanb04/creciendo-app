@@ -24,7 +24,6 @@ const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
                     sx={{
                         border: 0,
                         px: 2,
-
                     }}
                     columns={columns}
                     rows={data}
