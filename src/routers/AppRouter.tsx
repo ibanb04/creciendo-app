@@ -16,14 +16,7 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         {status === 'authenticated' ? (
-          <>
-            <Route path="/contrato-matricula" element={<Contrato />} />
-            <Route path="/anecdotario-nuevo" element={<AnecdotarioNuevo />} />
-            <Route path="/anecdotario-antiguo" element={<AnecdotarioAntiguo />} />
-            <Route path="/autorizacion" element={<Autorizacion />} />
-            <Route path="/documento-entrevista" element={<InterviewDocument />} />
-            <Route path="/*" element={<DashboardRoutes />} />
-          </>
+          <Route path="/*" element={<DashboardRoutes />} />
         ) : (
           <Route path="/auth/*" element={<AuthRoutes />} />
         )}

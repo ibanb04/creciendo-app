@@ -4,6 +4,7 @@ import authReducer from "../store/slices/auth/auth.slice";
 import studentReducer from "../store/slices/student/student.slice";
 import ejectorDepartmentReducer from "../store/slices/department/ejectorDepartment.slice";
 import interviewReducer from "../store/slices/interview/interview.slice";
+import modalReducer from "../store/slices/modal/modal.slice";
 declare global {
   type RootState = ReturnType<typeof rootReducer>;
 }
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   student: studentReducer,
   interview: interviewReducer,
+  modalState: modalReducer,
 });
 
 export default rootReducer;

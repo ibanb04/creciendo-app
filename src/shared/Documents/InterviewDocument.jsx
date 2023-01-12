@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
-import { CustomNavBar } from "../../helpers/CustomNavBar";
+import { CustomFab } from "../../helpers/CustomFab";
 import logo from "../../assets/img/EscudoCreciendo.png";
 import { useLectiveYear } from "../../hooks/useLectiveYear";
 
@@ -9,13 +9,13 @@ const InterviewDocument = () => {
   const { selectedInterview } = useAppSelector((state) => state.interview);
   const lectiveYear = useLectiveYear();
   const componentRef = useRef();
-  
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
   return (
     <>
-      <CustomNavBar title="Documento De Entrevista" handlePrint={handlePrint} />
+      <CustomFab handlePrint={handlePrint} />
       <div
         ref={componentRef}
         style={{
@@ -3074,7 +3074,7 @@ const InterviewDocument = () => {
                     }}
                   >
                     <span style={{ fontFamily: '"Arial Narrow"' }}>
-                      {selectedInterview.peopleStudentLivesWith}
+                      {selectedInterview?.peopleStudentLivesWith}
                     </span>
                   </p>
                 </td>
@@ -3120,7 +3120,7 @@ const InterviewDocument = () => {
                     }}
                   >
                     <span style={{ fontFamily: '"Arial Narrow"' }}>
-                      {selectedInterview.legalGuardian}
+                      {selectedInterview?.legalGuardian}
                     </span>
                   </p>
                 </td>

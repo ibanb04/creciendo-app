@@ -12,6 +12,11 @@ import { setStudent } from '../../../store/slices/student/student.slice';
 import IconButton from '@mui/material/IconButton';
 import DescriptionIcon from '@mui/icons-material/Description';
 import DownloadingIcon from '@mui/icons-material/Downloading';
+import CustomModal from '../../../helpers/CustomModal';
+import Contrato from '../../../shared/Documents/Contrato';
+import AnecdotarioAntiguo from '../../../shared/Documents/AnecdotarioAntiguo';
+import Autorizacion from '../../../shared/Documents/Autorizacion';
+import { setModalState } from '../../../store/slices/modal/modal.slice';
 interface UserEnrollmentActionsProps {
     params: GridRenderCellParams;
 }
@@ -29,24 +34,43 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const [openModal, setOpenModal] = useState({
+        contrato: false,
+        anecdotarioNuevo: false,
+        anecdotarioAntiguo: false,
+        autorizacion: false,
+    });
+
+    const handleCloseModal = () => {
+        setOpenModal({
+            contrato: false,
+            anecdotarioNuevo: false,
+            anecdotarioAntiguo: false,
+            autorizacion: false,
+        });
+        dispatch(setModalState(false))
+    };
+
 
     const handleGenerateMatricula = () => {
         dispatch(setStudent(params.row))
-        navigate('/contrato-matricula');
-    }
-    const handleGenerateAnectotarioNuevo = () => {
-        dispatch(setStudent(params.row))
-        navigate('/anecdotario-nuevo');
-    }
-    const handleGenerateAnectotarioAntiguo = () => {
-        dispatch(setStudent(params.row))
-        navigate('/anecdotario-antiguo');
-    }
-    const handleGenerateAutorizacion = () => {
-        dispatch(setStudent(params.row))
-        navigate('/autorizacion');
+        setOpenModal({ ...openModal, contrato: true });
     }
 
+    const handleGenerateAnecdotarioNuevo = () => {
+        dispatch(setStudent(params.row))
+        setOpenModal({ ...openModal, anecdotarioNuevo: true });
+    }
+
+    const handleGenerateAnecdotarioAntiguo = () => {
+        dispatch(setStudent(params.row))
+        setOpenModal({ ...openModal, anecdotarioAntiguo: true });
+    }
+
+    const handleGenerateAutorizacion = () => {
+        dispatch(setStudent(params.row))
+        setOpenModal({ ...openModal, autorizacion: true });
+    }
 
     return (
         <>
@@ -108,13 +132,13 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
                     </ListItemIcon>
                     Contrato de matricula
                 </MenuItem>
-                <MenuItem onClick={handleGenerateAnectotarioNuevo} >
+                <MenuItem onClick={handleGenerateAnecdotarioNuevo} >
                     <ListItemIcon>
                         <DownloadingIcon />
                     </ListItemIcon>
                     Anectotario Nuevo
                 </MenuItem>
-                <MenuItem onClick={handleGenerateAnectotarioAntiguo} >
+                <MenuItem onClick={handleGenerateAnecdotarioAntiguo} >
                     <ListItemIcon>
                         <DownloadingIcon />
                     </ListItemIcon>
@@ -126,6 +150,15 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
                     </ListItemIcon>
                     Autorización y consentimiento
                 </MenuItem>
+
+                {
+                    openModal.contrato === true ? <CustomModal open={openModal.contrato} handleClose={handleCloseModal} children={<Contrato />} ></CustomModal>
+                        : openModal.anecdotarioAntiguo === true ? <CustomModal open={openModal.anecdotarioAntiguo} handleClose={handleCloseModal} children={<AnecdotarioAntiguo />} ></CustomModal>
+                            : openModal.anecdotarioNuevo === true ? <CustomModal open={openModal.anecdotarioNuevo} handleClose={handleCloseModal} children={<AnecdotarioAntiguo />} ></CustomModal>
+                                : openModal.autorizacion === true ? <CustomModal open={openModal.autorizacion} handleClose={handleCloseModal} children={<Autorizacion />} ></CustomModal>
+                                    : null
+                }
+
             </Menu>
         </>
     )
