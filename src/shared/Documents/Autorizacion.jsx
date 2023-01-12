@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
-import { CustomNavBar } from "../../helpers/CustomNavBar";
+import { CustomFab } from "../../helpers/CustomFab";
 import moment from "moment";
 import logo from "../../assets/img/EscudoCreciendo.png";
 import { useLectiveYear } from "../../hooks/useLectiveYear";
@@ -19,10 +19,7 @@ const Autorizacion = () => {
 
   return (
     <>
-      <CustomNavBar
-        title="Documento De Autorizaciones y Consentimientos"
-        handlePrint={handlePrint}
-      />
+      <CustomFab handlePrint={handlePrint} />
 
       <div
         id="autorizacion"
@@ -151,13 +148,13 @@ const Autorizacion = () => {
           </span>
           <strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.firstName +
+              {selectetStudent?.firstName +
                 " " +
-                selectetStudent.middleName +
+                selectetStudent?.middleName +
                 " " +
-                selectetStudent.firstLastName +
+                selectetStudent?.firstLastName +
                 " " +
-                selectetStudent.secondLastName}
+                selectetStudent?.secondLastName}
             </span>
           </strong>
           <span style={{ fontFamily: '"Arial Narrow"' }}>
@@ -165,13 +162,13 @@ const Autorizacion = () => {
           </span>
           <strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.idType}
+              {selectetStudent?.idType}
             </span>
           </strong>
           <span style={{ fontFamily: '"Arial Narrow"' }}>&nbsp;No.&nbsp;</span>
           <strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.idNumber}
+              {selectetStudent?.idNumber}
             </span>
           </strong>
           <span style={{ fontFamily: '"Arial Narrow"' }}>
@@ -397,7 +394,7 @@ const Autorizacion = () => {
         >
           <strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
-              {selectetStudent.guardianName}
+              {selectetStudent?.guardianName}
             </span>
           </strong>
         </p>

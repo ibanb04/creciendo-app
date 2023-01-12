@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
-import { CustomNavBar } from "../../helpers/CustomNavBar";
+import { CustomFab } from "../../helpers/CustomFab";
 import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
 import { useLectiveYear } from "../../hooks/useLectiveYear";
 
@@ -15,10 +15,7 @@ const AnecdotarioAntiguo = () => {
   });
   return (
     <>
-      <CustomNavBar
-        title="Documento De Anecdotario Antiguo"
-        handlePrint={handlePrint}
-      />
+      <CustomFab handlePrint={handlePrint} />
 
       <div
         id="anecdotario-antiguo"
@@ -114,7 +111,6 @@ const AnecdotarioAntiguo = () => {
           >
             <tbody>
               <tr style={{ height: "6.1pt" }}>
-              
                 <td
                   style={{
                     borderLeft: "0.75pt solid #262626",
@@ -131,7 +127,6 @@ const AnecdotarioAntiguo = () => {
                       fontSize: "10pt",
                     }}
                   >
-                    
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
                       Fecha matricula:&nbsp;{" "}
                       {selectetStudent?.admissionDate?.slice(0, 10)}
@@ -940,9 +935,11 @@ const AnecdotarioAntiguo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent?.enterWithBehaviourRecord.map((item, index) => (
-                        <span key={index}>{item},</span>
-                      ))}
+                      {selectetStudent?.enterWithBehaviourRecord.map(
+                        (item, index) => (
+                          <span key={index}>{item},</span>
+                        )
+                      )}
                     </span>
                   </h2>
                 </td>
@@ -1113,9 +1110,11 @@ const AnecdotarioAntiguo = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent?.studentDisability.map((disability, index) => (
-                        <span key={index}>{disability},</span>
-                      ))}
+                      {selectetStudent?.studentDisability.map(
+                        (disability, index) => (
+                          <span key={index}>{disability},</span>
+                        )
+                      )}
                     </span>
                   </h2>
                 </td>
@@ -3760,7 +3759,7 @@ const AnecdotarioAntiguo = () => {
             </div>
             <div className="container-firma-rector">
               <img
-              src={firma_diana_arrieta}
+                src={firma_diana_arrieta}
                 width={177}
                 height={44}
                 alt=""
@@ -3788,7 +3787,7 @@ const AnecdotarioAntiguo = () => {
               fontWeight: "bold",
             }}
           >
-          4. SEGUIMIENTO y EVOLUCION
+            4. SEGUIMIENTO y EVOLUCION
           </span>
           <table
             cellPadding={0}
@@ -5830,7 +5829,6 @@ const AnecdotarioAntiguo = () => {
               </tr>
             </tbody>
           </table>
-         
         </div>
       </div>
     </>

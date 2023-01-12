@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
-import { CustomNavBar } from "../../helpers/CustomNavBar";
+import { CustomFab } from "../../helpers/CustomFab";
 import { getInterviewById } from "../../firebase/providers";
 import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
 import { useLectiveYear } from "../../hooks/useLectiveYear";
@@ -13,8 +13,8 @@ const AnecdotarioNuevo = () => {
   const [interviewDate, setInterviewDate] = useState("");
 
   useEffect(() => {
-    getInterviewById(selectetStudent.idNumber).then((res) => {
-      setInterviewDate(res.interviewDate);
+    getInterviewById(selectetStudent?.idNumber).then((res) => {
+      setInterviewDate(res?.interviewDate);
     });
   }, [selectetStudent]);
 
@@ -23,10 +23,7 @@ const AnecdotarioNuevo = () => {
   });
   return (
     <>
-      <CustomNavBar
-        title="Documento De Anecdotario Nuevo"
-        handlePrint={handlePrint}
-      />
+      <CustomFab handlePrint={handlePrint} />
 
       <div
         id="anecdotario-nuevo"
@@ -180,7 +177,11 @@ const AnecdotarioNuevo = () => {
           <table
             cellPadding={0}
             cellSpacing={0}
-            style={{ width: "100%", borderCollapse: "collapse", marginBottom: 10 }}
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              marginBottom: 10,
+            }}
           >
             <tbody>
               <tr>
@@ -823,12 +824,15 @@ const AnecdotarioNuevo = () => {
                 </td>
               </tr>
             </tbody>
-           
           </table>
           <table
             cellPadding={0}
             cellSpacing={0}
-            style={{ width: "100%", borderCollapse: "collapse", marginBottom: 10 }}
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              marginBottom: 10,
+            }}
           >
             <tbody>
               <tr>
@@ -1203,7 +1207,6 @@ const AnecdotarioNuevo = () => {
                   </h2>
                 </td>
               </tr>
-            
             </tbody>
           </table>
           <table
@@ -1475,7 +1478,7 @@ const AnecdotarioNuevo = () => {
               </tr>
             </tbody>
           </table>
-          
+
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -1826,7 +1829,7 @@ const AnecdotarioNuevo = () => {
               </tr>
             </tbody>
           </table>
-      
+
           <span style={{ fontFamily: "Arial", fontWeight: "bold" }}>
             2. ENTREVISTA INICIAL
           </span>
