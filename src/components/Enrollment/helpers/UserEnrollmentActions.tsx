@@ -17,6 +17,7 @@ import Contrato from '../../../shared/Documents/Contrato';
 import AnecdotarioAntiguo from '../../../shared/Documents/AnecdotarioAntiguo';
 import Autorizacion from '../../../shared/Documents/Autorizacion';
 import { setModalState } from '../../../store/slices/modal/modal.slice';
+import AnecdotarioNuevo from '../../../shared/Documents/AnecdotarioNuevo';
 interface UserEnrollmentActionsProps {
     params: GridRenderCellParams;
 }
@@ -154,7 +155,7 @@ const UserEnrollmentActions: FC<UserEnrollmentActionsProps> = ({ params }) => {
                 {
                     openModal.contrato === true ? <CustomModal open={openModal.contrato} handleClose={handleCloseModal} children={<Contrato />} ></CustomModal>
                         : openModal.anecdotarioAntiguo === true ? <CustomModal open={openModal.anecdotarioAntiguo} handleClose={handleCloseModal} children={<AnecdotarioAntiguo />} ></CustomModal>
-                            : openModal.anecdotarioNuevo === true ? <CustomModal open={openModal.anecdotarioNuevo} handleClose={handleCloseModal} children={<AnecdotarioAntiguo />} ></CustomModal>
+                            : openModal.anecdotarioNuevo === true ? <CustomModal open={openModal.anecdotarioNuevo} handleClose={handleCloseModal} children={<AnecdotarioNuevo />} ></CustomModal>
                                 : openModal.autorizacion === true ? <CustomModal open={openModal.autorizacion} handleClose={handleCloseModal} children={<Autorizacion />} ></CustomModal>
                                     : null
                 }
