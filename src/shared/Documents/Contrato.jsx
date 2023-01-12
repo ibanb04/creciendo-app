@@ -2,7 +2,7 @@ import moment from "moment";
 import { useRef } from "react";
 import { useAppSelector } from "../../store/useAppDispatch";
 import { useReactToPrint } from "react-to-print";
-import { CustomNavBar } from "../../helpers/CustomNavBar";
+import { CustomFab } from "../../helpers/CustomFab";
 import finger_box from "../../assets/finger_box.png";
 import logo from "../../assets/img/EscudoCreciendo.png";
 import firma_diana_arrieta from "../../assets/img/firma_diana_arrieta.jpeg";
@@ -19,7 +19,7 @@ const Contrato = () => {
   });
   return (
     <>
-      <CustomNavBar title="Contrato de Matrícula" handlePrint={handlePrint} />
+      <CustomFab handlePrint={handlePrint} />
 
       <div
         ref={componentRef}
@@ -140,7 +140,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.firstName}
+                      {selectetStudent?.firstName}
                     </span>
                   </h2>
                 </td>
@@ -184,7 +184,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.middleName}
+                      {selectetStudent?.middleName}
                     </span>
                   </h2>
                 </td>
@@ -230,7 +230,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.firstLastName}
+                      {selectetStudent?.firstLastName}
                     </span>
                   </h2>
                 </td>
@@ -274,7 +274,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.secondLastName}
+                      {selectetStudent?.secondLastName}
                     </span>
                   </h2>
                 </td>
@@ -364,7 +364,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.gender}
+                      {selectetStudent?.gender}
                     </span>
                   </h2>
                 </td>
@@ -408,7 +408,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.age}
+                      {selectetStudent?.age}
                     </span>
                   </h2>
                 </td>
@@ -454,7 +454,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Dpto: {selectetStudent.birthDepartment}
+                      Dpto: {selectetStudent?.birthDepartment}
                     </span>
                   </h2>
                 </td>
@@ -476,7 +476,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      Municipio: {selectetStudent.cityOfBirth}
+                      Municipio: {selectetStudent?.cityOfBirth}
                     </span>
                   </h2>
                 </td>
@@ -522,7 +522,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.idType}
+                      {selectetStudent?.idType}
                     </span>
                   </h2>
                 </td>
@@ -544,7 +544,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      No. {selectetStudent.idNumber}
+                      No. {selectetStudent?.idNumber}
                     </span>
                   </h2>
                 </td>
@@ -588,7 +588,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.expeditionPlace}
+                      {selectetStudent?.expeditionPlace}
                     </span>
                   </h2>
                 </td>
@@ -634,7 +634,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.address}
+                      {selectetStudent?.address}
                     </span>
                   </h2>
                 </td>
@@ -680,7 +680,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.neighborhood}
+                      {selectetStudent?.neighborhood}
                     </span>
                   </h2>
                 </td>
@@ -724,7 +724,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.studentPhoneNumber}
+                      {selectetStudent?.studentPhoneNumber}
                     </span>
                   </h2>
                 </td>
@@ -770,7 +770,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.studentEmail}
+                      {selectetStudent?.studentEmail}
                     </span>
                   </h2>
                 </td>
@@ -850,7 +850,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.grade}
+                      {selectetStudent?.grade}
                     </span>
                   </h2>
                 </td>
@@ -894,7 +894,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.educationalModality}
+                      {selectetStudent?.educationalModality}
                     </span>
                   </h2>
                 </td>
@@ -946,7 +946,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.enterWithBehaviourRecord}
+                      {selectetStudent?.enterWithBehaviourRecord}
                     </span>
                   </h2>
                 </td>
@@ -992,7 +992,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.lastGrade}
+                      {selectetStudent?.lastGrade}
                     </span>
                   </h2>
                 </td>
@@ -1036,7 +1036,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.academicSituation}
+                      {selectetStudent?.academicSituation}
                     </span>
                   </h2>
                 </td>
@@ -1082,7 +1082,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.school}
+                      {selectetStudent?.school}
                     </span>
                   </h2>
                 </td>
@@ -1126,7 +1126,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.schoolCity}
+                      {selectetStudent?.schoolCity}
                     </span>
                   </h2>
                 </td>
@@ -1172,7 +1172,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.reason}
+                      {selectetStudent?.reason}
                     </span>
                   </h2>
                 </td>
@@ -1268,7 +1268,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.diagnosis}
+                      {selectetStudent?.diagnosis}
                     </span>
                   </h2>
                 </td>
@@ -1314,7 +1314,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.especiallys.map(
+                      {selectetStudent?.especiallys.map(
                         (especialidad, index) => {
                           return <span key={index}>{especialidad},&nbsp;</span>;
                         }
@@ -1364,7 +1364,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.therapys.map((terapia, index) => {
+                      {selectetStudent?.therapys.map((terapia, index) => {
                         return <span key={index}>{terapia},&nbsp;</span>;
                       })}
                     </span>
@@ -1412,7 +1412,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.exceptionalPerformance === true
+                      {selectetStudent?.exceptionalPerformance === true
                         ? "Si"
                         : "No"}
                     </span>
@@ -1494,7 +1494,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.eps}
+                      {selectetStudent?.eps}
                     </span>
                   </h2>
                 </td>
@@ -1538,7 +1538,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.housingStratum}
+                      {selectetStudent?.housingStratum}
                     </span>
                   </h2>
                 </td>
@@ -1584,7 +1584,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.sisbenLevel}
+                      {selectetStudent?.sisbenLevel}
                     </span>
                   </h2>
                 </td>
@@ -1628,7 +1628,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.sisbenCarnet}
+                      {selectetStudent?.sisbenCarnet}
                     </span>
                   </h2>
                 </td>
@@ -1674,7 +1674,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.beneficiaryPrograms}
+                      {selectetStudent?.beneficiaryPrograms}
                     </span>
                   </h2>
                 </td>
@@ -1720,7 +1720,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.ethnicity}
+                      {selectetStudent?.ethnicity}
                     </span>
                   </h2>
                 </td>
@@ -1765,7 +1765,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.indigenousShelter}
+                      {selectetStudent?.indigenousShelter}
                     </span>
                   </h2>
                 </td>
@@ -1811,7 +1811,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.conflictVictim}
+                      {selectetStudent?.conflictVictim}
                     </span>
                   </h2>
                 </td>
@@ -1857,7 +1857,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.ejectorDepartment}
+                      {selectetStudent?.ejectorDepartment}
                     </span>
                   </h2>
                 </td>
@@ -1948,7 +1948,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.ejectorMunicipality}
+                      {selectetStudent?.ejectorMunicipality}
                     </span>
                   </h2>
                 </td>
@@ -1992,7 +1992,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial", fontWeight: "normal" }}>
-                      {selectetStudent.ejectionCertificate}
+                      {selectetStudent?.ejectionCertificate}
                     </span>
                   </h2>
                 </td>
@@ -2058,7 +2058,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherName}
+                      {selectetStudent?.motherName}
                     </span>
                   </p>
                 </td>
@@ -2080,7 +2080,7 @@ const Contrato = () => {
                   >
                     <span style={{ fontFamily: "Arial" }}>
                       Convive con el estudiante:{" "}
-                      {selectetStudent.motherlivesWithStudent === true
+                      {selectetStudent?.motherlivesWithStudent === true
                         ? "Si"
                         : "No"}
                     </span>
@@ -2124,7 +2124,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherId}
+                      {selectetStudent?.motherId}
                     </span>
                   </p>
                 </td>
@@ -2208,7 +2208,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherTel}
+                      {selectetStudent?.motherTel}
                     </span>
                   </p>
                 </td>
@@ -2248,7 +2248,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherProfession}
+                      {selectetStudent?.motherProfession}
                     </span>
                   </p>
                 </td>
@@ -2290,7 +2290,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherCompanyName}
+                      {selectetStudent?.motherCompanyName}
                     </span>
                   </p>
                 </td>
@@ -2330,7 +2330,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherJobTitle}
+                      {selectetStudent?.motherJobTitle}
                     </span>
                   </p>
                 </td>
@@ -2372,7 +2372,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.motherEmail}
+                      {selectetStudent?.motherEmail}
                     </span>
                   </p>
                 </td>
@@ -2416,7 +2416,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherName}
+                      {selectetStudent?.fatherName}
                     </span>
                   </p>
                 </td>
@@ -2438,7 +2438,7 @@ const Contrato = () => {
                   >
                     <span style={{ fontFamily: "Arial" }}>
                       Convive con el estudiante:{" "}
-                      {selectetStudent.fatherlivesWithStudent === true
+                      {selectetStudent?.fatherlivesWithStudent === true
                         ? "Si"
                         : "No"}
                     </span>
@@ -2482,7 +2482,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherId}
+                      {selectetStudent?.fatherId}
                     </span>
                   </p>
                 </td>
@@ -2566,7 +2566,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherTel}
+                      {selectetStudent?.fatherTel}
                     </span>
                   </p>
                 </td>
@@ -2606,7 +2606,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherProfession}
+                      {selectetStudent?.fatherProfession}
                     </span>
                   </p>
                 </td>
@@ -2648,7 +2648,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherCompanyName}
+                      {selectetStudent?.fatherCompanyName}
                     </span>
                   </p>
                 </td>
@@ -2688,7 +2688,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherJobTitle}
+                      {selectetStudent?.fatherJobTitle}
                     </span>
                   </p>
                 </td>
@@ -2730,7 +2730,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.fatherEmail}
+                      {selectetStudent?.fatherEmail}
                     </span>
                   </p>
                 </td>
@@ -2774,7 +2774,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.guardianName}
+                      {selectetStudent?.guardianName}
                     </span>
                   </p>
                 </td>
@@ -2796,7 +2796,7 @@ const Contrato = () => {
                   >
                     <span style={{ fontFamily: "Arial" }}>
                       Convive con el estudiante:{" "}
-                      {selectetStudent.guardiantlivesWithStudent === true
+                      {selectetStudent?.guardiantlivesWithStudent === true
                         ? "Si"
                         : "No"}
                     </span>
@@ -2840,7 +2840,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.guardiantId}
+                      {selectetStudent?.guardiantId}
                     </span>
                   </p>
                 </td>
@@ -2882,7 +2882,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.guardiantExpeditionPlace}
+                      {selectetStudent?.guardiantExpeditionPlace}
                     </span>
                   </p>
                 </td>
@@ -2926,7 +2926,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.guardiantTel}
+                      {selectetStudent?.guardiantTel}
                     </span>
                   </p>
                 </td>
@@ -2966,7 +2966,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.guardiantRelationship}
+                      {selectetStudent?.guardiantRelationship}
                     </span>
                   </p>
                 </td>
@@ -3008,7 +3008,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.guardiantEmail}
+                      {selectetStudent?.guardiantEmail}
                     </span>
                   </p>
                 </td>
@@ -3068,7 +3068,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.anotherContactName}
+                      {selectetStudent?.anotherContactName}
                     </span>
                   </p>
                 </td>
@@ -3135,7 +3135,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.anotherContactRelationship}
+                      {selectetStudent?.anotherContactRelationship}
                     </span>
                   </p>
                 </td>
@@ -3175,7 +3175,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.anotherContactTel}
+                      {selectetStudent?.anotherContactTel}
                     </span>
                   </p>
                 </td>
@@ -3229,7 +3229,7 @@ const Contrato = () => {
                     }}
                   >
                     <span style={{ fontFamily: "Arial" }}>
-                      {selectetStudent.faceToFaceAuthorization === true
+                      {selectetStudent?.faceToFaceAuthorization === true
                         ? "Si"
                         : "No"}
                     </span>
@@ -3302,9 +3302,9 @@ const Contrato = () => {
                 ________________________________________
               </span>
               <br />
-              <span>{selectetStudent.guardianName}</span>
+              <span>{selectetStudent?.guardianName}</span>
               <br />
-              <span>C.C {selectetStudent.guardiantId}</span>
+              <span>C.C {selectetStudent?.guardiantId}</span>
               <br />
               <span>Firma del padre y/o Acudiente&nbsp;</span>
             </div>
@@ -3464,9 +3464,9 @@ const Contrato = () => {
               <span style={{ fontFamily: '"Arial Narrow"' }}>EL COLEGIO</span>
             </strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp;y {selectetStudent.guardianName} con C.C.{" "}
-              {selectetStudent.guardiantId} de{" "}
-              {selectetStudent.guardiantExpeditionPlace} en su nombre y en su
+              &nbsp;y {selectetStudent?.guardianName} con C.C.{" "}
+              {selectetStudent?.guardiantId} de{" "}
+              {selectetStudent?.guardiantExpeditionPlace} en su nombre y en su
               condición de padre y/o acudiente del educando y quienes en lo
               sucesivo se denominará&nbsp;
             </span>
@@ -4582,7 +4582,7 @@ const Contrato = () => {
               <br />
               <br />
               <span style={{ fontSize: "11pt" }}>
-                {selectetStudent.guardianName}
+                {selectetStudent?.guardianName}
               </span>
               <br />
               <span>_________________________________________________</span>
@@ -4601,7 +4601,7 @@ const Contrato = () => {
               <br />
               <br />
               <span style={{ fontSize: "11pt" }}>
-                {selectetStudent.guardianName}
+                {selectetStudent?.guardianName}
               </span>
               <br />
               <span>_________________________________________________</span>
@@ -4750,9 +4750,9 @@ const Contrato = () => {
               <span style={{ fontFamily: '"Arial Narrow"' }}>EL COLEGIO</span>
             </strong>
             <span style={{ fontFamily: '"Arial Narrow"' }}>
-              &nbsp;y {selectetStudent.guardianName} con C.C.{" "}
-              {selectetStudent.guardiantId} de{" "}
-              {selectetStudent.guardiantExpeditionPlace} en su nombre y en su
+              &nbsp;y {selectetStudent?.guardianName} con C.C.{" "}
+              {selectetStudent?.guardiantId} de{" "}
+              {selectetStudent?.guardiantExpeditionPlace} en su nombre y en su
               condición de padre y/o acudiente del educando y quienes en lo
               sucesivo se denominará&nbsp;
             </span>
@@ -5868,7 +5868,7 @@ const Contrato = () => {
               <br />
               <br />
               <span style={{ fontSize: "11pt" }}>
-                {selectetStudent.guardianName}
+                {selectetStudent?.guardianName}
               </span>
               <br />
               <span>_________________________________________________</span>
@@ -5887,7 +5887,7 @@ const Contrato = () => {
               <br />
               <br />
               <span style={{ fontSize: "11pt" }}>
-                {selectetStudent.guardianName}
+                {selectetStudent?.guardianName}
               </span>
               <br />
               <span>_________________________________________________</span>

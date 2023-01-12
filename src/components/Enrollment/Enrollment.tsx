@@ -8,18 +8,19 @@ import { useEnrollmentColumns } from './helpers/useEnrollmentColumns';
 import CustomDataGrid from "../../helpers/CustomDataGrid";
 import CustomDataGridSkeleton from '../../helpers/CustomDataGridSkeleton';
 import { useResetStudentAndInterviewState } from '../../hooks/useResetStudentAndInterviewState';
+import { useAppSelector } from "../../store/useAppDispatch";
 
 export const Enrollment = () => {
   const resetStudentAndInterviewSelected = useResetStudentAndInterviewState();
   const [students, setstudents] = useState<DocumentData[]>([]);
   const columns = useEnrollmentColumns();
-
+  const { isModalOpen } = useAppSelector(state => state.modalState);
   const { data, isLoading, isFetching } = useQuery(["students"], () =>
     getStudents()
   );
 
   useEffect(() => {
-    resetStudentAndInterviewSelected();
+    if (!isModalOpen) resetStudentAndInterviewSelected();
     if (data) setstudents(data);
   }, [isFetching]);
 

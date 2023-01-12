@@ -44,6 +44,7 @@ export const ControllerAutoComplete: FC<ControllerAutoCompleteProps> = ({
           options={menuItem.map((option) => option)}
           sx={{ mt: 2, width: { xs: "80%", sm: "90%" } }}
           size={size}
+          isOptionEqualToValue={(option, value) => option.value === value.value}
           value={
             selectetStudent?.birthDepartment ? selectetStudent[name] : value
           }
