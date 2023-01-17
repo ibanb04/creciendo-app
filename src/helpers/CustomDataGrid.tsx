@@ -1,15 +1,15 @@
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, esES, GridColDef } from '@mui/x-data-grid';
 import { useState, FC } from 'react';
 import CustomDataGridToolbar from './CustomDataGridToolbar';
 import Checkbox from '@mui/material/Checkbox';
 import { Paper } from '@mui/material';
+import CustomNoRowsOverlay from './CustomNoRowsOverlay';
 
 interface CustomDataGridProps {
     columns: GridColDef[];
     data: any[];
     idType: string;
 }
-
 const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
     const [pageSize, setPageSize] = useState(5);
 
@@ -21,6 +21,7 @@ const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
         >
             <div style={{ height: 470, width: "100%" }}>
                 <DataGrid
+                    localeText={esES.components.MuiDataGrid.defaultProps.localeText}
                     sx={{
                         border: 0,
                         px: 2,
@@ -35,7 +36,9 @@ const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
                         BaseCheckbox(props) {
                             return <Checkbox {...props} color="secondary" />;
                         },
-                        Toolbar: () => CustomDataGridToolbar("Buscar "),
+                        Toolbar: () => CustomDataGridToolbar("Buscar ", data, idType),
+                        NoRowsOverlay: CustomNoRowsOverlay,
+                        NoResultsOverlay: CustomNoRowsOverlay,
                     }}
                     disableColumnFilter
                     disableColumnMenu
