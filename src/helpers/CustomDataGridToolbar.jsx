@@ -9,16 +9,13 @@ import { GridToolbarContainer, useGridApiContext } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
 import moment from "moment";
 import ReplayIcon from "@mui/icons-material/Replay";
-import ReactExport from "react-export-excel";
+import * as FileSaver from "file-saver";
+import XLSX from "sheetjs-style";
 import Button from "@mui/material/Button";
 import {
   interviewDefaultColumnsExcelHeaders,
   studentDefaultColumnsExcelHeaders,
 } from "./defaultColumnsExcelHeaders";
-
-const ExcelFile = ReactExport.ExcelFile;
-const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
-const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const CustomDataGridToolbar = (label, data, idType) => {
   const apiRef = useGridApiContext();
@@ -42,6 +39,33 @@ const CustomDataGridToolbar = (label, data, idType) => {
     idType === "student"
       ? `Base de datos de estudiantes ${currentDate}`
       : `Entrevistas Colegio Creciendo ${currentDate}`;
+
+  const fileType =
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+  const fileExtension = ".xlsx";
+
+  const exportToExcel = () => {
+    const datos = [];
+    const headers =
+      idType === "student"
+        ? studentDefaultColumnsExcelHeaders
+        : interviewDefaultColumnsExcelHeaders;
+
+    for (const i in data) {
+      const item = data[i];
+      const row = {};
+      for (const j in headers) {
+        const header = headers[j];
+        row[header.headerName] = item[header.field];
+      }
+      datos.push(row);
+    }
+    const ws = XLSX.utils.json_to_sheet(datos);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const dataExcel = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(dataExcel, fileName + fileExtension);
+  };
 
   const handleRefresh = () => {
     window.location.reload();
@@ -68,38 +92,15 @@ const CustomDataGridToolbar = (label, data, idType) => {
             />
           </Box>
         </GridToolbarContainer>
-
         <Box>
-          <ExcelFile
-            filename={fileName}
-            element={
-              <Button
-                variant="text"
-                color="secondary"
-                startIcon={<DownloadIcon />}
-              >
-                Exportar base de datos
-              </Button>
-            }
+          <Button
+            variant="text"
+            color="secondary"
+            startIcon={<DownloadIcon />}
+            onClick={exportToExcel}
           >
-            <ExcelSheet data={data} name="Estudiantes">
-              {idType === "student"
-                ? studentDefaultColumnsExcelHeaders.map((column, key) => (
-                    <ExcelColumn
-                      key={key}
-                      label={column.headerName}
-                      value={column.field}
-                    />
-                  ))
-                : interviewDefaultColumnsExcelHeaders.map((column, key) => (
-                    <ExcelColumn
-                      key={key}
-                      label={column.headerName}
-                      value={column.field}
-                    />
-                  ))}
-            </ExcelSheet>
-          </ExcelFile>
+            Exportar base de datos
+          </Button>
           <IconButton aria-label="refresh" onClick={handleRefresh}>
             <ReplayIcon />
           </IconButton>

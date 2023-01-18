@@ -4,7 +4,7 @@ import CustomDataGridToolbar from './CustomDataGridToolbar';
 import Checkbox from '@mui/material/Checkbox';
 import { Paper } from '@mui/material';
 import CustomNoRowsOverlay from './CustomNoRowsOverlay';
-
+import CircularProgress from '@mui/material/CircularProgress';
 interface CustomDataGridProps {
     columns: GridColDef[];
     data: any[];
@@ -37,7 +37,7 @@ const CustomDataGrid: FC<CustomDataGridProps> = ({ columns, data, idType }) => {
                             return <Checkbox {...props} color="secondary" />;
                         },
                         Toolbar: () => CustomDataGridToolbar("Buscar ", data, idType),
-                        NoRowsOverlay: CustomNoRowsOverlay,
+                        NoRowsOverlay: CircularProgress,
                         NoResultsOverlay: CustomNoRowsOverlay,
                     }}
                     disableColumnFilter

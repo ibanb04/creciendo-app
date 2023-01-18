@@ -1,5 +1,13 @@
 export const studentDefaultColumnsExcelHeaders = [
   {
+    headerName: "Tipo de Identificación",
+    field: "idType",
+  },
+  {
+    headerName: "Número de Identificación",
+    field: "idNumber",
+  },
+  {
     headerName: "Primer Nombre",
     field: "firstName",
   },
@@ -14,14 +22,6 @@ export const studentDefaultColumnsExcelHeaders = [
   {
     headerName: "Segundo Apellido",
     field: "secondLastName",
-  },
-  {
-    headerName: "Tipo de Identificación",
-    field: "idType",
-  },
-  {
-    headerName: "Número de Identificación",
-    field: "idNumber",
   },
   {
     headerName: "Fecha de Nacimiento",
@@ -53,7 +53,7 @@ export const studentDefaultColumnsExcelHeaders = [
     field: "address",
   },
   {
-    headerName: "  Barrio",
+    headerName: "Barrio",
     field: "neighborhood",
   },
   {
@@ -227,7 +227,7 @@ export const studentDefaultColumnsExcelHeaders = [
   },
 
   {
-    headerName: "  Nombre del acudiente",
+    headerName: "Nombre del acudiente",
     field: "guardianName",
   },
   {
@@ -287,146 +287,146 @@ export const studentDefaultColumnsExcelHeaders = [
 
 export const interviewDefaultColumnsExcelHeaders = [
   {
-    headerName: " identificación del estudiante",
+    headerName: "identificación del estudiante",
     field: "studentId",
   },
   {
-    headerName: " tipo de identificación del estudiante",
+    headerName: "tipo de identificación del estudiante",
     field: "studentIdType",
   },
 
   {
-    headerName: " primer nombre",
+    headerName: "primer nombre",
     field: "firstName",
   },
   {
-    headerName: " segundo nombre",
+    headerName: "segundo nombre",
     field: "secondName",
   },
   {
-    headerName: " primer apellido",
+    headerName: "primer apellido",
     field: "firstLastName",
   },
   {
-    headerName: " segundo apellido",
+    headerName: "segundo apellido",
     field: "secondLastName",
   },
   {
-    headerName: " edad",
+    headerName: "edad",
     field: "age",
   },
   {
-    headerName: " posición de los hermanos",
+    headerName: "posición de los hermanos",
     field: "siblingsPosition",
   },
 
-  { headerName: "Fecha de entrevista", field: "interviewDate" },
+  { headerName: "Fecha de entrevista", field: "interviewDate"},
   {
     headerName: "accidentes",
     field: "accidents",
   },
   {
-    headerName: " descripción de accidentes",
+    headerName: "descripción de accidentes",
     field: "accidentsDescription",
   },
   {
-    headerName: "  adquisición de lenguaje ",
+    headerName: "adquisición de lenguaje ",
     field: "languageAcquisition",
   },
   {
-    headerName: " comentarios adicionales",
+    headerName: "comentarios adicionales",
     field: "additionalComments",
   },
   {
-    headerName: "   alergias",
+    headerName: " alergias",
     field: "allergies",
   },
   {
-    headerName: " descripción de alergias",
+    headerName: "descripción de alergias",
     field: "allergiesDescription",
   },
   {
-    headerName: " balbuceo",
+    headerName: "balbuceo",
     field: "babbling",
   },
   {
-    headerName: " comportamiento fuera de casa",
+    headerName: "comportamiento fuera de casa",
     field: "behaviorAwayFromHome",
   },
   {
-    headerName: " comportamiento con adultos",
+    headerName: "comportamiento con adultos",
     field: "behaviorWithAdults",
   },
   {
-    headerName: " comportamiento con otros niños",
+    headerName: "comportamiento con otros niños",
     field: "behaviorWithOtherChildren",
   },
   {
-    headerName: " fecha de nacimiento",
+    headerName: "fecha de nacimiento",
     field: "birthDate",
   },
   {
-    headerName: " cuidador",
+    headerName: "cuidador",
     field: "cuidador",
   },
   {
-    headerName: " enfermedades congénitas",
+    headerName: "enfermedades congénitas",
     field: "congenitalDiseases",
   },
   {
-    headerName: " Gateo",
+    headerName: "Gateo",
     field: "crawl",
   },
   {
-    headerName: " horas de sueño diurno",
+    headerName: "horas de sueño diurno",
     field: "dayDreamDuration",
   },
   {
-    headerName: " grado a aplicar",
+    headerName: "grado a aplicar",
     field: "gradeToApply",
   },
   {
-    headerName: " diagnóstico de enfermedad",
+    headerName: "diagnóstico de enfermedad",
     field: "diseaseDiagnosis",
   },
   {
-    headerName: " control dorsal",
+    headerName: "control dorsal",
     field: "dorsalControl",
   },
   {
-    headerName: " relación emocional con otro miembro de la familia",
+    headerName: "relación emocional con otro miembro de la familia",
     field: "emotionalRelationshipAnotherFamilyMember",
   },
   {
-    headerName: " relación emocional con el padre",
+    headerName: "relación emocional con el padre",
     field: "emotionalRelationshipWithFather",
   },
   {
-    headerName: " relación emocional con la madre",
+    headerName: "relación emocional con la madre",
     field: "emotionalRelationshipWithMother",
   },
   {
-    headerName: " relación emocional con el acudiente permanente",
+    headerName: "relación emocional con el acudiente permanente",
     field: "emotionalRelationshipWithPermanentGuardian",
   },
   {
-    headerName: " relación emocional con terceros",
+    headerName: "relación emocional con terceros",
     field: "emotionalRelationshipWithThirdParties",
   },
   {
-    headerName: " relación emocional con otros niños",
+    headerName: "relación emocional con otros niños",
     field: "emotionalRelationshipWithotherChildren",
   },
   {
-    headerName: " enuresis",
+    headerName: "enuresis",
     field: "enuresis",
   },
   {
-    headerName: " historia familiar de discapacidades",
+    headerName: "historia familiar de discapacidades",
     field: "familyHistoryOfDisabilities",
   },
   {
-    headerName: " Hermanos madre y padre",
+    headerName: "Hermanos madre y padre",
     field: "bothParents",
   },
   {
@@ -435,35 +435,35 @@ export const interviewDefaultColumnsExcelHeaders = [
   },
 
   {
-    headerName: " primeras frases",
+    headerName: "primeras frases",
     field: "firstSentences",
   },
   {
-    headerName: " primeras palabras",
+    headerName: "primeras palabras",
     field: "firstWords",
   },
   {
-    headerName: " sigue instrucciones",
+    headerName: "sigue instrucciones",
     field: "followsInstructions",
   },
   {
-    headerName: " nombre del acudiente",
+    headerName: "nombre del acudiente",
     field: "guardianName",
   },
   {
-    headerName: " identificación del acudiente",
+    headerName: "identificación del acudiente",
     field: "guardiantId",
   },
   {
-    headerName: " teléfono del acudiente",
+    headerName: "teléfono del acudiente",
     field: "guardiantPhone",
   },
   {
-    headerName: " parentesco del acudiente",
+    headerName: "parentesco del acudiente",
     field: "guardiantRelationship",
   },
   {
-    headerName: " control cefálico",
+    headerName: "control cefálico",
     field: "headControl",
   },
   {
@@ -471,39 +471,39 @@ export const interviewDefaultColumnsExcelHeaders = [
     field: "illnessesSuffered",
   },
   {
-    headerName: " nombre del entrevistador",
+    headerName: "nombre del entrevistador",
     field: "interviewerName",
   },
   {
-    headerName: " tipo de sueño",
+    headerName: "tipo de sueño",
     field: "kindOfDream",
   },
   {
-    headerName: " tutor legal",
+    headerName: "tutor legal",
     field: "legalGuardian",
   },
   {
-    headerName: " hermanos madre",
+    headerName: "hermanos madre",
     field: "mothersBrothers",
   },
   {
-    headerName: " duración del sueño nocturno",
+    headerName: "duración del sueño nocturno",
     field: "nightDreamDuration",
   },
   {
-    headerName: " ¿qué relación tienes? En caso de no convivir con sus padres",
+    headerName: "¿qué relación tienes? En caso de no convivir con sus padres",
     field: "peopleStudentDontLivesWith",
   },
   {
-    headerName: " número de hermanos",
+    headerName: "número de hermanos",
     field: "numberOfSiblings",
   },
   {
-    headerName: " otros niños en la familia",
+    headerName: "otros niños en la familia",
     field: "otherKidsInFamily",
   },
   {
-    headerName: " Personas con quien convive",
+    headerName: "Personas con quien convive",
     field: "peopleStudentLivesWith",
   },
   {
@@ -511,52 +511,52 @@ export const interviewDefaultColumnsExcelHeaders = [
     field: "pregnancySummary",
   },
   {
-    headerName: " desarrollo psicomotor",
+    headerName: "desarrollo psicomotor",
     field: "psychoMotorDevelopment",
   },
   {
-    headerName: " reacción a la frustración",
+    headerName: "reacción a la frustración",
     field: "reactionToFrustation",
   },
   {
-    headerName: " razón de uso de incubadora",
+    headerName: "razón de uso de incubadora",
     field: "reasonForUseOfIncubator",
   },
 
   {
-    headerName: " control de esfínteres",
+    headerName: "control de esfínteres",
     field: "sphincterControl",
   },
   {
-    headerName: " convive con hermanos",
+    headerName: "convive con hermanos",
     field: "studentLivesWithBrothers",
   },
   {
-    headerName: " Cirugías",
+    headerName: "Cirugías",
     field: "surgery",
   },
   {
-    headerName: " descripción de la cirugía",
+    headerName: "descripción de la cirugía",
     field: "surgeryDescription",
   },
   {
-    headerName: " especialidades tratantes",
+    headerName: "especialidades tratantes",
     field: "treatmentSpecialties",
   },
   {
-    headerName: " descripción de especialidades tratantes",
+    headerName: "descripción de especialidades tratantes",
     field: "treatmentDescription",
   },
   {
-    headerName: " tipo de parto",
+    headerName: "tipo de parto",
     field: "typeOfBirth",
   },
   {
-    headerName: " uso de incubadora",
+    headerName: "uso de incubadora",
     field: "useOfIncubator",
   },
   {
-    headerName: " caminó",
+    headerName: "caminó",
     field: "walk",
   },
   {
@@ -564,31 +564,31 @@ export const interviewDefaultColumnsExcelHeaders = [
     field: "educationalInstitutionApplied1",
   },
   {
-    headerName: " Institución educativa 2",
+    headerName: "Institución educativa 2",
     field: "educationalInstitutionApplied2",
   },
   {
-    headerName: " ultimo grado cursado 1",
+    headerName: "ultimo grado cursado 1",
     field: "lastSchoolGrade1",
   },
   {
-    headerName: " ultimo grado cursado 2",
+    headerName: "ultimo grado cursado 2",
     field: "lastSchoolGrade2",
   },
   {
-    headerName: " ultimo año escolar 1",
+    headerName: "ultimo año escolar 1",
     field: "lastSchoolYear1",
   },
   {
-    headerName: "   ultimo año escolar 2",
+    headerName: " ultimo año escolar 2",
     field: "lastSchoolYear2",
   },
   {
-    headerName: " descripcion de actividades en grupo",
+    headerName: "descripcion de actividades en grupo",
     field: "listTeamworkActivities",
   },
   {
-    headerName: " Desempeño en actividades grupales",
+    headerName: "Desempeño en actividades grupales",
     field: "performance",
   },
   {
@@ -596,11 +596,11 @@ export const interviewDefaultColumnsExcelHeaders = [
     field: "reactionToPunishment",
   },
   {
-    headerName: " relaciion con los maestros",
+    headerName: "relaciion con los maestros",
     field: "relationshipWithTeachers",
   },
   {
-    headerName: " adaptación a la escuela",
+    headerName: "adaptación a la escuela",
     field: "schoolAdaptationProcess",
   },
   {
@@ -613,7 +613,7 @@ export const interviewDefaultColumnsExcelHeaders = [
   },
   {
     headerName:
-      " Participó o participa en actividades que requieran integración grupal",
+      "Participó o participa en actividades que requieran integración grupal",
     field: "teamworkActivities",
   },
   {
