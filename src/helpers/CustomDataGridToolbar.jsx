@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { debounce } from "@mui/material/utils";
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
@@ -92,19 +92,24 @@ const CustomDataGridToolbar = (label, data, idType) => {
             />
           </Box>
         </GridToolbarContainer>
-        <Box>
+        <Stack direction="row" alignItems="center" justifyContent="flex-end">
           <Button
             variant="text"
             color="secondary"
-            startIcon={<DownloadIcon />}
+            endIcon={<DownloadIcon />}
             onClick={exportToExcel}
           >
-            Exportar base de datos
+            <Typography
+              variant="body2"
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
+              Exportar a Excel
+            </Typography>
           </Button>
           <IconButton aria-label="refresh" onClick={handleRefresh}>
             <ReplayIcon />
           </IconButton>
-        </Box>
+        </Stack>
       </Stack>
     </>
   );
