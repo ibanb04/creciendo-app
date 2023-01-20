@@ -16,6 +16,7 @@ import Divider from "@mui/material/Divider/Divider";
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Avatar, ListItemIcon } from "@mui/material";
 import Logout from '@mui/icons-material/Logout';
+import { useNavigate } from "react-router-dom";
 
 interface NavBarProps {
   open?: boolean;
@@ -26,7 +27,7 @@ interface NavBarProps {
 export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
   const [auth, setAuth] = useState(true);
   const { displayName, photoURL } = useAppSelector(state => state.auth);
-
+  const navigate = useNavigate();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
   };
@@ -98,17 +99,18 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
                     {...bindTrigger(popupState)}
                     color="secondary"
                   >
-                    <AccountCircle />
+                    <Avatar sx={{ width: 30, height: 30 }} src={photoURL || ''} />
+
                   </IconButton>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>
+                    <MenuItem onClick={() => navigate('/perfil/editar')}>
                       <ListItemIcon>
-                        <Avatar sx={{ width: 30, height: 30 }} />
+                        <Avatar sx={{ width: 30, height: 30 }} src={photoURL || ''} />
                       </ListItemIcon>
                       {displayName}
                     </MenuItem>
                     <Divider />
-                    <MenuItem onClick={popupState.close}>
+                    <MenuItem onClick={() => navigate('/perfil/editar')}>
                       <ListItemIcon>
                         <SettingsIcon />
                       </ListItemIcon>
@@ -128,18 +130,7 @@ export const NavBar: FC<NavBarProps> = ({ open, drawerWidth, setOpen }) => {
         </Toolbar>
       </AppBar>
       <Toolbar />
-      {/* <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup> */}
+
     </Box>
   );
 };

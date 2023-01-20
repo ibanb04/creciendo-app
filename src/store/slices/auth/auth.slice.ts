@@ -35,10 +35,13 @@ const authSlice = createSlice({
     },
     resetErrorMessage: (state) => {
       state.errorMessage = null;
-    }
+    },
+    updatePhotoUrl: (state, { payload }) => {
+      state.photoURL = payload;
+    },
   },
 });
 
-export const { login, logout, checkingCredentials, resetErrorMessage } = authSlice.actions;
+export const { login, logout, checkingCredentials, resetErrorMessage, updatePhotoUrl } = authSlice.actions;
 
 export default authSlice.reducer;

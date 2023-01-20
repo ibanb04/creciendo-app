@@ -1,6 +1,6 @@
 import { Action, AnyAction } from "@reduxjs/toolkit";
-import { loginWithEmailAndPassword, logoutFirebase, registerUserWithEmailAndPassword } from "../../../firebase/providers";
-import { checkingCredentials, login, logout } from "./auth.slice";
+import { loginWithEmailAndPassword, logoutFirebase, registerUserWithEmailAndPassword, updatePhotoUrlFirebase } from '../../../firebase/providers';
+import { checkingCredentials, login, logout, updatePhotoUrl } from "./auth.slice";
 
 export interface Dispatch<A extends Action = AnyAction> {
   <T extends A>(action: T): T;
@@ -53,3 +53,17 @@ export const startLogout = () => {
     dispatch(logout({ code: "" }));
   };
 };
+
+export const startUpdatePhotoUrl = (photoUrl: string) => {
+  return async (dispatch: Dispatch) => {
+    const result = await updatePhotoUrlFirebase(photoUrl);
+    if (!result.ok) return dispatch(logout(result.errorMessage));
+    dispatch(updatePhotoUrl(result.photoURL));
+  };
+}
+
+export const startUpdateProfile = (displayName: string) => {
+  return async (dispatch: Dispatch) => {
+ 
+  };
+}
