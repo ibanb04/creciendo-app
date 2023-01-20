@@ -45,6 +45,25 @@ export const registerUserWithEmailAndPassword = async (
   }
 };
 
+export const updatePhotoUrlFirebase = async (
+  photoURL: string
+) => {
+  const { currentUser } = FirebaseAuth;
+  if (currentUser) {
+    await updateProfile(currentUser, { photoURL });
+    return {
+      ok: true,
+      photoURL,
+    };
+  } else {
+    return {
+      ok: false,
+      errorMessage: "No existe un usuario activo",
+    };
+  }
+};
+
+
 export const loginWithEmailAndPassword = async (
   email: string,
   password: string
@@ -140,6 +159,20 @@ export const registerInterview = async (
 export const getStudentById = async (id: string) => {
   try {
     const docuRef = await doc(FirebaseDB, `estudiantes/${id}`);
+    const docSnap = await getDoc(docuRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUser = async (id: string) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `usuarios/${id}`);
     const docSnap = await getDoc(docuRef);
     if (docSnap.exists()) {
       return docSnap.data();
