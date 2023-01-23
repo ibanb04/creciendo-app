@@ -64,6 +64,25 @@ export const updatePhotoUrlFirebase = async (
 };
 
 
+export const updateDisplayNameFirebase = async (
+  displayName: string
+) => {
+  const { currentUser } = FirebaseAuth;
+  if (currentUser) {
+    await updateProfile(currentUser, { displayName });
+    return {
+      ok: true,
+      displayName,
+    };
+  } else {
+    return {
+      ok: false,
+      errorMessage: "No existe un usuario activo",
+    };
+  }
+};
+
+
 export const loginWithEmailAndPassword = async (
   email: string,
   password: string

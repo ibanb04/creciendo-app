@@ -17,7 +17,7 @@ import { getUser, updatePhotoUrlFirebase } from '../../firebase/providers';
 import { useQuery } from 'react-query';
 import { FirebaseStorage } from '../../firebase/config';
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { startUpdatePhotoUrl } from '../../store/slices/auth/thunks';
+import { startUpdatePhotoUrl, startUpdateDisplayName } from '../../store/slices/auth/thunks';
 
 interface IFormInputs {
     displayName?: string | null;
@@ -50,7 +50,7 @@ const EditProfile = () => {
         displayName,
         role,
     }) => {
-        
+        dispatch(startUpdateDisplayName(displayName || ''));
     };
 
     const handleImageChange = (e: any) => {
@@ -259,7 +259,7 @@ const EditProfile = () => {
                                                         <Controller
                                                             name="password"
                                                             control={control}
-                                                            defaultValue="*****"
+                                                            defaultValue="*******"
                                                             rules={{
                                                                 minLength: {
                                                                     value: 6,
