@@ -4,7 +4,7 @@ import { SocialEconomicForm } from "./Forms/SocialEconomicForm";
 import { FamiliarForm } from "./Forms/FamiliarForm";
 import { StudentStateForm } from "./Forms/StudentStateForm";
 import { studentDefaultValues } from "./utils/studentDefaultValues";
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAppSelector } from '../../store/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
 import FormLayout from '../../ui/layouts/FormLayout';
@@ -41,7 +41,11 @@ interface AddOrEditStudentProps {
 export const AddOrEditStudent: FC<AddOrEditStudentProps> = ({ action }) => {
   const { selectetStudent } = useAppSelector((state) => state.student);
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (action === 'edit' && !selectetStudent) {
+      navigate('/estudiantes');
+    }
+  }, [action, selectetStudent]);
   return (
     <>
       {

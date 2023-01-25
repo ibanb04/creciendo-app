@@ -10,7 +10,7 @@ import PrenatalHistoryForm from './Forms/PrenatalHistoryForm';
 import PsychoAffectivityForm from './Forms/PsychoAffectivityForm';
 import PsychoPedagogicalHistoryForm from './Forms/PsychoPedagogicalHistoryForm';
 import { interviewDefaultValues } from './utils/interviewDefaultValues';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAppSelector } from '../../store/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,11 +62,19 @@ interface AddOrEditInterviewProps {
 export const AddOrEditInterview: FC<AddOrEditInterviewProps> = ({ action }) => {
   const navigate = useNavigate();
   const { selectedInterview } = useAppSelector((state) => state.interview);
+  const { displayName } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (action === 'edit' && !selectedInterview) {
+      navigate('/entrevistas');
+    }
+  }, [action, selectedInterview]);
+
   return (
     <>
       {
         action === 'add' ?
-          <FormLayout title="Nueva Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" steps={steps} action={action} defaultValues={interviewDefaultValues} />
+          <FormLayout title="Nueva Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" steps={steps} action={action} defaultValues={{ ...interviewDefaultValues, interviewerName: displayName }} />
           : selectedInterview ?
             <FormLayout title="Editar Entrevista" getStepContent={getStepContent} redirectRoute="/entrevistas" action={action} steps={steps} />
             : navigate('/entrevistas')
