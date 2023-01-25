@@ -43,7 +43,7 @@ export interface interviewDefaultValuesProps {
   headControl: string;
   idNumber?: number | undefined;
   illnessesSuffered: string;
-  interviewerName: string;
+  interviewerName?: string | null;
   kindOfDream: string;
   languageAcquisition: string;
   lastSchoolGrade1: string;
@@ -105,7 +105,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   behaviorWithAdults: "",
   behaviorWithOtherChildren: "",
   birthDate: "",
-  cuidador:"",
+  cuidador: "",
   congenitalDiseases: "",
   crawl: "",
   dayDreamDuration: "",
@@ -133,7 +133,7 @@ export const interviewDefaultValues: interviewDefaultValuesProps = {
   guardiantRelationship: "",
   headControl: "",
   illnessesSuffered: "",
-  interviewerName: "",
+ 
   kindOfDream: "",
   legalGuardian: "",
   mothersBrothers: "",

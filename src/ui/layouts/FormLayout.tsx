@@ -12,7 +12,6 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { startStudenRegister, registerInterview, updateStudent, updateInterview } from '../../firebase/providers';
 import { studentDefaultValuesProps } from '../../components/AddOrEditStudent/utils/studentDefaultValues';
 import { interviewDefaultValuesProps } from '../../components/AddOrEditInterview/utils/interviewDefaultValues';
 import { useAppDispatch, useAppSelector } from '../../store/useAppDispatch';
@@ -22,6 +21,8 @@ import bg_blurry_gradient_form from '../../assets/bg_blurry_gradient_form1.svg';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Stack } from '@mui/system';
+import { startStudentRegister, startUpdateStudent } from '../../store/slices/student/thunks';
+import { startInterviewRegister, startUpdateInterview } from '../../store/slices/interview/thunks';
 
 
 interface FormLayoutProps {
@@ -49,19 +50,20 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
         if (activeStep === steps.length - 1) {
             if (redirectRoute === '/estudiantes' && action === 'add') {
                 dispatch(setStudent(null));
-                startStudenRegister(data);
+                dispatch(startStudentRegister(data));
             }
             if (redirectRoute === '/estudiantes' && action === 'edit') {
-                updateStudent(data);
+                dispatch(startUpdateStudent(data));
                 dispatch(setStudent(null));
             }
 
             if (redirectRoute === '/entrevistas' && action === 'add') {
-                registerInterview(data);
+
+                dispatch(startInterviewRegister(data));
             }
             if (redirectRoute === '/entrevistas' && action === 'edit') {
                 dispatch(setInterview(null));
-                updateInterview(data);
+                dispatch(startUpdateInterview(data));
             }
             navigate(redirectRoute);
         }
@@ -102,7 +104,7 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                             >
                                 <ArrowBackIcon />
                             </IconButton>
-                            <Typography color="inherit" variant="h4"  sx={{fontSize:30}} >
+                            <Typography color="inherit" variant="h4" sx={{ fontSize: 30 }} >
                                 {title}
                             </Typography>
                         </Stack>
@@ -173,21 +175,6 @@ const FormLayout: FC<FormLayoutProps> = ({ title = "", getStepContent, redirectR
                             </Step>
                         ))}
                     </Stepper>
-                    {activeStep === steps.length && (
-                        <Paper square elevation={0} sx={{ p: 3 }}>
-                            <Typography>
-                                Todos los pasos han sido completados - has finalizado el
-                                registro!
-                            </Typography>
-                            <Button
-                                color="secondary"
-                                onClick={handleReset}
-                                sx={{ mt: 1, mr: 1 }}
-                            >
-                                Reset
-                            </Button>
-                        </Paper>
-                    )}
                 </Box>
             </Grid >
         </>

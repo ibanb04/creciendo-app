@@ -1,4 +1,4 @@
-import { Grid, Avatar, Divider, TextField, InputLabel, Select, Skeleton } from '@mui/material';
+import { Grid, Avatar, Divider, TextField, InputLabel, Select, Skeleton, FormGroup, FormControlLabel, Switch } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { Stack } from '@mui/system';
@@ -10,14 +10,13 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl/FormControl';
 import MenuItem from '@mui/material/MenuItem';
-import Collapse from '@mui/material/Collapse/Collapse';
-import Alert from '@mui/material/Alert';
-import CloseIcon from '@mui/icons-material/Close';
-import { getUser, updatePhotoUrlFirebase } from '../../firebase/providers';
+import { changePassword, getUser } from '../../firebase/providers';
 import { useQuery } from 'react-query';
 import { FirebaseStorage } from '../../firebase/config';
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { startUpdatePhotoUrl } from '../../store/slices/auth/thunks';
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { startUpdatePhotoUrl, startUpdateDisplayName } from '../../store/slices/auth/thunks';
+import CustomAlert from '../../helpers/CustomAlert';
+import { resetAlert, setAlert } from '../../store/slices/alert/alert.slice';
 
 interface IFormInputs {
     displayName?: string | null;
@@ -26,16 +25,21 @@ interface IFormInputs {
     role?: string;
 }
 
+interface IAlert {
+    message: string;
+    severity: 'error' | 'warning' | 'info' | 'success';
+}
 
 
 const EditProfile = () => {
     const navigate = useNavigate();
     const { displayName, uid, photoURL } = useAppSelector(state => state.auth);
-    const { status, errorMessage } = useAppSelector((state) => state.auth);
+    const { open, message, severity, type } = useAppSelector(state => state.alert);
     const { data, isLoading } = useQuery(["user"], () => getUser(uid || ''));
     const { email, rol } = data || {};
     const [image, setImage] = useState<any>(null)
     const [urlImage, setUrlImage] = useState<string>(photoURL || '');
+    const [isClicked, setIsClicked] = useState(false);
     const {
         control,
         handleSubmit,
@@ -43,14 +47,19 @@ const EditProfile = () => {
     } = useForm<IFormInputs>();
     const dispatch = useAppDispatch();
 
-    const [open, setOpen] = useState(true);
     const onSubmit: SubmitHandler<IFormInputs> = ({
         email,
         password,
         displayName,
         role,
     }) => {
-        
+        dispatch(startUpdateDisplayName(displayName || ''));
+        isClicked && changePassword(password).then((resp) => {
+            setIsClicked(false);
+            dispatch(setAlert({ open: true, message: 'Contraseña actualizada correctamente', severity: 'success', type: 'auth' }));
+        }).catch((error) => {
+            dispatch(setAlert({ open: true, message: error.message, severity: 'warning', type: 'auth' }));
+        });
     };
 
     const handleImageChange = (e: any) => {
@@ -59,9 +68,8 @@ const EditProfile = () => {
         }
     };
 
-
-
     useEffect(() => {
+        dispatch(resetAlert());
         const uploadImage = () => {
             const imageRef = ref(FirebaseStorage, 'PP_' + uid);
             uploadBytes(imageRef, image).then(() => {
@@ -82,7 +90,7 @@ const EditProfile = () => {
     }, [image, photoURL]);
 
     return (
-        <Grid container px={{ md: 30 }} pb={5}>
+        <Grid container px={{ md: "10%" }} pb={5}>
             <Grid item xs={12} mb={2}>
                 <Stack
                     direction="row" alignItems="center"
@@ -101,7 +109,7 @@ const EditProfile = () => {
                 </Stack>
             </Grid>
             <Grid item xs={12} >
-                <Grid container direction='row' spacing={2} >
+                <Grid container direction='row' spacing={3} >
                     <Grid item xs={12} md={4} >
                         <Card
                             sx={{ alignItems: 'center', textAlign: 'center' }}
@@ -158,16 +166,16 @@ const EditProfile = () => {
                                         isLoading ? (
                                             <Grid container spacing={2}>
                                                 <Grid item xs={12} md={6} >
-                                                    <Skeleton variant="rectangular" height={60} />
+                                                    <Skeleton variant="rounded" height={60} />
                                                 </Grid>
                                                 <Grid item xs={12} md={6} >
-                                                    <Skeleton variant="rectangular" height={60} />
+                                                    <Skeleton variant="rounded" height={60} />
                                                 </Grid>
                                                 <Grid item xs={12} md={6} >
-                                                    <Skeleton variant="rectangular" height={60} />
+                                                    <Skeleton variant="rounded" height={60} />
                                                 </Grid>
                                                 <Grid item xs={12} md={6} >
-                                                    <Skeleton variant="rectangular" height={60} />
+                                                    <Skeleton variant="rounded" height={60} />
                                                 </Grid>
                                             </Grid>
                                         ) : (
@@ -256,10 +264,11 @@ const EditProfile = () => {
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12} md={6}>
+
                                                         <Controller
                                                             name="password"
                                                             control={control}
-                                                            defaultValue="*****"
+                                                            defaultValue=""
                                                             rules={{
                                                                 minLength: {
                                                                     value: 6,
@@ -271,7 +280,9 @@ const EditProfile = () => {
                                                                 <TextField
                                                                     size='medium'
                                                                     // {...field}
-                                                                    label="Contraseña*"
+                                                                    label="Nueva contraseña*"
+                                                                    disabled={!isClicked}
+                                                                    focused
                                                                     color="secondary"
                                                                     type="password"
                                                                     placeholder="Contraseña"
@@ -287,30 +298,12 @@ const EditProfile = () => {
                                                                 />
                                                             )}
                                                         />
-                                                    </Grid>
+                                                        <FormGroup>
+                                                            <FormControlLabel control={<Switch onClick={() => setIsClicked(!isClicked)}
+                                                                color="secondary"
+                                                                checked={isClicked} />} label="Cambiar contraseña" />
+                                                        </FormGroup>
 
-
-                                                    <Grid item xs={12} >
-                                                        <Collapse in={open}>
-                                                            <Alert
-                                                                severity="error"
-                                                                action={
-                                                                    <IconButton
-                                                                        aria-label="close"
-                                                                        color="inherit"
-                                                                        size="small"
-                                                                        onClick={() => {
-                                                                            setOpen(false);
-                                                                        }}
-                                                                    >
-                                                                        <CloseIcon fontSize="inherit" />
-                                                                    </IconButton>
-                                                                }
-                                                                sx={{ display: errorMessage ? "wrap" : "none" }}
-                                                            >
-                                                                {errorMessage}
-                                                            </Alert>
-                                                        </Collapse>
                                                     </Grid>
                                                 </Grid>
                                             </>
@@ -328,6 +321,7 @@ const EditProfile = () => {
                     </Grid>
                 </Grid>
             </Grid>
+            {type === 'auth' && <CustomAlert open={open} severity={severity} message={message} />}
         </Grid>
     )
 }
