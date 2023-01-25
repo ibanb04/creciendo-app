@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updatePassword,
   updateProfile,
 } from "firebase/auth";
 import {
@@ -41,6 +42,22 @@ export const registerUserWithEmailAndPassword = async (
     return {
       ok: false,
       errorMessage: error,
+    };
+  }
+};
+
+export const changePassword = async (newPassword: any) => {
+
+  const { currentUser } = FirebaseAuth;
+  if (currentUser) {
+    await updatePassword(currentUser, newPassword);
+    return {
+      ok: true,
+    };
+  } else {
+    return {
+      ok: false,
+      errorMessage: "No existe un usuario activo",
     };
   }
 };
@@ -116,23 +133,37 @@ export const logoutFirebase = async () => {
     return { ok: false, errorMessage: error };
   }
 };
-export const startStudenRegister = async (
+export const studentRegister = async (
   data: studentDefaultValuesProps | interviewDefaultValuesProps
 ) => {
   try {
     const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
     setDoc(docuRef, data);
+    return { ok: true };
   } catch (error) {
-    console.log(error);
+    return { ok: false, errorMessage: error };
   }
 };
-
+export const registerInterview = async (
+  data: studentDefaultValuesProps | interviewDefaultValuesProps
+) => {
+  try {
+    const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
+    setDoc(docuRef, data);
+    return { ok: true };
+  } catch (error) {
+    console.log(error);
+    return { ok: false, errorMessage: error };
+  }
+};
 export const updateStudent = async (data: any) => {
   try {
     const docuRef = await doc(FirebaseDB, `estudiantes/${data.idNumber}`);
     updateDoc(docuRef, data);
+    return { ok: true };
   } catch (error) {
     console.log(error);
+    return { ok: false, errorMessage: error };
   }
 };
 
@@ -140,8 +171,10 @@ export const updateInterview = async (data: any) => {
   try {
     const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
     updateDoc(docuRef, data);
+    return { ok: true };
   } catch (error) {
     console.log(error);
+    return { ok: false, errorMessage: error };
   }
 };
 
@@ -164,16 +197,7 @@ export const deleteInterview = async (id: string) => {
 };
 
 
-export const registerInterview = async (
-  data: studentDefaultValuesProps | interviewDefaultValuesProps
-) => {
-  try {
-    const docuRef = await doc(FirebaseDB, `entrevistas/${data.studentId}`);
-    setDoc(docuRef, data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 
 export const getStudentById = async (id: string) => {
   try {

@@ -10,7 +10,7 @@ import PrenatalHistoryForm from './Forms/PrenatalHistoryForm';
 import PsychoAffectivityForm from './Forms/PsychoAffectivityForm';
 import PsychoPedagogicalHistoryForm from './Forms/PsychoPedagogicalHistoryForm';
 import { interviewDefaultValues } from './utils/interviewDefaultValues';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAppSelector } from '../../store/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
 
@@ -63,6 +63,13 @@ export const AddOrEditInterview: FC<AddOrEditInterviewProps> = ({ action }) => {
   const navigate = useNavigate();
   const { selectedInterview } = useAppSelector((state) => state.interview);
   const { displayName } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (action === 'edit' && !selectedInterview) {
+      navigate('/entrevistas');
+    }
+  }, [action, selectedInterview]);
+
   return (
     <>
       {

@@ -1,5 +1,6 @@
 import { Action, AnyAction } from "@reduxjs/toolkit";
 import { loginWithEmailAndPassword, logoutFirebase, registerUserWithEmailAndPassword, updatePhotoUrlFirebase, updateDisplayNameFirebase } from '../../../firebase/providers';
+import { setAlert } from "../alert/alert.slice";
 import { checkingCredentials, login, logout, updateDisplayName, updatePhotoUrl } from "./auth.slice";
 
 export interface Dispatch<A extends Action = AnyAction> {
@@ -65,7 +66,7 @@ export const startUpdatePhotoUrl = (photoUrl: string) => {
 export const startUpdateDisplayName = (displayName: string) => {
   return async (dispatch: Dispatch) => {
     const result = await updateDisplayNameFirebase(displayName);
-    if (!result.ok) return dispatch(logout(result.errorMessage));
+    if (!result.ok) return dispatch(setAlert({ open: true, message: result.errorMessage, type: 'auth', severity: 'error' }));
     dispatch(updateDisplayName(result.displayName));
   };
 }
